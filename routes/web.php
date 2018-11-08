@@ -11,6 +11,9 @@
 |
 */
 
+/**
+ * Default route with information about the API
+ */
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return 'Webshop API';
 });

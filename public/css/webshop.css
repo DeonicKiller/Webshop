@@ -4,7 +4,9 @@ h1 {
     padding: 10px;
 }
 
-#tekst { color: white;}
+#tekst { 
+    color: white;
+}
 
 body{
     background-image: url(../img/lollllllll.jpg)

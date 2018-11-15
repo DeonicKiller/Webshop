@@ -1,3 +1,5 @@
+//API voor de producten
+
 function getAllProducts() {
     var xHttp = new XMLHttpRequest();
     xHttp.onreadystatechange = function () {

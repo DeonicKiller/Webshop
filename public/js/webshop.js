@@ -29,3 +29,30 @@ var products = [
 products.forEach(function(value) {
     console.log(value.name);
 });
+
+var selectionImg1 = document.getElementById("selection-1");
+var selectionImg2 = document.getElementById("selection-2");
+var overlay1 = document.getElementById("selection-overlay-1");
+var overlay2 = document.getElementById("selection-overlay-2");
+
+function showOverlay1(){
+
+    //selectionImg1.style.opacity = 0.5;
+    overlay1.style.display = inline-block;
+    
+}
+
+function showOverlay2(){
+
+    //selectionImg2.style.opacity = 0.5;
+    overlay1.style.display = inline-block;
+
+}
+
+function addHomePageActions(){
+
+    selectionImg1.addEventListener("mouseover", showOverlay1);
+    selectionImg2.addEventListener("mouseover", showOverlay2);
+}
+
+addHomePageActions();

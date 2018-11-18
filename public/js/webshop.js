@@ -20,19 +20,25 @@ function getAllProducts() {
     xHttp.send();
 }
        
-var products = [ 
-    { id: 1, name: "Grand theft auto V"},
-    { id: 2, name: "Call of Duty IIII"},
-    { id: 3, name: "Rust"},
-    { id: 4, name: "Subnautica"},
-    { id: 5, name: "Cities Skylines"},
+var Products = [ 
+    { id: 1, name1: "Grand theft auto V"},
+    { id: 2, name2: "Call of Duty IIII"},
+    { id: 3, name3: "Rust"},
+    { id: 4, name4: "Subnautica"},
+    { id: 5, name5: "Cities Skylines"},
 ]; 
 
-products.forEach(function(value) {
-    console.log(value.name);
+
+Products.forEach(function(value) {
+    console.log(value.name1);
+    console.log(value.name2);
+    console.log(value.name3);
+    console.log(value.name4);
+    console.log(value.name5);
 });
 
 // Producten tonen op de WebShop
+
 
 var p1 = document.getElementById("Product1");
 var p2 = document.getElementById("Product2");
@@ -40,11 +46,15 @@ var p3 = document.getElementById("Product3");
 var p4 = document.getElementById("Product4");
 var p5 = document.getElementById("Product5");
 
+function Producten(){
 p1.innerHTML = (value.name1);
 p2.innerHTML = (value.name2);
 p3.innerHTML = (value.name3);
 p4.innerHTML = (value.name4);
 p5.innerHTML = (value.name5);
+};
+
+Producten();
 
 // Voor de Layout
 

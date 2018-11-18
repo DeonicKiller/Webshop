@@ -29,7 +29,7 @@ var Products = [
 ]; 
 
 
-products.forEach(function(value) {
+Products.forEach(function(value) {
     console.log(value.name1);
     console.log(value.name2);
     console.log(value.name3);

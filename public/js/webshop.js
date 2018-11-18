@@ -45,6 +45,7 @@ p2.innerHTML = ();
 p3.innerHTML = ();
 p4.innerHTML = ();
 p5.innerHTML = ();
+
 // Voor de Layout
 
 var selectionImg1 = document.getElementById("selection-1");

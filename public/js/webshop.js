@@ -39,19 +39,19 @@ Products.forEach(function(value) {
 
 // Producten tonen op de WebShop
 
-
-var p1 = document.getElementById("Product1")
-var p2 = document.getElementById("Product2")
-var p3 = document.getElementById("Product3")
-var p4 = document.getElementById("Product4")
-var p5 = document.getElementById("Product5")
-
 function Producten(){
-p1.innerHTML = value.name1;
-p2.innerHTML = value.name2;
-p3.innerHTML = value.name3;
-p4.innerHTML = value.name4;
-p5.innerHTML = value.name5;
+var p1 = document.getElementById("Product1").value;
+var p2 = document.getElementById("Product2").value;
+var p3 = document.getElementById("Product3").value;
+var p4 = document.getElementById("Product4").value;
+var p5 = document.getElementById("Product5").value;
+
+
+p1.innerHTML = (value.name1);
+p2.innerHTML = (value.name2);
+p3.innerHTML = (value.name3);
+p4.innerHTML = (value.name4);
+p5.innerHTML = (value.name5);
 };
 
 Producten();

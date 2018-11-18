@@ -37,14 +37,14 @@ var overlay2 = document.getElementById("selection-overlay-2");
 
 function showOverlay1(){
 
-    //selectionImg1.style.opacity = 0.5;
+    selectionImg1.style.opacity = 0.5;
     overlay1.style.display = inline-block;
     
 }
 
 function showOverlay2(){
 
-    //selectionImg2.style.opacity = 0.5;
+    selectionImg2.style.opacity = 0.5;
     overlay1.style.display = inline-block;
 
 }

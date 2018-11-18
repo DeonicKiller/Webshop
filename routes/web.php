@@ -20,11 +20,11 @@ $router->get('/', function () use ($router) {
 
 $router->get('/products', function () use ($router) {
     $products = [
-        ['id' => 1, 'name' => 'Grand theft auto V'],
-        ['id' => 2, 'name' => 'Call of duty IIII'],
-        ['id' => 3, 'name' => 'Rust'],
-        ['id' => 4, 'name' => 'Subnautica'],
-        ['id' => 5, 'name' => 'Cities Skylines']
+        ['id' => 1, 'name1' => 'Grand theft auto V'],
+        ['id' => 2, 'name2' => 'Call of duty IIII'],
+        ['id' => 3, 'name3' => 'Rust'],
+        ['id' => 4, 'name4' => 'Subnautica'],
+        ['id' => 5, 'name5' => 'Cities Skylines']
 
     ];
     return response()->json($products);

@@ -40,11 +40,11 @@ var p3 = document.getElementById("Product3");
 var p4 = document.getElementById("Product4");
 var p5 = document.getElementById("Product5");
 
-p1.innerHTML = ();
-p2.innerHTML = ();
-p3.innerHTML = ();
-p4.innerHTML = ();
-p5.innerHTML = ();
+p1.innerHTML = (name1);
+p2.innerHTML = (name2);
+p3.innerHTML = (name3);
+p4.innerHTML = (name4);
+p5.innerHTML = (name5);
 
 // Voor de Layout
 

@@ -34,12 +34,17 @@ products.forEach(function(value) {
 
 // Producten tonen op de WebShop
 
-var p1 = document.getElementById("Product1")
-var p2 = document.getElementById("Product2")
-var p3 = document.getElementById("Product3")
-var p4 = document.getElementById("Product4")
-var p5 = document.getElementById("Product5")
+var p1 = document.getElementById("Product1");
+var p2 = document.getElementById("Product2");
+var p3 = document.getElementById("Product3");
+var p4 = document.getElementById("Product4");
+var p5 = document.getElementById("Product5");
 
+p1.innerHTML = ()
+p2.innerHTML = ()
+p3.innerHTML = ()
+p4.innerHTML = ()
+p5.innerHTML = ()
 // Voor de Layout
 
 var selectionImg1 = document.getElementById("selection-1");

@@ -28,7 +28,6 @@ var Products = [
     { id: 5, name5: "Cities Skylines"},
 ]; 
 
-Products();
 
 products.forEach(function(value) {
     console.log(value.name1);
@@ -54,6 +53,8 @@ p3.innerHTML = (value.name3);
 p4.innerHTML = (value.name4);
 p5.innerHTML = (value.name5);
 };
+
+Producten();
 
 // Voor de Layout
 

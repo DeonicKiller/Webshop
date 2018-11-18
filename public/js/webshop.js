@@ -39,14 +39,14 @@ Products.forEach(function(value) {
 
 // Producten tonen op de WebShop
 
-
+function Producten(){
 var p1 = document.getElementById("Product1").value;
 var p2 = document.getElementById("Product2").value;
 var p3 = document.getElementById("Product3").value;
 var p4 = document.getElementById("Product4").value;
 var p5 = document.getElementById("Product5").value;
 
-function Producten(){
+
 p1.innerHTML = (value.name1);
 p2.innerHTML = (value.name2);
 p3.innerHTML = (value.name3);

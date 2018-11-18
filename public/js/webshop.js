@@ -21,14 +21,18 @@ function getAllProducts() {
 }
        
 var products = [ 
-    { id: 1, name: "product 1"},
-    { id: 2, name: "product 2"},
-    { id: 3, name: "product 3"}
+    { id: 1, name: "Grand theft auto V"},
+    { id: 2, name: "Call of Duty IIII"},
+    { id: 3, name: "Rust"},
+    { id: 4, name: "Subnautica"},
+    { id: 5, name: "Cities Skylines"},
 ]; 
 
 products.forEach(function(value) {
     console.log(value.name);
 });
+
+// Voor de Layout
 
 var selectionImg1 = document.getElementById("selection-1");
 var selectionImg2 = document.getElementById("selection-2");

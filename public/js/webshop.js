@@ -59,27 +59,40 @@ Products.forEach(function(value) {
 
 var selectionImg1 = document.getElementById("selection-1");
 var selectionImg2 = document.getElementById("selection-2");
-var overlay1 = document.getElementById("selection-overlay-1");
-var overlay2 = document.getElementById("selection-overlay-2");
+var overlayText1 = document.getElementById("selection-1-text");
+var overlayText2 = document.getElementById("selection-2-text");
+
 
 function showOverlay1(){
 
-    selectionImg1.style.opacity = 0.5;
-    overlay1.style.display = inline-block;
-    
+    selectionImg1.style.opacity = 0.3;
+    overlayText1.style.opacity = 1;   
 }
 
 function showOverlay2(){
 
-    selectionImg2.style.opacity = 0.5;
-    overlay1.style.display = inline-block;
+    selectionImg2.style.opacity = 0.3;
+    overlayText2.style.opacity = 1;
+}
+function hideOverlay1(){
 
+    selectionImg1.style.opacity = 1;
+    overlayText1.style.opacity = 0;
+}
+function hideOverlay2(){
+
+    selectionImg2.style.opacity = 1;
+    overlayText2.style.opacity = 0;
 }
 
 function addHomePageActions(){
 
     selectionImg1.addEventListener("mouseover", showOverlay1);
     selectionImg2.addEventListener("mouseover", showOverlay2);
+
+    selectionImg1.addEventListener("mouseout", hideOverlay1);
+    selectionImg2.addEventListener("mouseout", hideOverlay2);
+
 }
 
 addHomePageActions();

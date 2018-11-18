@@ -17,22 +17,26 @@
     height: 130px;
     position: inherit;
 }
-#selection-wrapper{
-    overflow: hidden;
-    top:50%;
-    left:50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    position: fixed;
+* {
+    box-sizing: border-box;
 }
-.selection-home{
+
+.column {
     float: left;
-    width: 250px;
+    width: 50%;
+    padding: 5px;
     height: 250px;
-    margin-right: 10px;
-    margin-left: 10px;
+    width:250px;
+   
 }
-.selection-home:hover{
+
+/* Clearfix (clear floats) */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.row:hover{
     cursor: pointer;
 }
 #selection-overlay-1{

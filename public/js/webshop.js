@@ -32,6 +32,14 @@ products.forEach(function(value) {
     console.log(value.name);
 });
 
+// Producten tonen op de WebShop
+
+var p1 = document.getElementById("Product1")
+var p2 = document.getElementById("Product2")
+var p3 = document.getElementById("Product3")
+var p4 = document.getElementById("Product4")
+var p5 = document.getElementById("Product5")
+
 // Voor de Layout
 
 var selectionImg1 = document.getElementById("selection-1");

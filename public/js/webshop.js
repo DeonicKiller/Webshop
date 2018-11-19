@@ -171,6 +171,15 @@ function addHomePageActions() {
         }
     });
 
+    homeLogo.addEventListener("mouseover", function(){
+
+        homeLogo.style.opacity = 0.3;
+
+    });
+    homeLogo.addEventListener("mouseout", function(){
+        homeLogo.style.opacity = 1;
+    })
+
 }
 
 addHomePageActions();

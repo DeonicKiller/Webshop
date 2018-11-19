@@ -8,13 +8,14 @@ p {
     height: 10px;
     top: 0;
     left: 0;
-    margin-bottom: 10px;
     position: fixed;
     background-color: #009EDC;
 }
 
 #home-logo{
     cursor: pointer;
+    transition: 1s ease;
+    margin-top: 20px;
 }
 .center {
     display: block;

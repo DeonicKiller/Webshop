@@ -15,7 +15,10 @@ p {
 
     display: block;
 }
-
+.product{
+    display: inline-block;
+    margin: 30px;
+}
 #home-logo{
     cursor: pointer;
     transition: 1s ease;
@@ -37,8 +40,8 @@ p {
     float: left;
     width: 33.3%;
     text-align: center;
-    width: 200px;
-    height: 200px;
+    width: 175px;
+    height: 175px;
     margin: 20px;
     transition: 1s ease;
     cursor: pointer;

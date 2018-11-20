@@ -25,7 +25,7 @@ var Products = [{
         name: "Grand theft auto V",
         prijs: 59.98,
         beschrijving: "PS4",
-        image: '<img  id="product-image-1" src="img/GTAV_PS4.jpg" alt="webshop">'
+        image: '<img  class="product-image" src="img/GTAV_PS4.jpg" alt="webshop">'
         
     },
     {
@@ -33,28 +33,28 @@ var Products = [{
         name: "Call of Duty IIII",
         prijs: 59.98,
         beschrijving: "PS4",
-        image: '<img  id="product-image-2" src="img/COD4_PS4.jpg" alt="webshop">'
+        image: '<img  class="product-image" src="img/COD4_PS4.jpg" alt="webshop">'
     },
     {
         id: 3,
         name: "Assassin's Creed: Odyssey",
         prijs: 59.98,
         beschrijving: "PS4",
-        image: '<img  id="product-image-3" src="img/ACODYSSEY_PS4.jpg" alt="webshop">'
+        image: '<img  class="product-image" src="img/ACODYSSEY_PS4.jpg" alt="webshop">'
     },
     {
         id: 4,
         name: "Red Dead Redemption II",
         prijs: 59.98,
         beschrijving: "PS4",
-        image: '<img  id="product-image-4" src="img/RDR2_PS4.jpg" alt="webshop">'
+        image: '<img  class="product-image" src="img/RDR2_PS4.jpg" alt="webshop">'
     },
     {
         id: 5,
         name: "Spider-Man",
         prijs: 59.98,
         beschrijving: "PS4",
-        image: '<img  id="product-image-5" src="img/Spiderman_PS4.jpg" alt="webshop">'
+        image: '<img  class="product-image" src="img/Spiderman_PS4.jpg" alt="webshop">'
     },
 ];
 

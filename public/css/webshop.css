@@ -11,26 +11,11 @@ p {
     position: fixed;
     background-color: #009EDC;
 }
-#product-image-1{
+.product-image{
 
     display: block;
 }
-#product-image-2{
 
-    display: block;
-}
-#product-image-3{
-
-    display: block;
-}
-#product-image-4{
-
-    display: block;
-}
-#product-image-5{
-
-    display: block;
-}
 #home-logo{
     cursor: pointer;
     transition: 1s ease;
@@ -136,7 +121,7 @@ p {
 }
 #description-container{
     width: 50%;
-    height:50%;
+    height: 50%;
     left: 25%;
     overflow-y: scroll;
     position: absolute;

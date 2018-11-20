@@ -22,23 +22,39 @@ function getAllProducts() {
 
 var Products = [{
         id: 1,
-        name: "Grand theft auto V"
+        name: "Grand theft auto V",
+        prijs: 59.98,
+        beschrijving: "PS4",
+        image: '<img  id="product-image-1" src="img/GTAV_PS4.jpg" alt="webshop">'
+        
     },
     {
         id: 2,
-        name: "Call of Duty IIII"
+        name: "Call of Duty IIII",
+        prijs: 59.98,
+        beschrijving: "PS4",
+        image: '<img  id="product-image-2" src="img/COD4_PS4.jpg" alt="webshop">'
     },
     {
         id: 3,
-        name: "Rust"
+        name: "Assassin's Creed: Odyssey",
+        prijs: 59.98,
+        beschrijving: "PS4",
+        image: '<img  id="product-image-3" src="img/ACODYSSEY_PS4.jpg" alt="webshop">'
     },
     {
         id: 4,
-        name: "Subnautica"
+        name: "Red Dead Redemption II",
+        prijs: 59.98,
+        beschrijving: "PS4",
+        image: '<img  id="product-image-4" src="img/RDR2_PS4.jpg" alt="webshop">'
     },
     {
         id: 5,
-        name: "Cities Skylines"
+        name: "Spider-Man",
+        prijs: 59.98,
+        beschrijving: "PS4",
+        image: '<img  id="product-image-5" src="img/Spiderman_PS4.jpg" alt="webshop">'
     },
 ];
 
@@ -52,19 +68,19 @@ Products.forEach(function (value) {
 
     switch (value.id) {
         case 1:
-            p1.innerHTML = value.name;
+            p1.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
             break;
         case 2:
-            p2.innerHTML = value.name;
+            p2.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
             break;
         case 3:
-            p3.innerHTML = value.name;
+            p3.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
             break;
         case 4:
-            p4.innerHTML = value.name;
+            p4.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
             break;
         case 5:
-            p5.innerHTML = value.name;
+            p5.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
             break;
         default:
             error;

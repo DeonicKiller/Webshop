@@ -14,10 +14,21 @@ p {
 .product-image{
 
     display: block;
+    height: 274px;
+    width:220px;
 }
 .product{
     display: inline-block;
-    margin: 30px;
+    margin: 5px;
+}
+#Product3{
+    position: relative;
+    width:30%;
+}
+#Product4{
+position: relative;
+display: inline-block;
+width: 29%
 }
 #home-logo{
     cursor: pointer;
@@ -132,4 +143,11 @@ p {
 }
 #description-text{
     word-wrap: break-word;
+}
+#products-container{
+
+    margin-left: 10%;
+    margin-right: 10%;
+    left: 18%;
+    position: absolute;
 }

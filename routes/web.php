@@ -20,11 +20,16 @@ $router->get('/', function () use ($router) {
 
 $router->get('/products', function () use ($router) {
     $products = [
-        ['id' => 1, 'name1' => 'Grand theft auto V'],
-        ['id' => 2, 'name2' => 'Call of duty IIII'],
-        ['id' => 3, 'name3' => 'Rust'],
-        ['id' => 4, 'name4' => 'Subnautica'],
-        ['id' => 5, 'name5' => 'Cities Skylines']
+        ['id' => 1, 'name' => 'Grand theft auto V',
+         'prijs' => € 59.98, 'beschrijving' => 'PS4', 'image' => '<img class="product-image" src="img/GTAV_PS4.jpg" alt="webshop">'],
+        ['id' => 2, 'name' => 'Call of duty IIII',
+         'prijs' => € 59.98, 'beschrijving' => 'PS4', 'image' => '<img class="product-image" src="img/COD4_PS4.jpg" alt="webshop">'], 
+        ['id' => 3, 'name' => "Assassin's Creed: Odyssey",
+         'prijs' => € 59.98, 'beschrijving' => 'PS4', 'image' => '<img class="product-image" src="img/ACODYSSEY_PS4.jpg" alt="webshop">'],
+        ['id' => 4, 'name' => 'Red Dead Redemption II',
+         'prijs' => € 59.98, 'beschrijving' => 'PS4', 'image' => '<img class="product-image" src="img/RDR2_PS4.jpg" alt="webshop">'],
+        ['id' => 5, 'name' => 'Spider-Man',
+         'prijs' => € 59.98, 'beschrijving' => 'PS4', 'image' => '<img class="product-image" src="img/Spiderman_PS4.jpg" alt="webshop">']
 
     ];
     return response()->json($products);

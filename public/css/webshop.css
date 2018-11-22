@@ -1,144 +1,154 @@
-
-body {
-     background-image: url(../img/background.jpg);
-     background-size: 100%;
-
-    }
-#logo { 
-    width: 100%;
-    height: 355px;
-    position: absolute;
-    left: 0px; 
-    top: 45px;
+h1,
+p {
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
-#gameshop {
-position: absolute;
-left: 750px;
-bottom: 480px;
-width: 25%;
-height: 25%;
-}
-
-.topnav {
-    overflow: hidden;
-    background-color: #333;
-    position: absolute;
-    left: 500px;
-    top: 0px;
-  }
-  
-  .topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  .topnav a.active {
-    background-color: #4CAF50;
-    color: white;
-  }
-
-
-/*
-#top-border{
+#top-border {
     width: 100%;
     height: 10px;
-    top:0;
-    left:0;
-    margin-bottom: 10px;
+    top: 0;
+    left: 0;
     position: fixed;
     background-color: #009EDC;
 }
-*/
+.product-image{
+
+    display: block;
+    height: 274px;
+    width:220px;
+}
+.product{
+    display: inline-block;
+    margin: 5px;
+}
+#Product3{
+    position: relative;
+    width:30%;
+}
+#Product4{
+position: relative;
+display: inline-block;
+width: 29%
+}
+#home-logo{
+    cursor: pointer;
+    transition: 1s ease;
+    margin-top: 20px;
+}
 .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
-#home-logo{
-   size: 250%;
-    position: absolute;
-    left: 65%;
-    bottom: 10px;
+
+#home-logo {
+    width: 290px;
+    height: 130px;
+    position: inherit;
 }
-/*
-#selection-wrapper{
-    overflow: hidden;
-    top:50%;
-    left:50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    position: fixed;
-}
-*/
-.selection-home{
+
+.column {
     float: left;
-    width: 250px;
-    height: 250px;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-.selection-home:hover{
+    width: 33.3%;
+    text-align: center;
+    width: 175px;
+    height: 175px;
+    margin: 20px;
+    transition: 1s ease;
     cursor: pointer;
 }
-#selection-overlay-1{
-    position: fixed; /* Sit on top of the page content */
-    display: none; /* Hidden by default */
-    width: 50%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
-    top: 0; 
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: transparent; /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-    cursor: pointer; /* Add a pointer on hover */
-    text-align: center;
-    
 
+/* Clear floats after image containers */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
 }
-#selection-overlay-2{
-    position: fixed; /* Sit on top of the page content */
-    display: none ; /* Hidden by default */
-    width: 50% ; /* Full width (cover the whole page) */
-    transform: translate(100%,0%);
-    height: 100%; /* Full height (cover the whole page) */
-    top: 0; 
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: transparent; /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-    cursor: pointer; /* Add a pointer on hover */
-    margin-left: 10px;
-}
-.text-align{
-    position: absolute;
-    display: block;
+
+.row {
     top: 50%;
-    left: 40%;
-    color: red;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    display: block;
+}
+
+@media screen and (max-width: 500px) {
+    .column {
+        width: 100%;
+
+    }
+
+    #selection-1,
+    #selection-2,
+    #selection-3 {
+        opacity: 0.3;
+    }
+
+    #selection-1-text,
+    #selection-2-text,
+    #selection-3-text {
+        opacity: 1;
+    }
+
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.centered-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#selection-1-text {
+    opacity: 0;
+    bottom: 65%;
+    left: 10%;
+    font-weight: bold;
+    position: relative;
+    transition: 1s ease;
+}
+
+#selection-2-text {
+    opacity: 0;
+    bottom: 65%;
+    left: 5%;
+    font-weight: bold;
+    position: relative;
+    transition: 1s ease;
+}
+
+#selection-3-text {
+    opacity: 0;
+    bottom: 65%;
+    left: 5%;
+    font-weight: bold;
+    position: relative;
+    transition: 1s ease;
+}
+#description-container{
+    width: 50%;
+    height: 50%;
+    left: 25%;
+    overflow-y: scroll;
+    position: absolute;
     
 }
-
-#selection-1 {
-    position: absolute;
-    left: 10%;
-    bottom: 10px;
+#description-text{
+    word-wrap: break-word;
 }
+#products-container{
 
-#selection-2 {
+    margin-left: 10%;
+    margin-right: 10%;
+    left: 18%;
     position: absolute;
-    left: 40%;
-    bottom: 10px;
 }
-

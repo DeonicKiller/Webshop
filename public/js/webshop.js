@@ -20,7 +20,7 @@ function getAllProducts() {
     xHttp.send();
 }
 
-var euroTeken = "<p>&euro;</p>";
+
 
 var Products = [{
         id: 1,

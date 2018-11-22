@@ -83,47 +83,6 @@ function showProductsFailed(products) {
 
 };
 
-/*
-var euroTeken = "<p>&euro;</p>";
-
-var Products = [{
-        id: 1,
-        name: "Grand theft auto V",
-        prijs: euroTeken + 59.98,
-        beschrijving: "PS4",
-        image: '<img  class="product-image" src="img/GTAV_PS4.jpg" alt="webshop">'
-        
-    },
-    {
-        id: 2,
-        name: "Call of Duty IIII",
-        prijs: euroTeken + 59.98,
-        beschrijving: "PS4",
-        image: '<img  class="product-image" src="img/COD4_PS4.jpg" alt="webshop">'
-    },
-    {
-        id: 3,
-        name: "Assassin's Creed: Odyssey",
-        prijs: euroTeken + 59.98,
-        beschrijving: "PS4",
-        image: '<img  class="product-image" src="img/ACODYSSEY_PS4.jpg" alt="webshop">'
-    },
-    {
-        id: 4,
-        name: "Red Dead Redemption II",
-        prijs: euroTeken + 59.98,
-        beschrijving: "PS4",
-        image: '<img  class="product-image" src="img/RDR2_PS4.jpg" alt="webshop">'
-    },
-    {
-        id: 5,
-        name: "Spider-Man",
-        prijs: euroTeken + 59.98,
-        beschrijving: "PS4",
-        image: '<img  class="product-image" src="img/Spiderman_PS4.jpg" alt="webshop">'
-    },
-];
-*/
 
 var p1 = document.getElementById("Product1");
 var p2 = document.getElementById("Product2");
@@ -260,3 +219,46 @@ function addHomePageActions() {
 
 addHomePageActions();
 hidePages();
+getAllProducts();
+
+/*
+var euroTeken = "<p>&euro;</p>";
+
+var Products = [{
+        id: 1,
+        name: "Grand theft auto V",
+        prijs: euroTeken + 59.98,
+        beschrijving: "PS4",
+        image: '<img  class="product-image" src="img/GTAV_PS4.jpg" alt="webshop">'
+        
+    },
+    {
+        id: 2,
+        name: "Call of Duty IIII",
+        prijs: euroTeken + 59.98,
+        beschrijving: "PS4",
+        image: '<img  class="product-image" src="img/COD4_PS4.jpg" alt="webshop">'
+    },
+    {
+        id: 3,
+        name: "Assassin's Creed: Odyssey",
+        prijs: euroTeken + 59.98,
+        beschrijving: "PS4",
+        image: '<img  class="product-image" src="img/ACODYSSEY_PS4.jpg" alt="webshop">'
+    },
+    {
+        id: 4,
+        name: "Red Dead Redemption II",
+        prijs: euroTeken + 59.98,
+        beschrijving: "PS4",
+        image: '<img  class="product-image" src="img/RDR2_PS4.jpg" alt="webshop">'
+    },
+    {
+        id: 5,
+        name: "Spider-Man",
+        prijs: euroTeken + 59.98,
+        beschrijving: "PS4",
+        image: '<img  class="product-image" src="img/Spiderman_PS4.jpg" alt="webshop">'
+    },
+];
+*/

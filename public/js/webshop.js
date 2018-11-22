@@ -27,7 +27,9 @@ function showProductsSucces(products) {
     var productPrice = products.prijs;
     var productDescription = products.beschrijving;
     var productAfbeelding = products.image;
-
+    alert(products.id);
+    producten();
+/*
     switch (productId) {
         case 1:
             //p1.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
@@ -70,11 +72,8 @@ function showProductsSucces(products) {
             productImage5.innerHTML = productAfbeelding;
             break;
         default:
-            
-
-
-
     };
+*/
 };
 
 
@@ -83,7 +82,7 @@ function showProductsFailed(products) {
 
 };
 
-
+function producten (){
 var p1 = document.getElementById("Product1");
 var p2 = document.getElementById("Product2");
 var p3 = document.getElementById("Product3");
@@ -110,7 +109,7 @@ var productImage2 = document.getElementById("image-2");
 var productImage3 = document.getElementById("image-3");
 var productImage4 = document.getElementById("image-4");
 var productImage5 = document.getElementById("image-5");
-
+};
 // Voor de Layout
 var homeLogo = document.getElementById("home-logo");
 var selectionImg1 = document.getElementById("selection-1");

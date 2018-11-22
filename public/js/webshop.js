@@ -20,10 +20,12 @@ function getAllProducts() {
     xHttp.send();
 }
 
+var euroTeken = "<p>&euro;</p>";
+
 var Products = [{
         id: 1,
         name: "Grand theft auto V",
-        prijs: 59.98,
+        prijs: euroTeken + 59.98,
         beschrijving: "PS4",
         image: '<img  class="product-image" src="img/GTAV_PS4.jpg" alt="webshop">'
         

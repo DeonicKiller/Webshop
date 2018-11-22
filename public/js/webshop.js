@@ -196,7 +196,7 @@ function addHomePageActions() {
     });
     homeLogo.addEventListener("mouseout", function(){
         homeLogo.style.opacity = 1;
-    })
+    });
 
 }
 

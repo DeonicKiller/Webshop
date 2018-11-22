@@ -6,7 +6,7 @@ function getAllProducts() {
         if (xHttp.readyState == XMLHttpRequest.DONE) {
             if (xHttp.status == 200 || xHttp.status == 201) {
                 var response = JSON.parse(xHttp.response);
-                // succes
+                //succes
             } else {
                 // failed
             }
@@ -71,7 +71,21 @@ var productNaam2 = document.getElementById("name-2");
 var productNaam3 = document.getElementById("name-3");
 var productNaam4 = document.getElementById("name-4");
 var productNaam5 = document.getElementById("name-5");
-var productPrijs1 = document.getElementById("")
+var productPrijs1 = document.getElementById("prijs-1");
+var productPrijs2 = document.getElementById("prijs-2");
+var productPrijs3 = document.getElementById("prijs-3");
+var productPrijs4 = document.getElementById("prijs-4");
+var productPrijs5 = document.getElementById("prijs-5");
+var productBeschrijving1 = document.getElementById("beschrijving-1");
+var productBeschrijving2 = document.getElementById("beschrijving-2");
+var productBeschrijving3 = document.getElementById("beschrijving-3");
+var productBeschrijving4 = document.getElementById("beschrijving-4");
+var productBeschrijving5 = document.getElementById("beschrijving-5");
+var productImage1 = document.getElementById("image-1");
+var productImage1 = document.getElementById("image-2");
+var productImage1 = document.getElementById("image-3");
+var productImage1 = document.getElementById("image-4");
+var productImage1 = document.getElementById("image-5");
 Products.forEach(function (value) {
     console.log(value.name);
 
@@ -80,27 +94,41 @@ Products.forEach(function (value) {
             //p1.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
 
             productNaam1.innerHTML = value.name;
-            productPrijs.inner = value.prijs
+            productPrijs1.inner = value.prijs;
+            productBeschrijving1.innerHTML = beschrijving.value;
+            productImage1.innerHTML = image.value;
             break;
         case 2:
             //p2.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
 
             productNaam2.innerHTML = value.name;
+            productPrijs2.inner = value.prijs;
+            productBeschrijving2.innerHTML = beschrijving.value;
+            productImage2.innerHTML = image.value;
             break;
         case 3:
             //p3.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
 
             productNaam3.innerHTML = value.name;
+            productPrijs3.inner = value.prijs;
+            productBeschrijving3.innerHTML = beschrijving.value;
+            productImage3.innerHTML = image.value;
             break;
         case 4:
             //p4.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
 
             productNaam4.innerHTML = value.name;
+            productPrijs4.inner = value.prijs;
+            productBeschrijving4.innerHTML = beschrijving.value;
+            productImage4.innerHTML = image.value;
             break;
         case 5:
             //p5.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
 
             productNaam5.innerHTML = value.name;
+            productPrijs5.inner = value.prijs;
+            productBeschrijving5.innerHTML = beschrijving.value;
+            productImage5.innerHTML = image.value;
             break;
         default:
             error;

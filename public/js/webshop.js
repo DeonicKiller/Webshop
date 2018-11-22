@@ -17,7 +17,7 @@ function getAllProducts() {
     };
     xHttp.open("GET", "api/products", true);
     xHttp.setRequestHeader('Content-Type', 'application/json');
-    xHttp.send();
+    xHttp.send(JSON.stringify(null));
 }
 
 //Succes
@@ -70,7 +70,7 @@ function showProductsSucces(products) {
             productImage5.innerHTML = productAfbeelding;
             break;
         default:
-            error;
+            
 
 
 

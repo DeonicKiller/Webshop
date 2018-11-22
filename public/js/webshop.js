@@ -6,9 +6,9 @@ function getAllProducts() {
         if (xHttp.readyState == XMLHttpRequest.DONE) {
             if (xHttp.status == 200 || xHttp.status == 201) {
                 var response = JSON.parse(xHttp.response);
-                //succes
+                showProductsSucces(response);
             } else {
-                // failed
+                showProductsFailed(response);
             }
         }
     };
@@ -20,6 +20,70 @@ function getAllProducts() {
     xHttp.send();
 }
 
+//Succes
+function showProductsSucces(products) {
+    var productId = products.id;
+    var productName = products.name;
+    var productPrice = products.prijs;
+    var productDescription = products.beschrijving;
+    var productAfbeelding = products.image;
+
+    switch (productId) {
+        case 1:
+            //p1.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+
+            productNaam1.innerHTML = productName;
+            productPrijs1.inner = productPrice;
+            productBeschrijving1.innerHTML = productDescription;
+            productImage1.innerHTML = productAfbeelding;
+            break;
+        case 2:
+            //p2.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+
+            productNaam2.innerHTML = productName;
+            productPrijs2.inner = productPrice;
+            productBeschrijving2.innerHTML = productDescription;
+            productImage2.innerHTML = productAfbeelding;
+            break;
+        case 3:
+            //p3.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+
+            productNaam3.innerHTML = productName;
+            productPrijs3.inner = productPrice;
+            productBeschrijving3.innerHTML = productDescription;
+            productImage3.innerHTML = productAfbeelding;
+            break;
+        case 4:
+            //p4.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+
+            productNaam4.innerHTML = productName;
+            productPrijs4.inner = productPrice;
+            productBeschrijving4.innerHTML = productDescription;
+            productImage4.innerHTML = productAfbeelding;
+            break;
+        case 5:
+            //p5.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+
+            productNaam5.innerHTML = productName;
+            productPrijs5.inner = productPrice;
+            productBeschrijving5.innerHTML = productDescription;
+            productImage5.innerHTML = productAfbeelding;
+            break;
+        default:
+            error;
+
+
+
+    };
+};
+
+
+//Failed
+function showProductsFailed(products) {
+
+};
+
+/*
 var euroTeken = "<p>&euro;</p>";
 
 var Products = [{
@@ -59,6 +123,7 @@ var Products = [{
         image: '<img  class="product-image" src="img/Spiderman_PS4.jpg" alt="webshop">'
     },
 ];
+*/
 
 var p1 = document.getElementById("Product1");
 var p2 = document.getElementById("Product2");
@@ -86,58 +151,6 @@ var productImage2 = document.getElementById("image-2");
 var productImage3 = document.getElementById("image-3");
 var productImage4 = document.getElementById("image-4");
 var productImage5 = document.getElementById("image-5");
-Products.forEach(function (value) {
-    console.log(value.name);
-
-    switch (value.id) {
-        case 1:
-            //p1.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
-
-            productNaam1.innerHTML = value.name;
-            productPrijs1.inner = value.prijs;
-            productBeschrijving1.innerHTML = value.beschrijving;
-            productImage1.innerHTML = value.image;
-            break;
-        case 2:
-            //p2.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
-
-            productNaam2.innerHTML = value.name;
-            productPrijs2.inner = value.prijs;
-            productBeschrijving2.innerHTML = value.beschrijving;
-            productImage2.innerHTML = value.image;
-            break;
-        case 3:
-            //p3.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
-
-            productNaam3.innerHTML = value.name;
-            productPrijs3.inner = value.prijs;
-            productBeschrijving3.innerHTML = value.beschrijving;
-            productImage3.innerHTML = value.image;
-            break;
-        case 4:
-            //p4.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
-
-            productNaam4.innerHTML = value.name;
-            productPrijs4.inner = value.prijs;
-            productBeschrijving4.innerHTML = value.beschrijving;
-            productImage4.innerHTML = value.image;
-            break;
-        case 5:
-            //p5.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
-
-            productNaam5.innerHTML = value.name;
-            productPrijs5.inner = value.prijs;
-            productBeschrijving5.innerHTML = value.beschrijving;
-            productImage5.innerHTML = value.image;
-            break;
-        default:
-            error;
-
-
-
-    }
-});
-
 
 // Voor de Layout
 var homeLogo = document.getElementById("home-logo");
@@ -224,23 +237,22 @@ function addHomePageActions() {
 
     });
 
-    homeLogo.addEventListener("click", function(){
+    homeLogo.addEventListener("click", function () {
 
 
-        if(webshopPage.style.display == "block"){
+        if (webshopPage.style.display == "block") {
             switchPage(webshopPage, homePage);
-        }
-        else if(aboutusPage.style.display == "block"){
+        } else if (aboutusPage.style.display == "block") {
             switchPage(aboutusPage, homePage);
         }
     });
 
-    homeLogo.addEventListener("mouseover", function(){
+    homeLogo.addEventListener("mouseover", function () {
 
         homeLogo.style.opacity = 0.3;
 
     });
-    homeLogo.addEventListener("mouseout", function(){
+    homeLogo.addEventListener("mouseout", function () {
         homeLogo.style.opacity = 1;
     });
 

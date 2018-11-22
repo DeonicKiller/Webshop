@@ -20,7 +20,7 @@ function getAllProducts() {
     xHttp.send();
 }
 
-
+var euroTeken = "<p>&euro;</p>";
 
 var Products = [{
         id: 1,
@@ -65,24 +65,42 @@ var p2 = document.getElementById("Product2");
 var p3 = document.getElementById("Product3");
 var p4 = document.getElementById("Product4");
 var p5 = document.getElementById("Product5");
+
+var productNaam1 = document.getElementById("name-1");
+var productNaam2 = document.getElementById("name-2");
+var productNaam3 = document.getElementById("name-3");
+var productNaam4 = document.getElementById("name-4");
+var productNaam5 = document.getElementById("name-5");
+var productPrijs1 = document.getElementById("")
 Products.forEach(function (value) {
     console.log(value.name);
 
     switch (value.id) {
         case 1:
-            p1.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+            //p1.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+
+            productNaam1.innerHTML = value.name;
+            productPrijs.inner = value.prijs
             break;
         case 2:
-            p2.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+            //p2.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+
+            productNaam2.innerHTML = value.name;
             break;
         case 3:
-            p3.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+            //p3.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+
+            productNaam3.innerHTML = value.name;
             break;
         case 4:
-            p4.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+            //p4.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+
+            productNaam4.innerHTML = value.name;
             break;
         case 5:
-            p5.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+            //p5.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+
+            productNaam5.innerHTML = value.name;
             break;
         default:
             error;

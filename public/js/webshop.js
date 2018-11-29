@@ -23,57 +23,26 @@ function getAllProducts() {
 //Succes
 function showProductsSucces(products) {
     var productId = products.id;
+    products.forEach(function(value, key){
+
     var productName = products.name;
     var productPrice = products.prijs;
     var productDescription = products.beschrijving;
     var productAfbeelding = products.image;
     producten();
-    alert(products.id);
+            var i = 1;
 
-    switch (productId) {
-        case 1:
-            //p1.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+            ("productNaam" + i).innerHTML = productName;
+            ("productPrijs" + i).inner = productPrice;
+            ("productBeschrijving" + i).innerHTML = productDescription;
+            ("productImage" + i).innerHTML = productAfbeelding;
+             
+            alert(("productImage" + i));
+            i++;
+        
+    
 
-            productNaam1.innerHTML = productName;
-            productPrijs1.inner = productPrice;
-            productBeschrijving1.innerHTML = productDescription;
-            productImage1.innerHTML = productAfbeelding;
-            break;
-        case 2:
-            //p2.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
-
-            productNaam2.innerHTML = productName;
-            productPrijs2.inner = productPrice;
-            productBeschrijving2.innerHTML = productDescription;
-            productImage2.innerHTML = productAfbeelding;
-            break;
-        case 3:
-            //p3.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
-
-            productNaam3.innerHTML = productName;
-            productPrijs3.inner = productPrice;
-            productBeschrijving3.innerHTML = productDescription;
-            productImage3.innerHTML = productAfbeelding;
-            break;
-        case 4:
-            //p4.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
-
-            productNaam4.innerHTML = productName;
-            productPrijs4.inner = productPrice;
-            productBeschrijving4.innerHTML = productDescription;
-            productImage4.innerHTML = productAfbeelding;
-            break;
-        case 5:
-            //p5.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
-
-            productNaam5.innerHTML = productName;
-            productPrijs5.inner = productPrice;
-            productBeschrijving5.innerHTML = productDescription;
-            productImage5.innerHTML = productAfbeelding;
-            break;
-        default:
-    };
-
+});
 };
 
 
@@ -123,6 +92,7 @@ var overlayText3 = document.getElementById("selection-3-text");
 var homePage = document.getElementById("home-page");
 var webshopPage = document.getElementById("webshop-page");
 var aboutusPage = document.getElementById("aboutus-page");
+
 
 
 

@@ -27,8 +27,8 @@ function showProductsSucces(products) {
     var productPrice = products.prijs;
     var productDescription = products.beschrijving;
     var productAfbeelding = products.image;
-    alert(products.id);
     producten();
+    alert(products.id);
 /*
     switch (productId) {
         case 1:

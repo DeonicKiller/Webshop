@@ -29,7 +29,7 @@ function showProductsSucces(products) {
     var productAfbeelding = products.image;
     producten();
     alert(products.id);
-/*
+
     switch (productId) {
         case 1:
             //p1.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
@@ -73,7 +73,7 @@ function showProductsSucces(products) {
             break;
         default:
     };
-*/
+
 };
 
 

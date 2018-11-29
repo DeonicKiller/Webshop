@@ -24,25 +24,25 @@ function getAllProducts() {
 function showProductsSucces(products) {
 
     
-    var productNaam1 = document.getElementById("name-1");
-    var productPrijs1 = document.getElementById("prijs-1");
-    var productImage1 = document.getElementById("image-1");
-    var productBeschrijving1 = document.getElementById("beschrijving-1");
-    products.forEach(function(value){
-
-    var productName = value.name;
-    var productPrice = value.prijs;
-    var productDescription = value.beschrijving;
-    var productAfbeelding = value.image;
+    products.forEach(function(value, key){
+        var productNaam1 = document.getElementById(("name-" + (key+1)));
+        var productPrijs1 = document.getElementById(("prijs-" + (key+1)));
+        var productImage1 = document.getElementById(("image-" + (key+1)));
+        var productBeschrijving1 = document.getElementById(("beschrijving-" + (key+1)));
+        
+        var productName = value.name;
+        var productPrice = value.prijs;
+        var productDescription = value.beschrijving;
+        var productAfbeelding = value.image;
     
-            var i = 1;
+        
             
-            productNaam1.innerHTML = productName;
-            productPrijs1.inner = productPrice;
-            productBeschrijving1.innerHTML = productDescription;
-            productImage1.innerHTML = productAfbeelding;
+        productNaam1.innerHTML = productName;
+        productPrijs1.innerHTML = productPrice;
+        productBeschrijving1.innerHTML = productDescription;
+        productImage1.innerHTML = productAfbeelding;
              
-            alert(("productImage" + i));
+        alert(("name-" + (key+1)));
             
         
     

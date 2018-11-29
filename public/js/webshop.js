@@ -22,23 +22,28 @@ function getAllProducts() {
 
 //Succes
 function showProductsSucces(products) {
-    var productId = products.id;
-    products.forEach(function(value, key){
 
-    var productName = products.name;
-    var productPrice = products.prijs;
-    var productDescription = products.beschrijving;
-    var productAfbeelding = products.image;
-    producten();
+    
+    var productNaam1 = document.getElementById("name-1");
+    var productPrijs1 = document.getElementById("prijs-1");
+    var productImage1 = document.getElementById("image-1");
+    var productBeschrijving1 = document.getElementById("beschrijving-1");
+    products.forEach(function(value){
+
+    var productName = value.name;
+    var productPrice = value.prijs;
+    var productDescription = value.beschrijving;
+    var productAfbeelding = value.image;
+    
             var i = 1;
-
-            ("productNaam" + i).innerHTML = productName;
-            ("productPrijs" + i).inner = productPrice;
-            ("productBeschrijving" + i).innerHTML = productDescription;
-            ("productImage" + i).innerHTML = productAfbeelding;
+            
+            productNaam1.innerHTML = productName;
+            productPrijs1.inner = productPrice;
+            productBeschrijving1.innerHTML = productDescription;
+            productImage1.innerHTML = productAfbeelding;
              
             alert(("productImage" + i));
-            i++;
+            
         
     
 
@@ -50,7 +55,7 @@ function showProductsSucces(products) {
 function showProductsFailed(products) {
 
 };
-
+/*
 function producten (){
 var p1 = document.getElementById("Product1");
 var p2 = document.getElementById("Product2");
@@ -79,6 +84,7 @@ var productImage3 = document.getElementById("image-3");
 var productImage4 = document.getElementById("image-4");
 var productImage5 = document.getElementById("image-5");
 };
+*/
 // Voor de Layout
 var homeLogo = document.getElementById("home-logo");
 var selectionImg1 = document.getElementById("selection-1");

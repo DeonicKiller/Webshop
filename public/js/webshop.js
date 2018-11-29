@@ -22,58 +22,32 @@ function getAllProducts() {
 
 //Succes
 function showProductsSucces(products) {
-    var productId = products.id;
-    var productName = products.name;
-    var productPrice = products.prijs;
-    var productDescription = products.beschrijving;
-    var productAfbeelding = products.image;
-    alert(products.id);
-    producten();
-/*
-    switch (productId) {
-        case 1:
-            //p1.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
 
+    
+    var productNaam1 = document.getElementById("name-1");
+    var productPrijs1 = document.getElementById("prijs-1");
+    var productImage1 = document.getElementById("image-1");
+    var productBeschrijving1 = document.getElementById("beschrijving-1");
+    products.forEach(function(value){
+
+    var productName = value.name;
+    var productPrice = value.prijs;
+    var productDescription = value.beschrijving;
+    var productAfbeelding = value.image;
+    
+            var i = 1;
+            
             productNaam1.innerHTML = productName;
             productPrijs1.inner = productPrice;
             productBeschrijving1.innerHTML = productDescription;
             productImage1.innerHTML = productAfbeelding;
-            break;
-        case 2:
-            //p2.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
+             
+            alert(("productImage" + i));
+            
+        
+    
 
-            productNaam2.innerHTML = productName;
-            productPrijs2.inner = productPrice;
-            productBeschrijving2.innerHTML = productDescription;
-            productImage2.innerHTML = productAfbeelding;
-            break;
-        case 3:
-            //p3.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
-
-            productNaam3.innerHTML = productName;
-            productPrijs3.inner = productPrice;
-            productBeschrijving3.innerHTML = productDescription;
-            productImage3.innerHTML = productAfbeelding;
-            break;
-        case 4:
-            //p4.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
-
-            productNaam4.innerHTML = productName;
-            productPrijs4.inner = productPrice;
-            productBeschrijving4.innerHTML = productDescription;
-            productImage4.innerHTML = productAfbeelding;
-            break;
-        case 5:
-            //p5.innerHTML = value.name + " " + value.prijs + " " + value.beschrijving + value.image;
-
-            productNaam5.innerHTML = productName;
-            productPrijs5.inner = productPrice;
-            productBeschrijving5.innerHTML = productDescription;
-            productImage5.innerHTML = productAfbeelding;
-            break;
-        default:
-    };
-*/
+});
 };
 
 
@@ -81,7 +55,7 @@ function showProductsSucces(products) {
 function showProductsFailed(products) {
 
 };
-
+/*
 function producten (){
 var p1 = document.getElementById("Product1");
 var p2 = document.getElementById("Product2");
@@ -110,6 +84,7 @@ var productImage3 = document.getElementById("image-3");
 var productImage4 = document.getElementById("image-4");
 var productImage5 = document.getElementById("image-5");
 };
+*/
 // Voor de Layout
 var homeLogo = document.getElementById("home-logo");
 var selectionImg1 = document.getElementById("selection-1");
@@ -123,6 +98,7 @@ var overlayText3 = document.getElementById("selection-3-text");
 var homePage = document.getElementById("home-page");
 var webshopPage = document.getElementById("webshop-page");
 var aboutusPage = document.getElementById("aboutus-page");
+
 
 
 

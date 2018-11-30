@@ -42,7 +42,7 @@ function showProductsSucces(products) {
         productBeschrijving1.innerHTML = productDescription;
         productImage1.innerHTML = productAfbeelding;
              
-        alert(("name-" + (key+1)));
+        
             
         
     

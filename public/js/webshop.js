@@ -31,14 +31,14 @@ function showProductsSucces(products) {
         var productBeschrijving1 = document.getElementById(("beschrijving-" + (key + 1)));
 
         var productName = value.name;
-        var productPrice = value.prijs;
+        var productPrice = "&euro; " + value.prijs;
         var productDescription = value.beschrijving;
         var productAfbeelding = value.image;
 
 
 
         productNaam1.innerHTML = productName;
-        productPrijs1.innerHTML = "&euro; " + productPrice;
+        productPrijs1.innerHTML =  productPrice;
         productBeschrijving1.innerHTML = productDescription;
         productImage1.innerHTML = productAfbeelding;
 

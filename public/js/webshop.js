@@ -23,31 +23,31 @@ function getAllProducts() {
 //Succes
 function showProductsSucces(products) {
 
-    
-    products.forEach(function(value, key){
-        var productNaam1 = document.getElementById(("name-" + (key+1)));
-        var productPrijs1 = document.getElementById(("prijs-" + (key+1)));
-        var productImage1 = document.getElementById(("image-" + (key+1)));
-        var productBeschrijving1 = document.getElementById(("beschrijving-" + (key+1)));
-        
+
+    products.forEach(function (value, key) {
+        var productNaam1 = document.getElementById(("name-" + (key + 1)));
+        var productPrijs1 = document.getElementById(("prijs-" + (key + 1)));
+        var productImage1 = document.getElementById(("image-" + (key + 1)));
+        var productBeschrijving1 = document.getElementById(("beschrijving-" + (key + 1)));
+
         var productName = value.name;
         var productPrice = value.prijs;
         var productDescription = value.beschrijving;
         var productAfbeelding = value.image;
-    
-        
-            
+
+
+
         productNaam1.innerHTML = productName;
         productPrijs1.innerHTML = productPrice;
         productBeschrijving1.innerHTML = productDescription;
         productImage1.innerHTML = productAfbeelding;
-             
-        
-            
-        
-    
 
-});
+
+
+
+
+
+    });
 };
 
 
@@ -103,41 +103,18 @@ var aboutusPage = document.getElementById("aboutus-page");
 
 
 
-function showOverlay1() {
+function showOverlay(image, text) {
 
-    selectionImg1.style.opacity = 0.3;
-    overlayText1.style.opacity = 1;
+    image.style.opacity = 0.3;
+    text.style.opacity = 1;
 }
 
-function showOverlay2() {
+function hideOverlay(image, text) {
 
-    selectionImg2.style.opacity = 0.3;
-    overlayText2.style.opacity = 1;
+    image.style.opacity = 1;
+    text.style.opacity = 0;
 }
 
-function showOverlay3() {
-
-    selectionImg3.style.opacity = 0.3;
-    overlayText3.style.opacity = 1;
-}
-
-function hideOverlay1() {
-
-    selectionImg1.style.opacity = 1;
-    overlayText1.style.opacity = 0;
-}
-
-function hideOverlay2() {
-
-    selectionImg2.style.opacity = 1;
-    overlayText2.style.opacity = 0;
-}
-
-function hideOverlay3() {
-
-    selectionImg3.style.opacity = 1;
-    overlayText3.style.opacity = 0;
-}
 
 function switchPage(hidePage, showPage) {
 
@@ -153,13 +130,28 @@ function hidePages() {
 
 function addHomePageActions() {
 
-    selectionImg1.addEventListener("mouseover", showOverlay1);
-    selectionImg2.addEventListener("mouseover", showOverlay2);
-    selectionImg3.addEventListener("mouseover", showOverlay3);
+    selectionImg1.addEventListener("mouseover", function () {
+        showOverlay(selectionImg1, overlayText1);
 
-    selectionImg1.addEventListener("mouseout", hideOverlay1);
-    selectionImg2.addEventListener("mouseout", hideOverlay2);
-    selectionImg3.addEventListener("mouseout", hideOverlay3);
+    });
+    selectionImg2.addEventListener("mouseover", function () {
+        showOverlay(selectionImg2, overlayText2);
+
+    });
+    selectionImg3.addEventListener("mouseover", function () {
+        showOverlay(selectionImg3, overlayText3);
+
+    });
+
+    selectionImg1.addEventListener("mouseout", function () {
+        hideOverlay(selectionImg1, overlayText1);
+    });
+    selectionImg2.addEventListener("mouseout", function () {
+        hideOverlay(selectionImg2, overlayText2);
+    });
+    selectionImg3.addEventListener("mouseout", function () {
+        hideOverlay(selectionImg3, overlayText3);
+    });
 
     selectionImg1.addEventListener("click", function () {
         switchPage(homePage, webshopPage);

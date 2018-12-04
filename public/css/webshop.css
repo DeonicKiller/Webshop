@@ -21,15 +21,6 @@ p {
     display: inline-block;
     margin: 5px;
 }
-#Product3{
-    position: relative;
-    width:30%;
-}
-#Product4{
-position: relative;
-display: inline-block;
-width: 29%
-}
 #home-logo{
     cursor: pointer;
     transition: 1s ease;
@@ -147,8 +138,7 @@ width: 29%
 }
 #products-container{
 
-    margin-left: 10%;
+    margin-left: 20%;
     margin-right: 10%;
-    left: 18%;
-    position: absolute;
+    position: relative;
 }

@@ -38,7 +38,7 @@ function showProductsSucces(products) {
 
 
         productNaam1.innerHTML = productName;
-        productPrijs1.innerHTML = productPrice;
+        productPrijs1.innerHTML = "&euro; " + productPrice;
         productBeschrijving1.innerHTML = productDescription;
         productImage1.innerHTML = productAfbeelding;
 

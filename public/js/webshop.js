@@ -196,7 +196,9 @@ var productDetailNameElement = document.getElementById("product-name");
 var productDetailPriceElement = document.getElementById("product-price");
 var productDetailPlatformElement = document.getElementById("product-platform");
 //var productDetailDescriptionElement = document.getElementById("product-description");
- 
+//
+
+
 
 function addProductPageActions(product){
 

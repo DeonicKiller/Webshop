@@ -7,6 +7,7 @@ function getAllProducts() {
             if (xHttp.status == 200 || xHttp.status == 201) {
                 var response = JSON.parse(xHttp.response);
                 showProductsSucces(response);
+                addProductPageActions(response);
             } else {
                 showProductsFailed(response);
             }
@@ -28,25 +29,19 @@ function showProductsSucces(products) {
         var productNaam1 = document.getElementById(("name-" + (key + 1)));
         var productPrijs1 = document.getElementById(("prijs-" + (key + 1)));
         var productImage1 = document.getElementById(("image-" + (key + 1)));
-        var productBeschrijving1 = document.getElementById(("beschrijving-" + (key + 1)));
+        var productPlatform1 = document.getElementById(("platform-" + (key + 1)));
 
         var productName = value.name;
         var productPrice = "&euro; " + value.prijs;
-        var productDescription = value.beschrijving;
+        var productPlatform = value.platform;
         var productAfbeelding = value.image;
 
 
 
         productNaam1.innerHTML = productName;
         productPrijs1.innerHTML = productPrice;
-        productBeschrijving1.innerHTML = productDescription;
+        productPlatform1.innerHTML = productPlatform;
         productImage1.innerHTML = productAfbeelding;
-
-
-
-
-
-
     });
 };
 
@@ -98,6 +93,7 @@ var overlayText3 = document.getElementById("selection-3-text");
 var homePage = document.getElementById("home-page");
 var webshopPage = document.getElementById("webshop-page");
 var aboutusPage = document.getElementById("aboutus-page");
+var productPage = document.getElementById("product-page");
 
 
 function showOverlay(image, text) {
@@ -123,6 +119,7 @@ function switchPage(hidePage, showPage) {
 function hidePages() {
     webshopPage.style.display = "none";
     aboutusPage.style.display = "none";
+    productPage.style.display = "none";
 }
 
 function addHomePageActions() {
@@ -168,6 +165,9 @@ function addHomePageActions() {
         } else if (aboutusPage.style.display == "block") {
             switchPage(aboutusPage, homePage);
         }
+        else if (productPage.style.display == "block"){
+            switchPage(productPage, homePage);
+        }
     });
 
     homeLogo.addEventListener("mouseover", function () {
@@ -181,14 +181,70 @@ function addHomePageActions() {
 
 }
 
-function addProductPageActions(){
+function addWebshopPageActions(){
  
+
+}
+var image1 = document.getElementById("image-1");
+var image2 = document.getElementById("image-2");
+var image3 = document.getElementById("image-3");
+var image4 = document.getElementById("image-4");
+var image5 = document.getElementById("image-5");
+
+var bigImageElement = document.getElementById("big-image");
+var productDetailNameElement = document.getElementById("product-name");
+var productDetailPriceElement = document.getElementById("product-price");
+var productDetailPlatformElement = document.getElementById("product-platform");
+//var productDetailDescriptionElement = document.getElementById("product-description");
+ 
+
+function addProductPageActions(product){
+
+    function showProductDetails(number){
+
+        
+    bigImageElement.innerHTML = product[number].image;
+    productDetailNameElement.innerHTML = product[number].name;
+    productDetailPriceElement.innerHTML = product[number].prijs;
+    productDetailPlatformElement.innerHTML = product[number].platform;
+    //productDetailDescription.innerHTML = products[number].description;
+
+    }
+
+
+
+    image1.addEventListener("click", function(){
+        showProductDetails(0);
+        switchPage(webshopPage,productPage);
+
+        //bigImageElement.innerHTML = product[1].name;
+        
+
+    });
+    image2.addEventListener("click", function(){
+
+        showProductDetails(1);
+        switchPage(webshopPage,productPage);
+
+    });
+    image3.addEventListener("click", function(){
+        showProductDetails(2);
+        switchPage(webshopPage,productPage);
+    });
+    image4.addEventListener("click", function(){
+        showProductDetails(3);
+        switchPage(webshopPage,productPage);
+    });
+    image5.addEventListener("click", function(){
+        showProductDetails(4);
+        switchPage(webshopPage,productPage);
+    });
 
 }
 
 
 addHomePageActions();
-addProductPageActions();
+addWebshopPageActions();
 hidePages();
 getAllProducts();
 

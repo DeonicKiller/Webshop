@@ -38,7 +38,7 @@ function showProductsSucces(products) {
 
 
         productNaam1.innerHTML = productName;
-        productPrijs1.innerHTML =  productPrice;
+        productPrijs1.innerHTML = productPrice;
         productBeschrijving1.innerHTML = productDescription;
         productImage1.innerHTML = productAfbeelding;
 
@@ -98,9 +98,6 @@ var overlayText3 = document.getElementById("selection-3-text");
 var homePage = document.getElementById("home-page");
 var webshopPage = document.getElementById("webshop-page");
 var aboutusPage = document.getElementById("aboutus-page");
-
-
-
 
 
 function showOverlay(image, text) {
@@ -184,7 +181,14 @@ function addHomePageActions() {
 
 }
 
+function addProductPageActions(){
+ 
+
+}
+
+
 addHomePageActions();
+addProductPageActions();
 hidePages();
 getAllProducts();
 

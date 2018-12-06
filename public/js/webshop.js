@@ -1,3 +1,56 @@
+/*
+ * Api Class
+*/
+class Api {
+    constructor(request = 'GET',
+        route = '',
+        content = 'application/json',
+        send = null,
+        prefix = '') {
+        this.request = request;
+        this.route = route;
+        this.content = content;
+        this.send = send;
+        this.prefix = prefix;
+    }
+
+    execute() {
+        var xHttp = new XMLHttpRequest();
+        xHttp.onreadystatechange = function () {
+            if (xHttp.readyState == XMLHttpRequest.DONE) {
+                if (xHttp.status == 200 || xHttp.status == 201) {
+                    var response = JSON.parse(xHttp.response);
+                    showResponse(response);
+                } else {
+                    console.log('error: ' + xHttp.status);
+                }
+            }
+        };
+        xHttp.onerror = function () {
+            console.log(xHttp.statusText);
+        };
+        xHttp.open(this.request, this.prefix + this.route, true);
+        xHttp.setRequestHeader('Content-Type', this.content);
+        xHttp.send(JSON.stringify(this.send));
+    }
+}
+ 
+
+
+/**
+ * log response for array or object
+ */
+function showResponse(response) {
+    if (Array.isArray(response)) {
+        response.forEach(function (value) {
+            console.log(value);
+        });
+    } else {
+        console.log(response);
+    }
+}
+ 
+
 //API voor de producten
 
 function getAllProducts() {

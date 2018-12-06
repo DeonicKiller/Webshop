@@ -17,7 +17,13 @@
 $router->get('/', function () use ($router) {
     return 'Webshop API';
 });
+$router->get('/products', 'ProductController@showProducts');
+$router->get('/products/{productID}', 'ProductController@showProduct');
+$router->post('/products', 'ProductController@createProduct');
+$router->put('/products/{productID}', 'ProductController@updateProduct');
+$router->delete('/products/{productID}', 'ProductController@deleteProduct');
 
+/*
 $router->get('/products', function () use ($router) {
     $products = [ 
         
@@ -31,3 +37,4 @@ $router->get('/products', function () use ($router) {
    
    return response()->json($products);
 });
+*/

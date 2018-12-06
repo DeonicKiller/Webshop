@@ -52,7 +52,7 @@ function showResponse(response) {
  
 
 //API voor de producten
-
+/*
 function getAllProducts() {
     var xHttp = new XMLHttpRequest();
     xHttp.onreadystatechange = function () {
@@ -73,6 +73,7 @@ function getAllProducts() {
     xHttp.setRequestHeader('Content-Type', 'application/json');
     xHttp.send(JSON.stringify(null));
 }
+*/
 
 //Succes
 function showProductsSucces(products) {
@@ -84,16 +85,16 @@ function showProductsSucces(products) {
         var productImage1 = document.getElementById(("image-" + (key + 1)));
         var productPlatform1 = document.getElementById(("platform-" + (key + 1)));
 
-        var productName = value.name;
-        var productPrice = "&euro; " + value.prijs;
-        var productPlatform = value.platform;
-        var productAfbeelding = value.image;
+        var nameproduct= value.nameproduct;
+        var priceproduct= "&euro; " + value.priceproduct;
+        var platformproduct = value.platformproduct;
+        var productAfbeelding = value.productAfbeelding;
 
 
 
-        productNaam1.innerHTML = productName;
-        productPrijs1.innerHTML = productPrice;
-        productPlatform1.innerHTML = productPlatform;
+        productNaam1.innerHTML = nameproduct;
+        productPrijs1.innerHTML = priceproduct;
+        productPlatform1.innerHTML = platformproduct;
         productImage1.innerHTML = productAfbeelding;
     });
 };

@@ -10,10 +10,10 @@
 | database. Just tell the factory how a default model should look.
 |
 */
-
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Product::class, function (Faker\Generator $faker)  {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        'platformproduct' => $platformproduct = $faker->randomElement(['PS4', 'Xbox']),
+        'nameproduct' => $faker->nameproduct($platformproduct),
+        'priceproduct' => $faker->priceproduct,
     ];
 });

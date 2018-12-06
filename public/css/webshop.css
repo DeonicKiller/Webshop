@@ -178,11 +178,13 @@ p {
 
     margin-left: 20%;
     margin-right: 15%;
-    position: relative;
-
-    
-    
+    position: relative; 
 }
+#webshop-page{
+    opacity: 0;
+    transition: 2s ease;
+}
+
 .product-image{
     cursor: pointer;
     transition: 1.5s ease;

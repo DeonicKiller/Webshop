@@ -94,6 +94,7 @@ var homePage = document.getElementById("home-page");
 var webshopPage = document.getElementById("webshop-page");
 var aboutusPage = document.getElementById("aboutus-page");
 var productPage = document.getElementById("product-page");
+var productContainer = document.getElementById("product-container");
 
 
 function showOverlay(image, text) {
@@ -149,11 +150,18 @@ function addHomePageActions() {
 
     selectionImg1.addEventListener("click", function () {
         switchPage(homePage, webshopPage);
+        setTimeout(function(){if(webshopPage.style.display == "block"){
+            console.log("success");
+            webshopPage.style.opacity = 1;
+        }},200);
+
+        
 
     });
     selectionImg2.addEventListener("click", function () {
 
         switchPage(homePage, aboutusPage);
+
 
     });
 
@@ -162,6 +170,7 @@ function addHomePageActions() {
 
         if (webshopPage.style.display == "block") {
             switchPage(webshopPage, homePage);
+            webshopPage.style.opacity = 0;
         } else if (aboutusPage.style.display == "block") {
             switchPage(aboutusPage, homePage);
         }

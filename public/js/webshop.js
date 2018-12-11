@@ -22,7 +22,7 @@ class Api {
                 if (xHttp.status == 200 || xHttp.status == 201) {
                     var response = JSON.parse(xHttp.response);
                     showResponse(response);
-                    //showProducts(response);
+                    
                     showProductsSucces(response);
                     addProductPageActions(response);
                 } else {
@@ -56,15 +56,7 @@ function showResponse(response) {
         console.log(response + "er is iets fout");
     }
 }
-function showProducts(data){
-    if(Array.isArray(data)){
-        data.forEach(function (value){
 
-            productNaam1.innerHTML = value.name;
-
-        });
-    }
-}
 //Succes
 function showProductsSucces(products) {
 
@@ -185,8 +177,6 @@ function addHomePageActions() {
     selectionImg2.addEventListener("click", function () {
 
         switchPage(homePage, aboutusPage);
-
-
     });
 
     homeLogo.addEventListener("click", function () {
@@ -251,7 +241,7 @@ function addProductPageActions(product){
         showProductDetails(0);
         switchPage(webshopPage,productPage);
 
-        bigImageElement.innerHTML = product[1].name;
+        
         
 
     });

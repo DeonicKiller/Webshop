@@ -1,4 +1,4 @@
-h1,
+h1,h2,h3,h4,h5,h6,
 p {
     font-family: 'IBM Plex Sans', sans-serif;
 }
@@ -20,6 +20,9 @@ p {
     color: #009EDC;
     cursor: pointer;
     transition: 1s ease;
+}
+.selection{
+    cursor: pointer;
 }
 #banner:hover{
     opacity: 0.3;
@@ -61,7 +64,6 @@ p {
     height: 200px;
     margin: 20px;
     transition: 1s ease;
-    cursor: pointer;
     z-index: 1;
     position: relative;
 }
@@ -114,7 +116,10 @@ p {
     #banner{
         font-size:30px;
     }
-    
+    #right-side{
+        position: absolute;
+        margin-top: 40%;
+    }
 
 }
 
@@ -193,3 +198,29 @@ p {
 .product-image:hover {
     opacity: 0.7;
 }
+
+#product-detail-container{
+
+    position: relative; 
+
+}
+#big-image{
+    display: inline-block;
+}
+#right-side{
+    margin-left: 10%;
+
+}
+#left-side{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+#product-name{
+    font-size: 40px;
+    display: block;
+    text-align: center;
+    font-stretch: extra-expanded;
+    width:150%;
+    height: 30px;
+}
+

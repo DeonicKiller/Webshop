@@ -46,9 +46,11 @@ class ProductController extends Controller
     public function createProduct(Request $request)
     {
         $rules = [
-            'platformproduct' => 'required|max:255|in:PS4,Xbox',
-            'nameproduct' => 'required|max:255',
-            'priceproduct' => 'required|max:255',
+            'platform' => 'required|max:255|in:PS4,Xbox',
+            'name' => 'required|max:255',
+            'price' => 'required|max:255',
+            'image' => 'required|max:255',
+
         ];
 
         $this->validate($request, $rules);
@@ -64,9 +66,10 @@ class ProductController extends Controller
     public function updateProduct(Request $request, $productId)
     {
         $rules = [
-            'platformproduct' => 'required|max:255|in:PS4,Xbox',
-            'nameproduct' => 'required|max:255',
-            'priceproduct' => 'required|max:255',
+            'platform' => 'max:255|in:PS4,Xbox',
+            'name' => 'max:255',
+            'price' => 'max:255',
+            'image' => 'max:255',
         ];
 
         $this->validate($request, $rules);

@@ -1,3 +1,4 @@
+
 /*
  * Api Class
 */
@@ -21,11 +22,15 @@ class Api {
                 if (xHttp.status == 200 || xHttp.status == 201) {
                     var response = JSON.parse(xHttp.response);
                     showResponse(response);
+                    //showProducts(response);
+                    showProductsSucces(response);
+                    addProductPageActions(response);
                 } else {
                     console.log('error: ' + xHttp.status);
                 }
             }
         };
+
         xHttp.onerror = function () {
             console.log(xHttp.statusText);
         };
@@ -34,6 +39,8 @@ class Api {
         xHttp.send(JSON.stringify(this.send));
     }
 }
+var myApi = new Api();
+
  
 
 
@@ -46,38 +53,22 @@ function showResponse(response) {
             console.log(value);
         });
     } else {
-        console.log(response);
+        console.log(response + "er is iets fout");
     }
 }
- 
+function showProducts(data){
+    if(Array.isArray(data)){
+        data.forEach(function (value){
 
-//API voor de producten
+            productNaam1.innerHTML = value.name;
 
-function getAllProducts() {
-    var xHttp = new XMLHttpRequest();
-    xHttp.onreadystatechange = function () {
-        if (xHttp.readyState == XMLHttpRequest.DONE) {
-            if (xHttp.status == 200 || xHttp.status == 201) {
-                var response = JSON.parse(xHttp.response);
-                showProductsSucces(response);
-                addProductPageActions(response);
-            } else {
-                showProductsFailed(response);
-            }
-        }
-    };
-    xHttp.onerror = function () {
-        // failed
-    };
-    xHttp.open("GET", "api/products", true);
-    xHttp.setRequestHeader('Content-Type', 'application/json');
-    xHttp.send(JSON.stringify(null));
+        });
+    }
 }
-
 //Succes
 function showProductsSucces(products) {
 
-
+    if(Array.isArray(products)){
     products.forEach(function (value, key) {
         var productNaam1 = document.getElementById(("name-" + (key + 1)));
         var productPrijs1 = document.getElementById(("prijs-" + (key + 1)));
@@ -85,7 +76,7 @@ function showProductsSucces(products) {
         var productPlatform1 = document.getElementById(("platform-" + (key + 1)));
 
         var productName = value.name;
-        var productPrice = "&euro; " + value.prijs;
+        var productPrice = "&euro; " + value.price;
         var productPlatform = value.platform;
         var productAfbeelding = value.image;
 
@@ -96,6 +87,7 @@ function showProductsSucces(products) {
         productPlatform1.innerHTML = productPlatform;
         productImage1.innerHTML = productAfbeelding;
     });
+}
 };
 
 
@@ -103,36 +95,7 @@ function showProductsSucces(products) {
 function showProductsFailed(products) {
 
 };
-/*
-function producten (){
-var p1 = document.getElementById("Product1");
-var p2 = document.getElementById("Product2");
-var p3 = document.getElementById("Product3");
-var p4 = document.getElementById("Product4");
-var p5 = document.getElementById("Product5");
 
-var productNaam1 = document.getElementById("name-1");
-var productNaam2 = document.getElementById("name-2");
-var productNaam3 = document.getElementById("name-3");
-var productNaam4 = document.getElementById("name-4");
-var productNaam5 = document.getElementById("name-5");
-var productPrijs1 = document.getElementById("prijs-1");
-var productPrijs2 = document.getElementById("prijs-2");
-var productPrijs3 = document.getElementById("prijs-3");
-var productPrijs4 = document.getElementById("prijs-4");
-var productPrijs5 = document.getElementById("prijs-5");
-var productBeschrijving1 = document.getElementById("beschrijving-1");
-var productBeschrijving2 = document.getElementById("beschrijving-2");
-var productBeschrijving3 = document.getElementById("beschrijving-3");
-var productBeschrijving4 = document.getElementById("beschrijving-4");
-var productBeschrijving5 = document.getElementById("beschrijving-5");
-var productImage1 = document.getElementById("image-1");
-var productImage2 = document.getElementById("image-2");
-var productImage3 = document.getElementById("image-3");
-var productImage4 = document.getElementById("image-4");
-var productImage5 = document.getElementById("image-5");
-};
-*/
 // Voor de Layout
 var homeLogo = document.getElementById("home-logo");
 var selectionImg1 = document.getElementById("selection-1");
@@ -203,10 +166,18 @@ function addHomePageActions() {
 
     selectionImg1.addEventListener("click", function () {
         switchPage(homePage, webshopPage);
+        myApi.request = 'GET';
+        myApi.route = 'products';
+        myApi.send = null;
+        myApi.prefix = "api/";
+        myApi.execute();
         setTimeout(function(){if(webshopPage.style.display == "block"){
             console.log("success");
             webshopPage.style.opacity = 1;
         }},200);
+        
+
+
 
         
 
@@ -269,11 +240,10 @@ function addProductPageActions(product){
         
     bigImageElement.innerHTML = product[number].image;
     productDetailNameElement.innerHTML = product[number].name;
-    productDetailPriceElement.innerHTML = product[number].prijs;
+    productDetailPriceElement.innerHTML = product[number].price;
     productDetailPlatformElement.innerHTML = product[number].platform;
     //productDetailDescription.innerHTML = products[number].description;
-
-    }
+}
 
 
 
@@ -281,7 +251,7 @@ function addProductPageActions(product){
         showProductDetails(0);
         switchPage(webshopPage,productPage);
 
-        //bigImageElement.innerHTML = product[1].name;
+        bigImageElement.innerHTML = product[1].name;
         
 
     });
@@ -310,7 +280,7 @@ function addProductPageActions(product){
 addHomePageActions();
 addWebshopPageActions();
 hidePages();
-getAllProducts();
+//getAllProducts();
 
 /*
 var euroTeken = "<p>&euro;</p>";

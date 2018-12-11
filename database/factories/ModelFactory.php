@@ -12,8 +12,9 @@
 */
 $factory->define(App\Product::class, function (Faker\Generator $faker)  {
     return [
-        'platformproduct' => $platformproduct = $faker->randomElement(['PS4', 'Xbox']),
-        'nameproduct' => $faker->nameproduct($platformproduct),
-        'priceproduct' => $faker->priceproduct,
+        'platform' => $platform = $faker->randomElement(['PS4', 'Xbox']),
+        'name' => $faker->name($platform),
+        'price' => $faker->price,
+        'image' => $faker->image,
     ];
 });

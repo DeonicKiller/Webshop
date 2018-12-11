@@ -1,7 +1,6 @@
-
 /*
  * Api Class
-*/
+ */
 class Api {
     constructor(request = 'GET',
         route = '',
@@ -22,7 +21,7 @@ class Api {
                 if (xHttp.status == 200 || xHttp.status == 201) {
                     var response = JSON.parse(xHttp.response);
                     showResponse(response);
-                    
+
                     showProductsSucces(response);
                     addProductPageActions(response);
                 } else {
@@ -41,7 +40,7 @@ class Api {
 }
 var myApi = new Api();
 
- 
+
 
 
 /**
@@ -60,26 +59,26 @@ function showResponse(response) {
 //Succes
 function showProductsSucces(products) {
 
-    if(Array.isArray(products)){
-    products.forEach(function (value, key) {
-        var productNaam1 = document.getElementById(("name-" + (key + 1)));
-        var productPrijs1 = document.getElementById(("prijs-" + (key + 1)));
-        var productImage1 = document.getElementById(("image-" + (key + 1)));
-        var productPlatform1 = document.getElementById(("platform-" + (key + 1)));
+    if (Array.isArray(products)) {
+        products.forEach(function (value, key) {
+            var productNaam1 = document.getElementById(("name-" + (key + 1)));
+            var productPrijs1 = document.getElementById(("prijs-" + (key + 1)));
+            var productImage1 = document.getElementById(("image-" + (key + 1)));
+            var productPlatform1 = document.getElementById(("platform-" + (key + 1)));
 
-        var productName = value.name;
-        var productPrice = "&euro; " + value.price;
-        var productPlatform = value.platform;
-        var productAfbeelding = value.image;
+            var productName = value.name;
+            var productPrice = "&euro; " + value.price;
+            var productPlatform = value.platform;
+            var productAfbeelding = value.image;
 
 
 
-        productNaam1.innerHTML = productName;
-        productPrijs1.innerHTML = productPrice;
-        productPlatform1.innerHTML = productPlatform;
-        productImage1.innerHTML = productAfbeelding;
-    });
-}
+            productNaam1.innerHTML = productName;
+            productPrijs1.innerHTML = productPrice;
+            productPlatform1.innerHTML = productPlatform;
+            productImage1.innerHTML = productAfbeelding;
+        });
+    }
 };
 
 
@@ -163,15 +162,17 @@ function addHomePageActions() {
         myApi.send = null;
         myApi.prefix = "api/";
         myApi.execute();
-        setTimeout(function(){if(webshopPage.style.display == "block"){
-            console.log("success");
-            webshopPage.style.opacity = 1;
-        }},200);
-        
+        setTimeout(function () {
+            if (webshopPage.style.display == "block") {
+                console.log("success");
+                webshopPage.style.opacity = 1;
+            }
+        }, 200);
 
 
 
-        
+
+
 
     });
     selectionImg2.addEventListener("click", function () {
@@ -187,8 +188,7 @@ function addHomePageActions() {
             webshopPage.style.opacity = 0;
         } else if (aboutusPage.style.display == "block") {
             switchPage(aboutusPage, homePage);
-        }
-        else if (productPage.style.display == "block"){
+        } else if (productPage.style.display == "block") {
             switchPage(productPage, homePage);
         }
     });
@@ -204,8 +204,8 @@ function addHomePageActions() {
 
 }
 
-function addWebshopPageActions(){
- 
+function addWebshopPageActions() {
+
 
 }
 var image1 = document.getElementById("image-1");
@@ -223,45 +223,43 @@ var productDetailPlatformElement = document.getElementById("product-platform");
 
 
 
-function addProductPageActions(product){
+function addProductPageActions(product) {
 
-    function showProductDetails(number){
-
-        
-    bigImageElement.innerHTML = product[number].image;
-    productDetailNameElement.innerHTML = product[number].name;
-    productDetailPriceElement.innerHTML = product[number].price;
-    productDetailPlatformElement.innerHTML = product[number].platform;
-    //productDetailDescription.innerHTML = products[number].description;
-}
+    function showProductDetails(number) {
 
 
+        bigImageElement.innerHTML = product[number].image;
+        productDetailNameElement.innerHTML = product[number].name;
+        productDetailPriceElement.innerHTML = product[number].price;
+        productDetailPlatformElement.innerHTML = product[number].platform;
+        //productDetailDescription.innerHTML = products[number].description;
+    }
 
-    image1.addEventListener("click", function(){
+    image1.addEventListener("click", function () {
         showProductDetails(0);
-        switchPage(webshopPage,productPage);
+        switchPage(webshopPage, productPage);
 
-        
-        
+
+
 
     });
-    image2.addEventListener("click", function(){
+    image2.addEventListener("click", function () {
 
         showProductDetails(1);
-        switchPage(webshopPage,productPage);
+        switchPage(webshopPage, productPage);
 
     });
-    image3.addEventListener("click", function(){
+    image3.addEventListener("click", function () {
         showProductDetails(2);
-        switchPage(webshopPage,productPage);
+        switchPage(webshopPage, productPage);
     });
-    image4.addEventListener("click", function(){
+    image4.addEventListener("click", function () {
         showProductDetails(3);
-        switchPage(webshopPage,productPage);
+        switchPage(webshopPage, productPage);
     });
-    image5.addEventListener("click", function(){
+    image5.addEventListener("click", function () {
         showProductDetails(4);
-        switchPage(webshopPage,productPage);
+        switchPage(webshopPage, productPage);
     });
 
 }
@@ -270,46 +268,3 @@ function addProductPageActions(product){
 addHomePageActions();
 addWebshopPageActions();
 hidePages();
-//getAllProducts();
-
-/*
-var euroTeken = "<p>&euro;</p>";
-
-var Products = [{
-        id: 1,
-        name: "Grand theft auto V",
-        prijs: euroTeken + 59.98,
-        beschrijving: "PS4",
-        image: '<img  class="product-image" src="img/GTAV_PS4.jpg" alt="webshop">'
-        
-    },
-    {
-        id: 2,
-        name: "Call of Duty IIII",
-        prijs: euroTeken + 59.98,
-        beschrijving: "PS4",
-        image: '<img  class="product-image" src="img/COD4_PS4.jpg" alt="webshop">'
-    },
-    {
-        id: 3,
-        name: "Assassin's Creed: Odyssey",
-        prijs: euroTeken + 59.98,
-        beschrijving: "PS4",
-        image: '<img  class="product-image" src="img/ACODYSSEY_PS4.jpg" alt="webshop">'
-    },
-    {
-        id: 4,
-        name: "Red Dead Redemption II",
-        prijs: euroTeken + 59.98,
-        beschrijving: "PS4",
-        image: '<img  class="product-image" src="img/RDR2_PS4.jpg" alt="webshop">'
-    },
-    {
-        id: 5,
-        name: "Spider-Man",
-        prijs: euroTeken + 59.98,
-        beschrijving: "PS4",
-        image: '<img  class="product-image" src="img/Spiderman_PS4.jpg" alt="webshop">'
-    },
-];
-*/

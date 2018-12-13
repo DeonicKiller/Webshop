@@ -71,8 +71,6 @@ function showProductsSucces(products) {
             var productPlatform = value.platform;
             var productAfbeelding = value.image;
 
-
-
             productNaam1.innerHTML = productName;
             productPrijs1.innerHTML = productPrice;
             productPlatform1.innerHTML = productPlatform;

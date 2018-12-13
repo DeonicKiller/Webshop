@@ -34,9 +34,9 @@ class CustomerController extends Controller
      * Show one Customer
      * @return Illuminate\Http\Response
      */
-    public function showCustomer($productId)
+    public function showCustomer($customerId)
 {
-        $customer = Customer::findOrFail($productId);
+        $customer = Customer::findOrFail($customerId);
         return response()->json($customer);
     }
   /**
@@ -63,7 +63,7 @@ class CustomerController extends Controller
      * Update an existing customer
      * @return Illuminate\Http\Response
      */
-    public function updateCustomer(Request $request, $productId)
+    public function updateCustomer(Request $request, $customerId)
     {
         $rules = [
             'first_name' => 'max:255',
@@ -75,7 +75,7 @@ class CustomerController extends Controller
 
         $this->validate($request, $rules);
 
-        $customer = Customer::findOrFail($productId);
+        $customer = Customer::findOrFail($customerId);
 
         $customer->update($request->all());
 
@@ -87,9 +87,9 @@ class CustomerController extends Controller
      * @return Illuminate\Http\Response
      */
 
-    public function deleteCustomer($productId)
+    public function deleteCustomer($customerId)
     {
-        $customer = Customer::findOrFail($productId);
+        $customer = Customer::findOrFail($customerId);
 
         $customer->delete();
 

@@ -17,18 +17,30 @@
 $router->get('/', function () use ($router) {
     return 'Webshop API';
 });
-
+//Products Routes
 $router->get('/products', 'ProductController@showProducts');
 $router->get('/products/{productID}', 'ProductController@showProduct');
 $router->post('/products', 'ProductController@createProduct');
 $router->put('/products/{productID}', 'ProductController@updateProduct');
 $router->delete('/products/{productID}', 'ProductController@deleteProduct');
-
+//Customers Routes
 $router->get('/customers', 'CustomerController@showCustomers');
 $router->get('/customers/{customerID}', 'CustomerController@showCustomer');
 $router->post('/customers', 'CustomerController@createCustomer');
 $router->put('/customers/{customerID}', 'CustomerController@updateCustomer');
 $router->delete('/customers/{customerID}', 'CustomerController@deleteCustomer');
+//Orders Routes
+$router->get('/orders', 'OrderController@showOrders');
+$router->get('/orders/{orderID}', 'OrderController@showOrder');
+$router->post('/orders', 'OrderController@createOrder');
+$router->put('/orders/{orderID}', 'Orderontroller@updateOrder');
+$router->delete('/orders/{orderID}', 'OrderController@deleteOrder');
+//Orderlines Routes
+$router->get('/orderlines', 'OrderlineController@showOrderlines');
+$router->get('/orderlines/{orderlineId}', 'OrderlineController@showOrderline');
+$router->post('/orderlines', 'OrderlineController@createOrderline');
+$router->put('/orderlines/{orderlineId}', 'Orderlineontroller@updateOrderline');
+$router->delete('/orderlines/{orderlineId}', 'OrderlineController@deleteOrderline');
 /*
 $router->get('/customers', function () use ($router) {
     $customers = [ 

@@ -43,6 +43,8 @@ var myApi = new Api();
 
 
 
+
+
 /**
  * log response for array or object
  */
@@ -58,6 +60,7 @@ function showResponse(response) {
 
 //Succes
 function showProductsSucces(products) {
+
 
     if (Array.isArray(products)) {
         products.forEach(function (value, key) {
@@ -166,6 +169,7 @@ function addHomePageActions() {
                 webshopPage.style.opacity = 1;
             }
         }, 200);
+
 
 
 

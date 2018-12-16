@@ -223,6 +223,10 @@ var productDetailNameElement = document.getElementById("product-name");
 var productDetailPriceElement = document.getElementById("product-price");
 var productDetailPlatformElement = document.getElementById("product-platform");
 var productDetailDescriptionElement = document.getElementById("product-description");
+var addCartButton = document.getElementById("cartadd-button");
+var cartAmount = document.getElementById("cart-amount");
+var cartSubtotal = document.getElementById("cart-subtotal");
+
 
 /*function changeImageSize(){
     for(var i = 0; allImages.length; i++){
@@ -236,7 +240,7 @@ var productDetailDescriptionElement = document.getElementById("product-descripti
 function addProductPageActions(product) {
 
 
-    productDetailDescriptionElement.innerHTML = "Amerika, 1899. Wetshandhavers hebben het gemunt op de laatste outlaw-bendes. Wie zich niet wil overgeven, wordt genadeloos afgemaakt.<br><br>  Arthur Morgan en de Van der Linde-bende slaan op de vlucht nadat in het plaatsje Blackwater een overval slecht afloopt. Met federale agenten en de beste premiejagers van het Westen op de hielen, trekken ze door het ruige hart van Amerika, een spoor van overvallen en vuurgevechten achter zich latend.<br><br> Als door interne strubbelingen de bende uiteen dreigt te vallen, wordt Arthur gedwongen een keuze te maken. Kiest hij voor zijn idealen of voor de bende waar hij alles aan te danken heeft?<br><br> Red Dead Redemption 2, van de makers van Grand Theft Auto V en Red Dead Redemption, is een episch verhaal over het einde van het Wilde Westen en het begin van een nieuw tijdperk.";
+    productDetailDescriptionElement.innerHTML = "Amerika, 1899. Wetshandhavers hebben het gemunt op de laatste outlaw-bendes. Wie zich niet wil overgeven, wordt genadeloos afgemaakt. Arthur Morgan en de Van der Linde-bende slaan op de vlucht nadat in het plaatsje Blackwater een overval slecht afloopt. Met federale agenten en de beste premiejagers van het Westen op de hielen, trekken ze door het ruige hart van Amerika, een spoor van overvallen en vuurgevechten achter zich latend.<br><br> Als door interne strubbelingen de bende uiteen dreigt te vallen, wordt Arthur gedwongen een keuze te maken. Kiest hij voor zijn idealen of voor de bende waar hij alles aan te danken heeft?<br><br> Red Dead Redemption 2, van de makers van Grand Theft Auto V en Red Dead Redemption, is een episch verhaal over het einde van het Wilde Westen en het begin van een nieuw tijdperk.";
     function showProductDetails(number) {
 
 
@@ -246,11 +250,18 @@ function addProductPageActions(product) {
         productDetailPlatformElement.innerHTML = product[number].platform;
         
     }
+    function addToCart(number){
+        var productAmount = document.getElementById("amount-field").value;
+        var subtotalInt = parseInt(product[number].price,10);
+        cartAmount.innerHTML =  productAmount;
+        cartSubtotal.innerHTML = subtotalInt;
+        productAmount+=productAmount;
+        
+    }
 
     image1.addEventListener("click", function () {
         showProductDetails(0);
         switchPage(webshopPage, productPage);
-        changeImageSize();
 
 
 
@@ -260,25 +271,28 @@ function addProductPageActions(product) {
 
         showProductDetails(1);
         switchPage(webshopPage, productPage);
-        changeImageSize();
 
     });
     image3.addEventListener("click", function () {
         showProductDetails(2);
         switchPage(webshopPage, productPage);
-        changeImageSize();
 
     });
     image4.addEventListener("click", function () {
         showProductDetails(3);
         switchPage(webshopPage, productPage);
-        changeImageSize();
 
     });
     image5.addEventListener("click", function () {
         showProductDetails(4);
         switchPage(webshopPage, productPage);
-        changeImageSize();
+ 
+
+    });
+    addCartButton.addEventListener("click",function(){
+
+        addToCart(1);
+
 
     });
 

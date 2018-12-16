@@ -12,12 +12,18 @@
 </head>
 
 <body>
-    <div id="top-border"></div>
-    <img id="home-logo" src="img/gaminglogo.jpg" alt="logo" class="center">
-    <h1 id="banner">Game Topia</h1>
-
-
-
+    <div id="header">
+        <div id="top-border"></div>
+        <img id="home-logo" src="img/gaminglogo.jpg" alt="logo" class="center">
+        <div id="cart">
+            <p id="cart-header">CART</p>
+            <div id="cart-content">
+                <p id="cart-amount"></p>
+                <p id="cart-subtotal"></p>
+            </div>
+        </div>
+        <h1 id="banner">Game Topia</h1>
+    </div>
     <div id="home-page" class="page">
 
 
@@ -78,15 +84,23 @@
     <div id="product-page" class="page">
 
         <div id="product-detail-container" class="center">
-            <div id="left-side" >
+            <div id="left-side">
                 <p id="big-image"></p>
             </div>
             <div id="right-side">
                 <h1 id="product-name"></h1>
                 <p id="product-price"></p>
                 <p id="product-platform"></p>
+                <div>
+                    <input id="amount-field" type="text" placeholder="0" spellcheck="false">
+                    <div id="cartadd-button">
+                        Add to cart
+                    </div>
+
+                </div>
+
             </div>
-            
+
             <div id="bottom">
                 <p id="product-description"></p>
             </div>

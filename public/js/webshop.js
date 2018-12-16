@@ -130,6 +130,16 @@ function hidePages() {
     aboutusPage.style.display = "none";
     productPage.style.display = "none";
 }
+function fadeIn(element){
+
+    setTimeout(function () {
+        if (element.style.display == "block"){
+            element.style.opacity = 1;
+        }
+    }, 200);
+
+
+}
 
 function addHomePageActions() {
 
@@ -163,36 +173,27 @@ function addHomePageActions() {
         myApi.send = null;
         myApi.prefix = "api/";
         myApi.execute();
-        setTimeout(function () {
-            if (webshopPage.style.display == "block") {
-                console.log("success");
-                webshopPage.style.opacity = 1;
-            }
-        }, 200);
-
-
-
-
-
-
-
+        fadeIn(webshopPage);
     });
     selectionImg2.addEventListener("click", function () {
 
         switchPage(homePage, aboutusPage);
+        fadeIn(aboutusPage);
+
     });
 
     homeLogo.addEventListener("click", function () {
 
-
         if (webshopPage.style.display == "block") {
             switchPage(webshopPage, homePage);
-            webshopPage.style.opacity = 0;
         } else if (aboutusPage.style.display == "block") {
             switchPage(aboutusPage, homePage);
         } else if (productPage.style.display == "block") {
             switchPage(productPage, homePage);
         }
+        webshopPage.style.opacity = 0;
+        aboutusPage.style.opacity = 0;
+
     });
 
     homeLogo.addEventListener("mouseover", function () {
@@ -215,31 +216,41 @@ var image2 = document.getElementById("image-2");
 var image3 = document.getElementById("image-3");
 var image4 = document.getElementById("image-4");
 var image5 = document.getElementById("image-5");
+var allImages = document.getElementsByClassName("product-image");
 
 var bigImageElement = document.getElementById("big-image");
 var productDetailNameElement = document.getElementById("product-name");
 var productDetailPriceElement = document.getElementById("product-price");
 var productDetailPlatformElement = document.getElementById("product-platform");
-//var productDetailDescriptionElement = document.getElementById("product-description");
-//
+var productDetailDescriptionElement = document.getElementById("product-description");
+
+/*function changeImageSize(){
+    for(var i = 0; allImages.length; i++){
+        allImages[i].style.height = "330px";
+        allImages[i].style.width = "280px";
+    }
+}*/
 
 
 
 function addProductPageActions(product) {
 
+
+    productDetailDescriptionElement.innerHTML = "Amerika, 1899. Wetshandhavers hebben het gemunt op de laatste outlaw-bendes. Wie zich niet wil overgeven, wordt genadeloos afgemaakt.<br><br>  Arthur Morgan en de Van der Linde-bende slaan op de vlucht nadat in het plaatsje Blackwater een overval slecht afloopt. Met federale agenten en de beste premiejagers van het Westen op de hielen, trekken ze door het ruige hart van Amerika, een spoor van overvallen en vuurgevechten achter zich latend.<br><br> Als door interne strubbelingen de bende uiteen dreigt te vallen, wordt Arthur gedwongen een keuze te maken. Kiest hij voor zijn idealen of voor de bende waar hij alles aan te danken heeft?<br><br> Red Dead Redemption 2, van de makers van Grand Theft Auto V en Red Dead Redemption, is een episch verhaal over het einde van het Wilde Westen en het begin van een nieuw tijdperk.";
     function showProductDetails(number) {
 
 
         bigImageElement.innerHTML = product[number].image;
         productDetailNameElement.innerHTML = product[number].name;
-        productDetailPriceElement.innerHTML = product[number].price;
+        productDetailPriceElement.innerHTML = "&euro; " + product[number].price;
         productDetailPlatformElement.innerHTML = product[number].platform;
-        //productDetailDescription.innerHTML = products[number].description;
+        
     }
 
     image1.addEventListener("click", function () {
         showProductDetails(0);
         switchPage(webshopPage, productPage);
+        changeImageSize();
 
 
 
@@ -249,19 +260,26 @@ function addProductPageActions(product) {
 
         showProductDetails(1);
         switchPage(webshopPage, productPage);
+        changeImageSize();
 
     });
     image3.addEventListener("click", function () {
         showProductDetails(2);
         switchPage(webshopPage, productPage);
+        changeImageSize();
+
     });
     image4.addEventListener("click", function () {
         showProductDetails(3);
         switchPage(webshopPage, productPage);
+        changeImageSize();
+
     });
     image5.addEventListener("click", function () {
         showProductDetails(4);
         switchPage(webshopPage, productPage);
+        changeImageSize();
+
     });
 
 }

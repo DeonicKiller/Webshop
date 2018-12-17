@@ -237,7 +237,14 @@ var cartSubtotal = document.getElementById("cart-subtotal");
 
 
 
+
+
 function addProductPageActions(product) {
+    var newProduct = new Product();
+    var newOrder = new Order();
+    var totalPrice;
+    var subtotal = 0;
+    var productPrice;
 
 
     productDetailDescriptionElement.innerHTML = "Amerika, 1899. Wetshandhavers hebben het gemunt op de laatste outlaw-bendes. Wie zich niet wil overgeven, wordt genadeloos afgemaakt. Arthur Morgan en de Van der Linde-bende slaan op de vlucht nadat in het plaatsje Blackwater een overval slecht afloopt. Met federale agenten en de beste premiejagers van het Westen op de hielen, trekken ze door het ruige hart van Amerika, een spoor van overvallen en vuurgevechten achter zich latend.<br><br> Als door interne strubbelingen de bende uiteen dreigt te vallen, wordt Arthur gedwongen een keuze te maken. Kiest hij voor zijn idealen of voor de bende waar hij alles aan te danken heeft?<br><br> Red Dead Redemption 2, van de makers van Grand Theft Auto V en Red Dead Redemption, is een episch verhaal over het einde van het Wilde Westen en het begin van een nieuw tijdperk.";
@@ -249,15 +256,12 @@ function addProductPageActions(product) {
         productDetailPriceElement.innerHTML = "&euro; " + product[number].price;
         productDetailPlatformElement.innerHTML = product[number].platform;
         
+    
     }
-    function addToCart(number){
-        var productAmount = document.getElementById("amount-field").value;
-        var subtotalInt = parseInt(product[number].price,10);
-        cartAmount.innerHTML =  productAmount;
-        cartSubtotal.innerHTML = subtotalInt;
-        productAmount+=productAmount;
-        
-    }
+
+    var productAmountTotal = 0;
+    var productAmount = document.getElementById("amount-field").value;
+
 
     image1.addEventListener("click", function () {
         showProductDetails(0);
@@ -290,11 +294,25 @@ function addProductPageActions(product) {
 
     });
     addCartButton.addEventListener("click",function(){
-
-        addToCart(1);
+        setTimeout(addToCart(0),100);
+        cartSubtotal.innerHTML = "&euro; " + totalPrice;
+        
 
 
     });
+    function addToCart(number){
+        
+        productPrice = parseInt(product[number].price);
+        newProduct.setPrice(productPrice);
+        subtotal += newProduct.getPrice();
+        newOrder.setTotalPrice(subtotal);
+        totalPrice = newOrder.getTotalPrice();
+        
+        //cartAmount.innerHTML =  productAmountTotal;
+
+        
+        
+    }
 
 }
 

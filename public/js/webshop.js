@@ -193,6 +193,7 @@ function addHomePageActions() {
         }
         webshopPage.style.opacity = 0;
         aboutusPage.style.opacity = 0;
+        
 
     });
 
@@ -224,8 +225,8 @@ var productDetailPriceElement = document.getElementById("product-price");
 var productDetailPlatformElement = document.getElementById("product-platform");
 var productDetailDescriptionElement = document.getElementById("product-description");
 var addCartButton = document.getElementById("cartadd-button");
-var cartAmount = document.getElementById("cart-amount");
-var cartSubtotal = document.getElementById("cart-subtotal");
+
+
 
 
 /*function changeImageSize(){
@@ -235,16 +236,14 @@ var cartSubtotal = document.getElementById("cart-subtotal");
     }
 }*/
 
-
-
-
-
+var newProduct;
+var newOrder;
+var totalPrice = 0;
+var subtotal = 0;
 function addProductPageActions(product) {
-    var newProduct = new Product();
-    var newOrder = new Order();
-    var totalPrice;
-    var subtotal = 0;
-    var productPrice;
+    newProduct = new Product();
+    newOrder = new Order();
+
 
 
     productDetailDescriptionElement.innerHTML = "Amerika, 1899. Wetshandhavers hebben het gemunt op de laatste outlaw-bendes. Wie zich niet wil overgeven, wordt genadeloos afgemaakt. Arthur Morgan en de Van der Linde-bende slaan op de vlucht nadat in het plaatsje Blackwater een overval slecht afloopt. Met federale agenten en de beste premiejagers van het Westen op de hielen, trekken ze door het ruige hart van Amerika, een spoor van overvallen en vuurgevechten achter zich latend.<br><br> Als door interne strubbelingen de bende uiteen dreigt te vallen, wordt Arthur gedwongen een keuze te maken. Kiest hij voor zijn idealen of voor de bende waar hij alles aan te danken heeft?<br><br> Red Dead Redemption 2, van de makers van Grand Theft Auto V en Red Dead Redemption, is een episch verhaal over het einde van het Wilde Westen en het begin van een nieuw tijdperk.";
@@ -294,20 +293,37 @@ function addProductPageActions(product) {
 
     });
     addCartButton.addEventListener("click",function(){
-        setTimeout(addToCart(0),100);
-        cartSubtotal.innerHTML = "&euro; " + totalPrice;
-        
-
-
+        addToCart(0);    
     });
     function addToCart(number){
+
+        var cartAmount = document.getElementById("cart-amount");
+        var cartSubtotal = document.getElementById("cart-subtotal");
+        var productPrice = parseInt(product[number].price);
         
-        productPrice = parseInt(product[number].price);
-        newProduct.setPrice(productPrice);
-        subtotal += newProduct.getPrice();
-        newOrder.setTotalPrice(subtotal);
-        totalPrice = newOrder.getTotalPrice();
         
+
+        if(subtotal == 0){
+            newProduct.setPrice(productPrice);
+            cartSubtotal.innerHTML = "&euro; " + productPrice;
+            subtotal = productPrice;
+            newOrder.setTotalPrice(subtotal);
+            console.log(subtotal);
+        }
+        else if(subtotal > 0){    
+            
+           /**  newProduct.setPrice(productPrice);
+            subtotal =+ productPrice;
+            newOrder.setTotalPrice(subtotal);
+            cartSubtotal.innerHTML = "&euro; " + subtotal;
+            newOrder.setTotalPrice(subtotal);*/
+            subtotal += productPrice;
+            cartSubtotal.innerHTML = "&euro; " + subtotal;
+            console.log(subtotal);
+        }
+        
+
+
         //cartAmount.innerHTML =  productAmountTotal;
 
         
@@ -315,6 +331,7 @@ function addProductPageActions(product) {
     }
 
 }
+    
 
 
 addHomePageActions();

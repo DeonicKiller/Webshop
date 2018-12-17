@@ -3,6 +3,7 @@ p {
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
+
 #top-border {
     width: 100%;
     height: 10px;
@@ -217,11 +218,12 @@ p {
     word-wrap: break-word;
 }
 #products-container{
-
+    height:600px;
     margin-left: 20%;
     margin-right: 15%;
     position: relative; 
     right: 2.2%;
+    overflow-y: scroll;
 }
 #webshop-page{
     opacity: 0;

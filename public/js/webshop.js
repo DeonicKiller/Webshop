@@ -193,6 +193,7 @@ function addHomePageActions() {
         }
         webshopPage.style.opacity = 0;
         aboutusPage.style.opacity = 0;
+        productPage.style.opacity = 0;
         
 
     });
@@ -265,6 +266,7 @@ function addProductPageActions(product) {
     image1.addEventListener("click", function () {
         showProductDetails(0);
         switchPage(webshopPage, productPage);
+        fadeIn(ProductPage);
 
 
 
@@ -274,21 +276,25 @@ function addProductPageActions(product) {
 
         showProductDetails(1);
         switchPage(webshopPage, productPage);
+        fadeIn(productPage);
 
     });
     image3.addEventListener("click", function () {
         showProductDetails(2);
         switchPage(webshopPage, productPage);
+        fadeIn(productPage);
 
     });
     image4.addEventListener("click", function () {
         showProductDetails(3);
         switchPage(webshopPage, productPage);
+        fadeIn(roductPage);
 
     });
     image5.addEventListener("click", function () {
         showProductDetails(4);
         switchPage(webshopPage, productPage);
+        fadeIn(productPage);
  
 
     });

@@ -225,14 +225,12 @@ p {
     right: 2.2%;
     overflow-y: scroll;
 }
-#webshop-page{
+#webshop-page,#aboutus-page,#product-page{
     opacity: 0;
     transition: 2s ease;
 }
-#aboutus-page{
-    opacity: 0;
-    transition: 2s ease;
-}
+
+
 
 .product-image{
     cursor: pointer;

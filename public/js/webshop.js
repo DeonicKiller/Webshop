@@ -257,6 +257,7 @@ var subtotal = 0;
 var cartAmount = document.getElementById("cart-amount");
 var cartSubtotal = document.getElementById("cart-subtotal");
 
+
 function addProductPageActions(product) {
     newProduct = new Product();
     newOrder = new Order();
@@ -328,20 +329,21 @@ function addProductPageActions(product) {
     });
 
     function addToCart(number) {
-
+        var amountField = document.getElementById("amount-field").value;
         var productPrice = parseInt(product[number].price);
-        if (subtotal == 0) {
-            newProduct.setPrice(productPrice);
-            cartSubtotal.innerHTML = "&euro; " + productPrice;
-            subtotal = productPrice;
-            newOrder.setTotalPrice(subtotal);
-            console.log(subtotal);
+       // if (subtotal == 0) {
+            
+            //cartSubtotal.innerHTML = "&euro; " + productPrice;
+            //subtotal = productPrice;
+            //console.log(subtotal);
 
-        } else if (subtotal > 0) {
-            subtotal += productPrice;
+       // } else if (subtotal > 0) {
+            subtotal += (amountField * productPrice);
             cartSubtotal.innerHTML = "&euro; " + subtotal;
             console.log(subtotal);
-        }
+        //}
+        newProduct.setPrice(productPrice);
+        newOrder.setTotalPrice(subtotal);
 
 
 

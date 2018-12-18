@@ -88,6 +88,7 @@ function showProductsFailed(products) {
 
 };
 
+
 // Voor de Layout
 var homeLogo = document.getElementById("home-logo");
 var selectionImg1 = document.getElementById("selection-1");
@@ -102,7 +103,7 @@ var homePage = document.getElementById("home-page");
 var webshopPage = document.getElementById("webshop-page");
 var aboutusPage = document.getElementById("aboutus-page");
 var productPage = document.getElementById("product-page");
-var productContainer = document.getElementById("product-container");
+var productImageContainer = document.getElementById("image-1");
 
 
 function showOverlay(image, text) {
@@ -130,10 +131,11 @@ function hidePages() {
     aboutusPage.style.display = "none";
     productPage.style.display = "none";
 }
-function fadeIn(element){
+
+function fadeIn(element) {
 
     setTimeout(function () {
-        if (element.style.display == "block"){
+        if (element.style.display == "block") {
             element.style.opacity = 1;
         }
     }, 200);
@@ -142,7 +144,6 @@ function fadeIn(element){
 }
 
 function addHomePageActions() {
-
     selectionImg1.addEventListener("mouseover", function () {
         showOverlay(selectionImg1, overlayText1);
 
@@ -168,12 +169,15 @@ function addHomePageActions() {
 
     selectionImg1.addEventListener("click", function () {
         switchPage(homePage, webshopPage);
-        myApi.request = 'GET';
-        myApi.route = 'products';
-        myApi.send = null;
-        myApi.prefix = "api/";
-        myApi.execute();
         fadeIn(webshopPage);
+        if (productImageContainer.innerHTML == '') {
+            myApi.request = 'GET';
+            myApi.route = 'products';
+            myApi.send = null;
+            myApi.prefix = "api/";
+            myApi.execute();
+        }
+
     });
     selectionImg2.addEventListener("click", function () {
 
@@ -194,7 +198,7 @@ function addHomePageActions() {
         webshopPage.style.opacity = 0;
         aboutusPage.style.opacity = 0;
         productPage.style.opacity = 0;
-        
+
 
     });
 
@@ -212,7 +216,16 @@ function addHomePageActions() {
 function addWebshopPageActions() {
 
 
+
 }
+
+function LoadInProducts(id) {
+    myApi.request = 'GET';
+    myApi.route = 'products/' + id;
+    myApi.send = null;
+    myApi.prefix = "api/";
+    myApi.execute();
+};
 var image1 = document.getElementById("image-1");
 var image2 = document.getElementById("image-2");
 var image3 = document.getElementById("image-3");
@@ -241,6 +254,9 @@ var newProduct;
 var newOrder;
 var totalPrice = 0;
 var subtotal = 0;
+var cartAmount = document.getElementById("cart-amount");
+var cartSubtotal = document.getElementById("cart-subtotal");
+
 function addProductPageActions(product) {
     newProduct = new Product();
     newOrder = new Order();
@@ -248,6 +264,7 @@ function addProductPageActions(product) {
 
 
     productDetailDescriptionElement.innerHTML = "Amerika, 1899. Wetshandhavers hebben het gemunt op de laatste outlaw-bendes. Wie zich niet wil overgeven, wordt genadeloos afgemaakt. Arthur Morgan en de Van der Linde-bende slaan op de vlucht nadat in het plaatsje Blackwater een overval slecht afloopt. Met federale agenten en de beste premiejagers van het Westen op de hielen, trekken ze door het ruige hart van Amerika, een spoor van overvallen en vuurgevechten achter zich latend.<br><br> Als door interne strubbelingen de bende uiteen dreigt te vallen, wordt Arthur gedwongen een keuze te maken. Kiest hij voor zijn idealen of voor de bende waar hij alles aan te danken heeft?<br><br> Red Dead Redemption 2, van de makers van Grand Theft Auto V en Red Dead Redemption, is een episch verhaal over het einde van het Wilde Westen en het begin van een nieuw tijdperk.";
+
     function showProductDetails(number) {
 
 
@@ -255,18 +272,17 @@ function addProductPageActions(product) {
         productDetailNameElement.innerHTML = product[number].name;
         productDetailPriceElement.innerHTML = "&euro; " + product[number].price;
         productDetailPlatformElement.innerHTML = product[number].platform;
-        
-    
-    }
 
-    var productAmountTotal = 0;
-    var productAmount = document.getElementById("amount-field").value;
+
+    }
 
 
     image1.addEventListener("click", function () {
         showProductDetails(0);
+        LoadInProducts(0);
+
         switchPage(webshopPage, productPage);
-        fadeIn(ProductPage);
+        fadeIn(productPage);
 
 
 
@@ -275,69 +291,67 @@ function addProductPageActions(product) {
     image2.addEventListener("click", function () {
 
         showProductDetails(1);
+        LoadInProducts(1);
         switchPage(webshopPage, productPage);
         fadeIn(productPage);
+
 
     });
     image3.addEventListener("click", function () {
         showProductDetails(2);
+        LoadInProducts(2);
         switchPage(webshopPage, productPage);
         fadeIn(productPage);
+
 
     });
     image4.addEventListener("click", function () {
         showProductDetails(3);
+        LoadInProducts(3);
         switchPage(webshopPage, productPage);
-        fadeIn(roductPage);
+        fadeIn(productPage);
+
 
     });
     image5.addEventListener("click", function () {
         showProductDetails(4);
+        LoadInProducts(4);
         switchPage(webshopPage, productPage);
         fadeIn(productPage);
- 
+
+
+
 
     });
-    addCartButton.addEventListener("click",function(){
-        addToCart(0);    
+    addCartButton.addEventListener("click", function () {
+        addToCart(0);
     });
-    function addToCart(number){
 
-        var cartAmount = document.getElementById("cart-amount");
-        var cartSubtotal = document.getElementById("cart-subtotal");
+    function addToCart(number) {
+
         var productPrice = parseInt(product[number].price);
-        
-        
-
-        if(subtotal == 0){
+        if (subtotal == 0) {
             newProduct.setPrice(productPrice);
             cartSubtotal.innerHTML = "&euro; " + productPrice;
             subtotal = productPrice;
             newOrder.setTotalPrice(subtotal);
             console.log(subtotal);
-        }
-        else if(subtotal > 0){    
-            
-           /**  newProduct.setPrice(productPrice);
-            subtotal =+ productPrice;
-            newOrder.setTotalPrice(subtotal);
-            cartSubtotal.innerHTML = "&euro; " + subtotal;
-            newOrder.setTotalPrice(subtotal);*/
+
+        } else if (subtotal > 0) {
             subtotal += productPrice;
             cartSubtotal.innerHTML = "&euro; " + subtotal;
             console.log(subtotal);
         }
-        
 
 
-        //cartAmount.innerHTML =  productAmountTotal;
 
-        
-        
+
+
+
+
     }
 
 }
-    
 
 
 addHomePageActions();

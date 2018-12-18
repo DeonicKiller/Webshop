@@ -320,9 +320,8 @@ p {
     margin-left:3px;
     border-style: solid;
     border-color: black;
-    border-width: 1px;
+    border-width: 3px;
     cursor: pointer;
-    transition: 1s ease;
 }
 #cartadd-button:hover{
     color:black;

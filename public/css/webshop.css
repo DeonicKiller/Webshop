@@ -50,10 +50,10 @@ p {
 
 #cart-header {
     color: white;
-    background-color: black;
+    background-color: #009EDC;
     border-style: solid;
     border-top-color: none;
-    border-color: black;
+    border-color: #009EDC;
     border-width: 2px;
     text-align: center;
     margin: 0;
@@ -63,7 +63,7 @@ p {
 #cart-content {
     margin: 0;
     border-style: solid;
-    border-color: black;
+    border-color: #009EDC;
     border-width: 2px;
 }
 

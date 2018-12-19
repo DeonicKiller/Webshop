@@ -21,7 +21,6 @@ class Api {
                 if (xHttp.status == 200 || xHttp.status == 201) {
                     var response = JSON.parse(xHttp.response);
                     showResponse(response);
-
                     showProductsSucces(response);
                     addProductPageActions(response);
                 } else {
@@ -331,16 +330,16 @@ function addProductPageActions(product) {
     function addToCart(number) {
         var amountField = document.getElementById("amount-field").value;
         var productPrice = parseInt(product[number].price);
-       // if (subtotal == 0) {
-            
-            //cartSubtotal.innerHTML = "&euro; " + productPrice;
-            //subtotal = productPrice;
-            //console.log(subtotal);
+        // if (subtotal == 0) {
 
-       // } else if (subtotal > 0) {
-            subtotal += (amountField * productPrice);
-            cartSubtotal.innerHTML = "&euro; " + subtotal;
-            console.log(subtotal);
+        //cartSubtotal.innerHTML = "&euro; " + productPrice;
+        //subtotal = productPrice;
+        //console.log(subtotal);
+
+        // } else if (subtotal > 0) {
+        subtotal += (amountField * productPrice);
+        cartSubtotal.innerHTML = "&euro; " + subtotal;
+        console.log(subtotal);
         //}
         newProduct.setPrice(productPrice);
         newOrder.setTotalPrice(subtotal);
@@ -356,6 +355,32 @@ function addProductPageActions(product) {
 }
 
 
+/*function signUp() {
+    var emailInputValue = document.getElementById("email-input").value;
+    var sendEmailButton = document.getElementById("send-email-button");
+
+    sendEmailButton.addEventListener("click", function () {
+        myApi.request = 'POST';
+        myApi.route = 'customers';
+        myApi.send = {
+            firstName: "",
+            lastName: "",
+            address: "",
+            city: "",
+            ["e-mail"]: emailInputValue,
+        };
+        myApi.prefix = "api/";
+        myApi.execute();
+
+        console.log(emailInputValue);
+    });
+
+
+
+
+}*/
+
+//signUp();
 addHomePageActions();
 addWebshopPageActions();
 hidePages();

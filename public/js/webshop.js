@@ -20,7 +20,7 @@ class Api {
             if (xHttp.readyState == XMLHttpRequest.DONE) {
                 if (xHttp.status == 200 || xHttp.status == 201) {
                     var response = JSON.parse(xHttp.response);
-                    showResponse(response);
+                    //showResponse(response);
                     showProductsSucces(response);
                     addProductPageActions(response);
                 } else {
@@ -258,8 +258,7 @@ var cartSubtotal = document.getElementById("cart-subtotal");
 
 
 function addProductPageActions(product) {
-    newProduct = new Product();
-    newOrder = new Order();
+
 
 
 
@@ -324,25 +323,23 @@ function addProductPageActions(product) {
 
     });
     addCartButton.addEventListener("click", function () {
+        newOrder = new Order();
         addToCart(0);
     });
 
     function addToCart(number) {
+        newProduct = new Product();
         var amountField = document.getElementById("amount-field").value;
         var productPrice = parseInt(product[number].price);
-        // if (subtotal == 0) {
 
-        //cartSubtotal.innerHTML = "&euro; " + productPrice;
-        //subtotal = productPrice;
-        //console.log(subtotal);
-
-        // } else if (subtotal > 0) {
         subtotal += (amountField * productPrice);
         cartSubtotal.innerHTML = "&euro; " + subtotal;
         console.log(subtotal);
-        //}
+
         newProduct.setPrice(productPrice);
         newOrder.setTotalPrice(subtotal);
+
+        console.log(newOrder.getTotalPrice());
 
 
 
@@ -354,23 +351,36 @@ function addProductPageActions(product) {
 
 }
 
+function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
 
-/*function signUp() {
+function signUp() {
     var emailInputValue = document.getElementById("email-input").value;
     var sendEmailButton = document.getElementById("send-email-button");
+    var emailToString = "" + emailInputValue + "";
 
     sendEmailButton.addEventListener("click", function () {
-        myApi.request = 'POST';
-        myApi.route = 'customers';
-        myApi.send = {
-            firstName: "",
-            lastName: "",
-            address: "",
-            city: "",
-            ["e-mail"]: emailInputValue,
-        };
-        myApi.prefix = "api/";
-        myApi.execute();
+        var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
+
+        if (!emailToString.match(reEmail)) {
+            alert("email onjuist");
+        } else {
+            myApi.request = 'POST';
+            myApi.route = 'customers';
+            myApi.send = {
+                first_name: "",
+                last_name: "",
+                address: "",
+                city: "",
+                ["e-mail"]: emailInputValue,
+            };
+            myApi.prefix = "api/";
+            myApi.execute();
+            alert("e-mail succesvol opgestuurd");
+
+        }
 
         console.log(emailInputValue);
     });
@@ -378,9 +388,9 @@ function addProductPageActions(product) {
 
 
 
-}*/
+}
 
-//signUp();
+signUp();
+hidePages();
 addHomePageActions();
 addWebshopPageActions();
-hidePages();

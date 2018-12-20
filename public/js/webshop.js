@@ -458,9 +458,7 @@ function customerPageActions() {
     sendButtonCustomerInformation.addEventListener("click", function () {
         postCustomerInformation();
     });
-    sendButtonCustomerInformation.addEventListener("click", function () { 
-        checkIfValidated();
-    });
+
 
 }
 

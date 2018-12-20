@@ -104,6 +104,8 @@ var webshopPage = document.getElementById("webshop-page");
 var aboutusPage = document.getElementById("aboutus-page");
 var productPage = document.getElementById("product-page");
 var productImageContainer = document.getElementById("image-1");
+var customerBanner = document.getElementById("banner");
+var customerGegevensTest = document.getElementById("customer-page");
 
 
 function showOverlay(image, text) {
@@ -130,6 +132,7 @@ function hidePages() {
     webshopPage.style.display = "none";
     aboutusPage.style.display = "none";
     productPage.style.display = "none";
+    customerGegevensTest.style.display ="none";
 }
 
 function fadeIn(element) {
@@ -194,7 +197,8 @@ function addHomePageActions() {
             switchPage(aboutusPage, homePage);
         } else if (productPage.style.display == "block") {
             switchPage(productPage, homePage);
-        }
+        }else if (customerGegevensTest.style.display == "block") {
+            switchPage(customerGegevensTest,homePage); }
         webshopPage.style.opacity = 0;
         aboutusPage.style.opacity = 0;
         productPage.style.opacity = 0;
@@ -210,6 +214,14 @@ function addHomePageActions() {
     homeLogo.addEventListener("mouseout", function () {
         homeLogo.style.opacity = 1;
     });
+
+    customerBanner.addEventListener("click", function () {
+        homePage.style.display = "none";
+        customerGegevensTest.style.display = "block";
+    });
+
+    
+
 
     
 }
@@ -228,12 +240,14 @@ function LoadInProducts(id) {
     myApi.prefix = "api/";
     myApi.execute();
 };
+//Alle var's
 var image1 = document.getElementById("image-1");
 var image2 = document.getElementById("image-2");
 var image3 = document.getElementById("image-3");
 var image4 = document.getElementById("image-4");
 var image5 = document.getElementById("image-5");
 var allImages = document.getElementsByClassName("product-image");
+var sendButtonCustomerInformation = document.getElementById("send-customer-information-button");
 
 var bigImageElement = document.getElementById("big-image");
 var productDetailNameElement = document.getElementById("product-name");
@@ -241,6 +255,7 @@ var productDetailPriceElement = document.getElementById("product-price");
 var productDetailPlatformElement = document.getElementById("product-platform");
 var productDetailDescriptionElement = document.getElementById("product-description");
 var addCartButton = document.getElementById("cartadd-button");
+
 
 
 
@@ -344,6 +359,8 @@ function addProductPageActions(product) {
 
         console.log(newOrder.getTotalPrice());
 
+        
+
 
 
 
@@ -428,7 +445,36 @@ function signUp() {
 
 }*/
 
+function postCustomerInformation() {
+    var emailInput = document.getElementById("input-email").value;
+    var firstNameInput = document.getElementById("first-name").value;
+    var lastNameInput = document.getElementById("last-name").value;
+    var addressInput = document.getElementById("address").value;
+    var cityInput = document.getElementById("city").value;
+    myApi.request = 'POST';
+    myApi.route = 'customers';
+    myApi.send = {
+        first_name: firstNameInput,
+        last_name: lastNameInput,
+        address: addressInput,
+        city: cityInput,
+        ["e-mail"]: emailInput,
+    };
+    myApi.prefix = "api/";
+    myApi.execute();
+    alert(firstNameInput);
+
+
+}
+function customerPageActions(){
+    sendButtonCustomerInformation.addEventListener("click", function(){
+        postCustomerInformation();
+    }); 
+
+}
+
 signUp();
 addHomePageActions();
 addWebshopPageActions();
+customerPageActions();
 hidePages();

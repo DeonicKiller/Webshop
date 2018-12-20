@@ -405,3 +405,9 @@ p {
     color: black;
     background-color: transparent;
 }
+
+.round {
+    border-radius: 12px;
+}
+
+

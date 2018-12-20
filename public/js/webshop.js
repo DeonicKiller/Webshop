@@ -131,7 +131,7 @@ function hidePages() {
     webshopPage.style.display = "none";
     aboutusPage.style.display = "none";
     productPage.style.display = "none";
-    customerGegevensTest.style.display ="none";
+    customerGegevensTest.style.display = "none";
 }
 
 function fadeIn(element) {
@@ -196,8 +196,9 @@ function addHomePageActions() {
             switchPage(aboutusPage, homePage);
         } else if (productPage.style.display == "block") {
             switchPage(productPage, homePage);
-        }else if (customerGegevensTest.style.display == "block") {
-            switchPage(customerGegevensTest,homePage); }
+        } else if (customerGegevensTest.style.display == "block") {
+            switchPage(customerGegevensTest, homePage);
+        }
         webshopPage.style.opacity = 0;
         aboutusPage.style.opacity = 0;
         productPage.style.opacity = 0;
@@ -219,10 +220,10 @@ function addHomePageActions() {
         customerGegevensTest.style.display = "block";
     });
 
-    
 
 
-    
+
+
 }
 
 function addWebshopPageActions() {
@@ -240,6 +241,7 @@ function LoadInProducts(id) {
     myApi.execute();
 };
 //Alle var's
+
 var image1 = document.getElementById("image-1");
 var image2 = document.getElementById("image-2");
 var image3 = document.getElementById("image-3");
@@ -358,7 +360,7 @@ function addProductPageActions(product) {
 
         console.log(newOrder.getTotalPrice());
 
-        
+
 
 
 
@@ -382,7 +384,7 @@ function signUp() {
         var emailToString = "" + emailInputValue + "";
         var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
 
-        
+
         if (!emailToString.match(reEmail)) {
 
             emailFeedback.innerHTML = "Email niet geldig. Probeer opnieuw";
@@ -393,23 +395,23 @@ function signUp() {
             console.log(emailToString);
 
         } else {
-            
-                myApi.request = 'POST';
-                myApi.route = 'customers';
-                myApi.send = {
-                    first_name: "",
-                    last_name: "",
-                    address: "",
-                    city: "",
-                    ["e-mail"]: emailInputValue,
-                };
-                myApi.prefix = "api/";
-                myApi.execute();
-                emailFeedback.innerHTML = "Je bent succesvol aangemeld";
-                setTimeout(function () {
-                    emailFeedback.innerHTML = "";
-                    emailInput.value = "";
-                }, 1000);
+
+            myApi.request = 'POST';
+            myApi.route = 'customers';
+            myApi.send = {
+                first_name: "",
+                last_name: "",
+                address: "",
+                city: "",
+                ["e-mail"]: emailInputValue,
+            };
+            myApi.prefix = "api/";
+            myApi.execute();
+            emailFeedback.innerHTML = "Je bent succesvol aangemeld";
+            setTimeout(function () {
+                emailFeedback.innerHTML = "";
+                emailInput.value = "";
+            }, 1000);
             /*}*/
         }
 
@@ -435,15 +437,27 @@ function postCustomerInformation() {
         ["e-mail"]: emailInput,
     };
     myApi.prefix = "api/";
-    myApi.execute();
-    alert(firstNameInput);
+    
+
+    function checkIfValidated() {
+        if (firstNameInput = "") {
+            alert("Er missen gegevens!!");
+        } else
+            myApi.execute();
+    }
+
 
 
 }
-function customerPageActions(){
-    sendButtonCustomerInformation.addEventListener("click", function(){
+
+function customerPageActions() {
+   
+    sendButtonCustomerInformation.addEventListener("click", function () {
         postCustomerInformation();
-    }); 
+    });
+    sendButtonCustomerInformation.addEventListener("click", function () { 
+        checkIfValidated();
+    });
 
 }
 

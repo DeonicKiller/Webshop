@@ -211,8 +211,7 @@ function addHomePageActions() {
         homeLogo.style.opacity = 1;
     });
 
-    signUp();
-
+    
 }
 
 function addWebshopPageActions() {

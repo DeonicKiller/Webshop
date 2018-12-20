@@ -333,7 +333,7 @@ function addProductPageActions(product) {
     function addToCart(number) {
         newProduct = new Product();
         var amountField = document.getElementById("amount-field").value;
-        var productPrice = parseInt(product[number].price);
+        var productPrice = product[number].price;
 
         subtotal += (amountField * productPrice);
         cartSubtotal.innerHTML = "&euro; " + subtotal;

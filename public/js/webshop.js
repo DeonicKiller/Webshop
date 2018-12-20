@@ -21,7 +21,6 @@ class Api {
                 if (xHttp.status == 200 || xHttp.status == 201) {
                     var response = JSON.parse(xHttp.response);
                     //showResponse(response);
-                    //compareEmail(response);
                     showProductsSucces(response);
                     addProductPageActions(response);
                 } else {
@@ -383,6 +382,7 @@ function signUp() {
         var emailToString = "" + emailInputValue + "";
         var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
 
+        
         if (!emailToString.match(reEmail)) {
 
             emailFeedback.innerHTML = "Email niet geldig. Probeer opnieuw";
@@ -393,12 +393,7 @@ function signUp() {
             console.log(emailToString);
 
         } else {
-
-            /*if (compareEmail(emailInputValue)) {
-
-                emailFeedback.innerHTML = "Email bestaat al";
-            }
-            else{*/
+            
                 myApi.request = 'POST';
                 myApi.route = 'customers';
                 myApi.send = {
@@ -422,28 +417,7 @@ function signUp() {
     });
 }
 
-/*function compareEmail(email) {
 
-    myApi.request = 'GET';
-    myApi.route = 'customers';
-    myApi.send = null;
-    myApi.prefix = "api/";
-    myApi.execute();
-
-    for (let i = 0; i < customers.length; i++) {
-
-        if (customers[i]["e-mail"] == email) {
-
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
-
-
-}*/
 
 function postCustomerInformation() {
     var emailInput = document.getElementById("input-email").value;

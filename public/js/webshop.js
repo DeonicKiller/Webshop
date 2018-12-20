@@ -21,6 +21,7 @@ class Api {
                 if (xHttp.status == 200 || xHttp.status == 201) {
                     var response = JSON.parse(xHttp.response);
                     //showResponse(response);
+                    //compareEmail(response);
                     showProductsSucces(response);
                     addProductPageActions(response);
                 } else {
@@ -210,9 +211,12 @@ function addHomePageActions() {
         homeLogo.style.opacity = 1;
     });
 
+    signUp();
+
 }
 
 function addWebshopPageActions() {
+
 
 
 
@@ -351,46 +355,81 @@ function addProductPageActions(product) {
 
 }
 
-function validateEmail(email) {
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-}
-
 function signUp() {
-    var emailInputValue = document.getElementById("email-input").value;
+
+
     var sendEmailButton = document.getElementById("send-email-button");
-    var emailToString = "" + emailInputValue + "";
 
     sendEmailButton.addEventListener("click", function () {
+        var emailInput = document.getElementById("email-input");
+        var emailInputValue = document.getElementById("email-input").value;
+        var emailFeedback = document.getElementById("newsletter-feedback");
+        var emailToString = "" + emailInputValue + "";
         var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
 
         if (!emailToString.match(reEmail)) {
-            alert("email onjuist");
-        } else {
-            myApi.request = 'POST';
-            myApi.route = 'customers';
-            myApi.send = {
-                first_name: "",
-                last_name: "",
-                address: "",
-                city: "",
-                ["e-mail"]: emailInputValue,
-            };
-            myApi.prefix = "api/";
-            myApi.execute();
-            alert("e-mail succesvol opgestuurd");
 
+            emailFeedback.innerHTML = "Email niet geldig. Probeer opnieuw";
+            setTimeout(function () {
+                emailFeedback.innerHTML = "";
+                emailInput.value = ""
+            }, 1000);
+            console.log(emailToString);
+
+        } else {
+
+            /*if (compareEmail(emailInputValue)) {
+
+                emailFeedback.innerHTML = "Email bestaat al";
+            }
+            else{*/
+                myApi.request = 'POST';
+                myApi.route = 'customers';
+                myApi.send = {
+                    first_name: "",
+                    last_name: "",
+                    address: "",
+                    city: "",
+                    ["e-mail"]: emailInputValue,
+                };
+                myApi.prefix = "api/";
+                myApi.execute();
+                emailFeedback.innerHTML = "Je bent succesvol aangemeld";
+                setTimeout(function () {
+                    emailFeedback.innerHTML = "";
+                    emailInput.value = "";
+                }, 1000);
+            /*}*/
         }
 
-        console.log(emailInputValue);
+
     });
-
-
-
-
 }
 
+/*function compareEmail(email) {
+
+    myApi.request = 'GET';
+    myApi.route = 'customers';
+    myApi.send = null;
+    myApi.prefix = "api/";
+    myApi.execute();
+
+    for (let i = 0; i < customers.length; i++) {
+
+        if (customers[i]["e-mail"] == email) {
+
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+
+
+}*/
+
 signUp();
-hidePages();
 addHomePageActions();
 addWebshopPageActions();
+hidePages();

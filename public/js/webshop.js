@@ -370,7 +370,7 @@ function addProductPageActions(product) {
 
 }
 
-function signUp(response) {
+function signUp() {
 
 
     var sendEmailButton = document.getElementById("send-email-button");

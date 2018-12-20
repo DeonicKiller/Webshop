@@ -427,24 +427,27 @@ function postCustomerInformation() {
     var lastNameInput = document.getElementById("last-name").value;
     var addressInput = document.getElementById("address").value;
     var cityInput = document.getElementById("city").value;
-    myApi.request = 'POST';
-    myApi.route = 'customers';
-    myApi.send = {
-        first_name: firstNameInput,
-        last_name: lastNameInput,
-        address: addressInput,
-        city: cityInput,
-        ["e-mail"]: emailInput,
-    };
-    myApi.prefix = "api/";
-    
-
-    function checkIfValidated() {
-        if (firstNameInput = "") {
-            alert("Er missen gegevens!!");
-        } else
-            myApi.execute();
+    if(firstNameInput == ""){
+        alert("er missen gegevens");
     }
+    else{
+        myApi.request = 'POST';
+        myApi.route = 'customers';
+        myApi.send = {
+            first_name: firstNameInput,
+            last_name: lastNameInput,
+            address: addressInput,
+            city: cityInput,
+            ["e-mail"]: emailInput,
+        };
+        myApi.prefix = "api/";
+        myApi.execute();
+
+    }
+
+
+            
+
 
 
 

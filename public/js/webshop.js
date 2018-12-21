@@ -222,12 +222,13 @@ function addHomePageActions() {
         customerGegevensTest.style.display = "block";
     });
     
-    if (homePage = "block") {
+   /* if (homePage = "block") {
         homeLogo.style.display = "none";
     }
+    
 
 
-
+*/
 
 
 }

@@ -145,6 +145,7 @@ function fadeIn(element) {
 
 }
 
+
 function addHomePageActions() {
     selectionImg1.addEventListener("mouseover", function () {
         showOverlay(selectionImg1, overlayText1);
@@ -168,6 +169,7 @@ function addHomePageActions() {
     selectionImg3.addEventListener("mouseout", function () {
         hideOverlay(selectionImg3, overlayText3);
     });
+
 
     selectionImg1.addEventListener("click", function () {
         switchPage(homePage, webshopPage);
@@ -219,6 +221,10 @@ function addHomePageActions() {
         homePage.style.display = "none";
         customerGegevensTest.style.display = "block";
     });
+    
+    if (homePage = "block") {
+        homeLogo.style.display = "none";
+    }
 
 
 
@@ -428,7 +434,7 @@ function postCustomerInformation() {
     var addressInput = document.getElementById("address").value;
     var cityInput = document.getElementById("city").value;
     if(firstNameInput == ""){
-        alert("er missen gegevens");
+        alert("Er missen gegevens");
     }
     else{
         myApi.request = 'POST';
@@ -443,13 +449,6 @@ function postCustomerInformation() {
         myApi.prefix = "api/";
         myApi.execute();
     }
-
-
-            
-
-
-
-
 }
 
 function customerPageActions() {

@@ -144,9 +144,18 @@ function fadeIn(element) {
 
 
 }
+function hideLogo(){
+        homeLogo.style.display = "none";
 
+
+}
 
 function addHomePageActions() {
+
+    if(homePage.style.display == "block"){
+        homeLogo.style.display = "none";
+}
+
     selectionImg1.addEventListener("mouseover", function () {
         showOverlay(selectionImg1, overlayText1);
 
@@ -172,6 +181,7 @@ function addHomePageActions() {
 
 
     selectionImg1.addEventListener("click", function () {
+        homeLogo.style.display = "block";
         switchPage(homePage, webshopPage);
         fadeIn(webshopPage);
         if (productImageContainer.innerHTML == '') {
@@ -184,7 +194,7 @@ function addHomePageActions() {
 
     });
     selectionImg2.addEventListener("click", function () {
-
+        homeLogo.style.display = "block";
         switchPage(homePage, aboutusPage);
         fadeIn(aboutusPage);
 
@@ -205,6 +215,8 @@ function addHomePageActions() {
         aboutusPage.style.opacity = 0;
         productPage.style.opacity = 0;
 
+        homeLogo.style.display = "none";
+
 
     });
 
@@ -221,14 +233,8 @@ function addHomePageActions() {
         homePage.style.display = "none";
         customerGegevensTest.style.display = "block";
     });
-    
-   /* if (homePage = "block") {
-        homeLogo.style.display = "none";
-    }
-    
 
-
-*/
+    
 
 
 }
@@ -460,7 +466,7 @@ function customerPageActions() {
 
 
 }
-
+hideLogo();
 signUp();
 addHomePageActions();
 addWebshopPageActions();

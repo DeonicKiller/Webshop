@@ -90,6 +90,7 @@ p {
 }
 
 #home-logo {
+    display: block;
     position: sticky;
     cursor: pointer;
     transition: 1s ease;
@@ -120,6 +121,7 @@ p {
     z-index: 1;
     position: relative;
     -webkit-transition-duration: 1.5s;
+    
 }
 
 /* Clear floats after image containers */
@@ -459,7 +461,7 @@ p {
     margin-top: 150px;
 }
     
-    .column:hover {
+    .selection:hover {
     -webkit-transform:rotate(360deg);
 }
 

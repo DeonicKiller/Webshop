@@ -230,6 +230,7 @@ function addHomePageActions() {
     });
 
     customerBanner.addEventListener("click", function () {
+        homeLogo.style.display = "block";
         homePage.style.display = "none";
         customerGegevensTest.style.display = "block";
     });

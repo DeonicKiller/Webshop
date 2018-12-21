@@ -442,7 +442,6 @@ function postCustomerInformation() {
         };
         myApi.prefix = "api/";
         myApi.execute();
-
     }
 
 

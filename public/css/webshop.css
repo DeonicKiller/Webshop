@@ -459,7 +459,7 @@ p {
     margin-top: 150px;
 }
     
-    .column:hover {
+    .selection:hover {
     -webkit-transform:rotate(360deg);
 }
 

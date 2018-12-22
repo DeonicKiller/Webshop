@@ -86,10 +86,11 @@ p {
 
 .product {
     display: inline-block;
-    margin: 7px;
+    margin: 5px;
 }
 
 #home-logo {
+    display: block;
     position: sticky;
     cursor: pointer;
     transition: 1s ease;
@@ -120,6 +121,7 @@ p {
     z-index: 1;
     position: relative;
     -webkit-transition-duration: 1.5s;
+
 }
 
 /* Clear floats after image containers */
@@ -178,6 +180,12 @@ p {
 
     body {
         overflow-y: scroll;
+    }
+    #first-name,#last-name{
+    
+        width:40%;
+        
+    
     }
 
 }
@@ -415,14 +423,18 @@ p {
 
 
 .field{
+    display: block;
+    float: left;
     border-radius: 12px;
     border-style: solid;
     border-width: 1px;
     padding:7px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: auto;
-    margin-right: auto;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width:100%;
+
 
     
 
@@ -430,8 +442,25 @@ p {
 .field:focus{
     border-color:black;
     border-width: 2px;
+    outline: none;
+    transition: 0.1s;
+
+
 
 }
+#first-name,#last-name{
+    
+    width:49%;
+    
+
+}
+#last-name{
+    float: right;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+
 #send-customer-information-button{
     border-style: solid;
     background-color:transparent;
@@ -462,5 +491,3 @@ p {
     .selection:hover {
     -webkit-transform:rotate(360deg);
 }
-
-

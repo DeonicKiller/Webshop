@@ -23,6 +23,7 @@ class Api {
                     //showResponse(response);
                     showProductsSucces(response);
                     addProductPageActions(response);
+                    getCustomer(response);
                 } else {
                     console.log('error: ' + xHttp.status);
                 }
@@ -463,10 +464,38 @@ function customerPageActions() {
    
     sendButtonCustomerInformation.addEventListener("click", function () {
         postCustomerInformation();
+        testExecute();
     });
 
 
 }
+function testExecute(){
+    myApi.request = "GET";
+    myApi.route = "customers";
+    myApi.send = null;
+    myApi.prefix = "api/";
+    myApi.execute();
+
+}
+var idOfDuplicate;
+function getCustomer(response){
+var emailInput = document.getElementById("input-email").value;
+for(var i = 0; i < response.length; i++){
+
+    if(response[i]["e-mail"] == emailInput){
+
+        console.log("already exists");
+        idOfDuplicate = response[i].id;
+        console.log(idOfDuplicate);
+        break;
+    }
+    else{
+        console.log("mail doesn't exist");
+    }
+}    
+}
+
+
 hideLogo();
 signUp();
 addHomePageActions();

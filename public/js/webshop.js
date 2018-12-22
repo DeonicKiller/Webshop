@@ -23,6 +23,7 @@ class Api {
                     //showResponse(response);
                     showProductsSucces(response);
                     addProductPageActions(response);
+                    getCustomer(response);
                 } else {
                     console.log('error: ' + xHttp.status);
                 }
@@ -144,9 +145,18 @@ function fadeIn(element) {
 
 
 }
+function hideLogo(){
+        homeLogo.style.display = "none";
 
+
+}
 
 function addHomePageActions() {
+
+    if(homePage.style.display == "block"){
+        homeLogo.style.display = "none";
+}
+
     selectionImg1.addEventListener("mouseover", function () {
         showOverlay(selectionImg1, overlayText1);
 
@@ -172,6 +182,7 @@ function addHomePageActions() {
 
 
     selectionImg1.addEventListener("click", function () {
+        homeLogo.style.display = "block";
         switchPage(homePage, webshopPage);
         fadeIn(webshopPage);
         if (productImageContainer.innerHTML == '') {
@@ -184,7 +195,7 @@ function addHomePageActions() {
 
     });
     selectionImg2.addEventListener("click", function () {
-
+        homeLogo.style.display = "block";
         switchPage(homePage, aboutusPage);
         fadeIn(aboutusPage);
 
@@ -205,6 +216,8 @@ function addHomePageActions() {
         aboutusPage.style.opacity = 0;
         productPage.style.opacity = 0;
 
+        homeLogo.style.display = "none";
+
 
     });
 
@@ -218,17 +231,12 @@ function addHomePageActions() {
     });
 
     customerBanner.addEventListener("click", function () {
+        homeLogo.style.display = "block";
         homePage.style.display = "none";
         customerGegevensTest.style.display = "block";
     });
-    
-   /* if (homePage = "block") {
-        homeLogo.style.display = "none";
-    }
-    
 
-
-*/
+    
 
 
 }
@@ -456,11 +464,39 @@ function customerPageActions() {
    
     sendButtonCustomerInformation.addEventListener("click", function () {
         postCustomerInformation();
+        testExecute();
     });
 
 
 }
+function testExecute(){
+    myApi.request = "GET";
+    myApi.route = "customers";
+    myApi.send = null;
+    myApi.prefix = "api/";
+    myApi.execute();
 
+}
+var idOfDuplicate;
+function getCustomer(response){
+var emailInput = document.getElementById("input-email").value;
+for(var i = 0; i < response.length; i++){
+
+    if(response[i]["e-mail"] == emailInput){
+
+        console.log("already exists");
+        idOfDuplicate = response[i].id;
+        console.log(idOfDuplicate);
+        break;
+    }
+    else{
+        console.log("mail doesn't exist");
+    }
+}    
+}
+
+
+hideLogo();
 signUp();
 addHomePageActions();
 addWebshopPageActions();

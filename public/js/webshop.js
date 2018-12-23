@@ -91,6 +91,7 @@ function showProductsFailed(products) {
 
 // Voor de Layout
 var homeLogo = document.getElementById("home-logo");
+var customerBanner = document.getElementById("banner");
 var selectionImg1 = document.getElementById("selection-1");
 var selectionImg2 = document.getElementById("selection-2");
 var selectionImg3 = document.getElementById("selection-3");
@@ -102,9 +103,9 @@ var overlayText3 = document.getElementById("selection-3-text");
 var homePage = document.getElementById("home-page");
 var webshopPage = document.getElementById("webshop-page");
 var aboutusPage = document.getElementById("aboutus-page");
+var cartPage = document.getElementById("cart-page");
 var productPage = document.getElementById("product-page");
 var productImageContainer = document.getElementById("image-1");
-var customerBanner = document.getElementById("banner");
 var customerGegevensTest = document.getElementById("customer-page");
 
 
@@ -133,6 +134,8 @@ function hidePages() {
     aboutusPage.style.display = "none";
     productPage.style.display = "none";
     customerGegevensTest.style.display = "none";
+    cartPage.style.display = "none";
+
 }
 
 function fadeIn(element) {
@@ -265,12 +268,14 @@ var image5 = document.getElementById("image-5");
 var allImages = document.getElementsByClassName("product-image");
 var sendButtonCustomerInformation = document.getElementById("send-customer-information-button");
 
+
 var bigImageElement = document.getElementById("big-image");
 var productDetailNameElement = document.getElementById("product-name");
 var productDetailPriceElement = document.getElementById("product-price");
 var productDetailPlatformElement = document.getElementById("product-platform");
 var productDetailDescriptionElement = document.getElementById("product-description");
 var addCartButton = document.getElementById("cartadd-button");
+var cartButton = document.getElementById("cart");
 
 
 
@@ -289,6 +294,7 @@ var totalPrice = 0;
 var subtotal = 0;
 var cartAmount = document.getElementById("cart-amount");
 var cartSubtotal = document.getElementById("cart-subtotal");
+
 
 
 function addProductPageActions(product) {
@@ -375,15 +381,14 @@ function addProductPageActions(product) {
 
         console.log(newOrder.getTotalPrice());
 
-
-
-
-
-
-
-
+        appendCartItem();
 
     }
+    cartButton.addEventListener("click",function(){
+
+        switchPage(productPage,cartPage);
+    });
+
 
 }
 
@@ -493,6 +498,55 @@ for(var i = 0; i < response.length; i++){
         console.log("mail doesn't exist");
     }
 }    
+}
+function appendCartItem(){
+    var amountField = document.getElementById("amount-field").value;
+
+    for(var i = 0; i < amountField; i++){
+    var cartPage = document.getElementById("cart-page");
+    
+    var cartContainer = document.getElementById("cart-container");
+    
+
+    var cartItemContainer = document.createElement("div");
+    cartItemContainer.setAttribute("class","cart-item-container");
+    
+
+
+    var cartItemImage = document.createElement("p");
+    cartItemImage.setAttribute("class","cart-item-image");
+    cartItemImage.setAttribute("class","column-cart");
+    
+    var cartItemPrice = document.createElement("p");
+    cartItemPrice.setAttribute("class", "cart-item-price");
+    cartItemPrice.setAttribute("class","column-cart");
+
+    
+    var cartItemPlatform = document.createElement("p");
+    cartItemPlatform.setAttribute("class", "cart-item-platform");
+    cartItemPlatform.setAttribute("class","column-cart");
+
+   
+    var cartItemAmount = document.createElement("p");
+    cartItemAmount.setAttribute("class","cart-item-amount");
+    cartItemAmount.setAttribute("class","column-cart");
+
+    
+
+    cartContainer.appendChild(cartItemContainer);
+    
+    cartItemContainer.appendChild(cartItemImage);
+    cartItemContainer.appendChild(cartItemPrice);
+    cartItemContainer.appendChild(cartItemPlatform);
+    cartItemContainer.appendChild(cartItemAmount);
+
+    cartItemImage.innerHTML = '<img  class="product-image" src="img/GTAV_PS4.jpg" alt="webshop">';
+    cartItemPrice.innerHTML = "59,98";
+    cartItemPlatform.innerHTML = "PS4";
+    cartItemAmount.innerHTML = "1";
+    }
+
+    
 }
 
 

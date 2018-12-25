@@ -21,6 +21,7 @@ class Api {
                 if (xHttp.status == 200 || xHttp.status == 201) {
                     var response = JSON.parse(xHttp.response);
                     //showResponse(response);
+
                     showProductsSucces(response);
                     addProductPageActions(response);
                     getCustomer(response);
@@ -148,17 +149,18 @@ function fadeIn(element) {
 
 
 }
-function hideLogo(){
-        homeLogo.style.display = "none";
+
+function hideLogo() {
+    homeLogo.style.display = "none";
 
 
 }
 
 function addHomePageActions() {
 
-    if(homePage.style.display == "block"){
+    if (homePage.style.display == "block") {
         homeLogo.style.display = "none";
-}
+    }
 
     selectionImg1.addEventListener("mouseover", function () {
         showOverlay(selectionImg1, overlayText1);
@@ -239,7 +241,7 @@ function addHomePageActions() {
         customerGegevensTest.style.display = "block";
     });
 
-    
+
 
 
 }
@@ -384,28 +386,27 @@ function addProductPageActions(product) {
         appendCartItem();
 
     }
-    cartButton.addEventListener("click",function(){
+    cartButton.addEventListener("click", function () {
 
-        switchPage(productPage,cartPage);
+        switchPage(productPage, cartPage);
     });
 
 
 }
-
 function signUp() {
 
-
     var sendEmailButton = document.getElementById("send-email-button");
-
     sendEmailButton.addEventListener("click", function () {
+
         var emailInput = document.getElementById("email-input");
         var emailInputValue = document.getElementById("email-input").value;
         var emailFeedback = document.getElementById("newsletter-feedback");
         var emailToString = "" + emailInputValue + "";
         var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
-
+        testExecute();
 
         if (!emailToString.match(reEmail)) {
+
 
             emailFeedback.innerHTML = "Email niet geldig. Probeer opnieuw";
             setTimeout(function () {
@@ -414,7 +415,8 @@ function signUp() {
             }, 1000);
             console.log(emailToString);
 
-        } else {
+        } else if (emailList == null) {
+
 
             myApi.request = 'POST';
             myApi.route = 'customers';
@@ -430,16 +432,41 @@ function signUp() {
             emailFeedback.innerHTML = "Je bent succesvol aangemeld";
             setTimeout(function () {
                 emailFeedback.innerHTML = "";
-                emailInput.value = "";
+                emailInput.value = ""
             }, 1000);
-            /*}*/
+            emailList = [];
+            testExecute();
+
+        } else if (checkEmailExists(emailInputValue)) {
+            emailFeedback.innerHTML = "Je bent al aangemeld";
+            setTimeout(function () {
+                emailFeedback.innerHTML = "";
+                emailInput.value = ""
+            }, 1000);
+        } else {
+            myApi.request = 'POST';
+            myApi.route = 'customers';
+            myApi.send = {
+                first_name: "",
+                last_name: "",
+                address: "",
+                city: "",
+                ["e-mail"]: emailInputValue,
+            };
+            myApi.prefix = "api/";
+            myApi.execute();
+            emailFeedback.innerHTML = "Je bent succesvol aangemeld";
+            setTimeout(function () {
+                emailFeedback.innerHTML = "";
+                emailInput.value = ""
+            }, 1000);
+            emailList = [];
+            testExecute();
         }
-
-
     });
 }
 
-
+var idOfDuplicate;
 
 function postCustomerInformation() {
     var emailInput = document.getElementById("input-email").value;
@@ -447,10 +474,29 @@ function postCustomerInformation() {
     var lastNameInput = document.getElementById("last-name").value;
     var addressInput = document.getElementById("address").value;
     var cityInput = document.getElementById("city").value;
-    if(firstNameInput == ""){
+
+    testExecute();
+    if (firstNameInput == "") {
         alert("Er missen gegevens");
-    }
-    else{
+    } else if (checkEmailExists(emailInput)) {
+
+        myApi.request = 'PUT';
+        myApi.route = 'customers/' + idOfDuplicate;
+        myApi.send = {
+            first_name: firstNameInput,
+            last_name: lastNameInput,
+            address: addressInput,
+            city: cityInput,
+            ["e-mail"]: emailInput,
+        }
+        myApi.prefix = "api/";
+        myApi.execute();
+
+        alert("Je bestelling is geplaatst");
+        emailList = [];
+        testExecute();
+
+    } else {
         myApi.request = 'POST';
         myApi.route = 'customers';
         myApi.send = {
@@ -462,19 +508,31 @@ function postCustomerInformation() {
         };
         myApi.prefix = "api/";
         myApi.execute();
+
+        alert("Je bestelling is geplaatst");
+
+        emailList = [];
+        testExecute();
+
     }
 }
 
+
+
+
+
 function customerPageActions() {
-   
+
     sendButtonCustomerInformation.addEventListener("click", function () {
-        postCustomerInformation();
         testExecute();
+        postCustomerInformation();
+
     });
 
 
 }
-function testExecute(){
+
+function testExecute() {
     myApi.request = "GET";
     myApi.route = "customers";
     myApi.send = null;
@@ -482,74 +540,88 @@ function testExecute(){
     myApi.execute();
 
 }
-var idOfDuplicate;
-function getCustomer(response){
-var emailInput = document.getElementById("input-email").value;
-for(var i = 0; i < response.length; i++){
 
-    if(response[i]["e-mail"] == emailInput){
+var emailList = [];
 
-        console.log("already exists");
-        idOfDuplicate = response[i].id;
-        console.log(idOfDuplicate);
-        break;
+function getCustomer(response) {
+    for (var i = 0; i < response.length; i++) {
+
+        /*if(response[i]["e-mail"] == emailInput){
+
+            console.log("already exists");
+            idOfDuplicate = response[i].id;
+            console.log(idOfDuplicate);
+            break;
+        }
+        else{
+            console.log("mail doesn't exist");
+        }*/
+        emailList[i] = response[i]["e-mail"];
     }
-    else{
-        console.log("mail doesn't exist");
-    }
-}    
+    console.log(emailList);
 }
-function appendCartItem(){
+
+function checkEmailExists(email) {
+    for (var i = 0; i < emailList.length; i++) {
+
+        if (emailList[i] == email) {
+            idOfDuplicate = i + 1;
+            return true;
+        } else {
+            return false
+        }
+    }
+}
+
+function appendCartItem() {
     var amountField = document.getElementById("amount-field").value;
 
-    for(var i = 0; i < amountField; i++){
-    var cartPage = document.getElementById("cart-page");
-    
-    var cartContainer = document.getElementById("cart-container");
-    
+    for (var i = 0; i < amountField; i++) {
+        var cartPage = document.getElementById("cart-page");
 
-    var cartItemContainer = document.createElement("div");
-    cartItemContainer.setAttribute("class","cart-item-container");
-    
+        var cartContainer = document.getElementById("cart-container");
 
 
-    var cartItemImage = document.createElement("p");
-    cartItemImage.setAttribute("class","cart-item-image");
-    cartItemImage.setAttribute("class","column-cart");
-    
-    var cartItemPrice = document.createElement("p");
-    cartItemPrice.setAttribute("class", "cart-item-price");
-    cartItemPrice.setAttribute("class","column-cart");
+        var cartItemContainer = document.createElement("div");
+        cartItemContainer.setAttribute("class", "cart-item-container");
 
-    
-    var cartItemPlatform = document.createElement("p");
-    cartItemPlatform.setAttribute("class", "cart-item-platform");
-    cartItemPlatform.setAttribute("class","column-cart");
 
-   
-    var cartItemAmount = document.createElement("p");
-    cartItemAmount.setAttribute("class","cart-item-amount");
-    cartItemAmount.setAttribute("class","column-cart");
 
-    
+        var cartItemImage = document.createElement("p");
+        cartItemImage.setAttribute("class", "cart-item-image");
+        cartItemImage.setAttribute("class", "column-cart");
 
-    cartContainer.appendChild(cartItemContainer);
-    
-    cartItemContainer.appendChild(cartItemImage);
-    cartItemContainer.appendChild(cartItemPrice);
-    cartItemContainer.appendChild(cartItemPlatform);
-    cartItemContainer.appendChild(cartItemAmount);
+        var cartItemPrice = document.createElement("p");
+        cartItemPrice.setAttribute("class", "cart-item-price");
+        cartItemPrice.setAttribute("class", "column-cart");
 
-    cartItemImage.innerHTML = '<img  class="product-image" src="img/GTAV_PS4.jpg" alt="webshop">';
-    cartItemPrice.innerHTML = "59,98";
-    cartItemPlatform.innerHTML = "PS4";
-    cartItemAmount.innerHTML = "1";
+
+        var cartItemPlatform = document.createElement("p");
+        cartItemPlatform.setAttribute("class", "cart-item-platform");
+        cartItemPlatform.setAttribute("class", "column-cart");
+
+
+        var cartItemAmount = document.createElement("p");
+        cartItemAmount.setAttribute("class", "cart-item-amount");
+        cartItemAmount.setAttribute("class", "column-cart");
+
+
+
+        cartContainer.appendChild(cartItemContainer);
+
+        cartItemContainer.appendChild(cartItemImage);
+        cartItemContainer.appendChild(cartItemPrice);
+        cartItemContainer.appendChild(cartItemPlatform);
+        cartItemContainer.appendChild(cartItemAmount);
+
+        cartItemImage.innerHTML = '<img  class="product-image" src="img/GTAV_PS4.jpg" alt="webshop">';
+        cartItemPrice.innerHTML = "59,98";
+        cartItemPlatform.innerHTML = "PS4";
+        cartItemAmount.innerHTML = "1";
     }
 
-    
+
 }
-
-
 hideLogo();
 signUp();
 addHomePageActions();

@@ -589,21 +589,21 @@ function appendCartItem() {
 
         var cartItemImage = document.createElement("p");
         cartItemImage.setAttribute("class", "cart-item-image");
-        cartItemImage.setAttribute("class", "column-cart");
+        
 
         var cartItemPrice = document.createElement("p");
         cartItemPrice.setAttribute("class", "cart-item-price");
-        cartItemPrice.setAttribute("class", "column-cart");
+        
 
 
         var cartItemPlatform = document.createElement("p");
         cartItemPlatform.setAttribute("class", "cart-item-platform");
-        cartItemPlatform.setAttribute("class", "column-cart");
+        
 
 
         var cartItemAmount = document.createElement("p");
         cartItemAmount.setAttribute("class", "cart-item-amount");
-        cartItemAmount.setAttribute("class", "column-cart");
+       
 
 
 

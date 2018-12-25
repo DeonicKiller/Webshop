@@ -13,7 +13,8 @@ p {
 }
 
 
-#top-border{
+
+#top-border {
     width: 100%;
     height: 10px;
     top: 0;
@@ -69,8 +70,35 @@ p {
 
 
 .selection {
+    display: flex;
+    align-content: center;
+    justify-content: center;
     cursor: pointer;
+    margin: 30px;
+    position: relative;
+
 }
+
+.selection-image {
+    width: 200px;
+    height: 200px;
+    -webkit-transition-duration: 1.5s;
+
+}
+
+#nav-bar {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    position: absolute;
+
+}
+
 
 #banner:hover {
     opacity: 0.3;
@@ -123,7 +151,8 @@ p {
     -webkit-transition-duration: 1.5s;
 
 }
-.column-cart{
+
+.column-cart {
     width: 25%;
     text-align: center;
     width: auto;
@@ -157,54 +186,40 @@ p {
 }
 
 @media screen and (max-width: 500px) {
+
+    #nav-bar {
+
+        flex-direction: column;
+
+
+    }
+
     .column {
         width: 100%;
 
 
     }
 
-    #selection-1,
-    #selection-2,
-    #selection-3 {
-        margin-top: 40%;
-        width: 87.5px;
-        height: 87.5px;
-
-
-    }
-
-    #selection-1-text,
-    #selection-2-text,
-    #selection-3-text {
-        position: absolute;
-        opacity: 1;
-        font-size: 20px;
-        top: 1px;
-        left: 0%;
-
-    }
 
     #banner {
-        font-size: 30px;
+        font-size: 20px;
     }
 
-    #right-side {
-        margin-top: 40%;
+
+
+
+    #first-name,
+    #last-name {
+
+        width: 100%;
+
+
     }
 
-    body {
-        overflow-y: scroll;
-    }
-    #first-name,#last-name{
-    
-        width:100%;
-        
-    
-    }
-    #newsletter-container{
-        display:block;
-        width:300px;;
-        color:red;
+    #newsletter-container {
+
+        flex-direction: column;
+        top: 100%;
 
     }
 
@@ -227,32 +242,35 @@ p {
 
 #selection-1-text {
     opacity: 0;
-    bottom: 87%;
-    left: 10%;
+    /*bottom: 87%;
+    left: 10%;*/
     font-weight: bold;
-    position: relative;
+    position: absolute;
+    top: 50%;
     transition: 1s ease;
-    display: inline-block;
+    /*display: inline-block;*/
 }
 
 #selection-2-text {
     opacity: 0;
-    bottom: 87%;
-    left: 5%;
+    /*bottom: 87%;
+    left: 5%;*/
     font-weight: bold;
-    position: relative;
+    position: absolute;
+    top: 50%;
     transition: 1s ease;
-    display: inline-block;
+    /*display: inline-block;*/
 }
 
 #selection-3-text {
     opacity: 0;
-    bottom: 87%;
-    left: 5%;
+    /* bottom: 87%;
+    left: 5%;*/
     font-weight: bold;
-    position: relative;
+    position: absolute;
+    top: 50%;
     transition: 1s ease;
-    display: inline-block;
+    /* display: inline-block;*/
 
 }
 
@@ -269,11 +287,18 @@ p {
 }
 
 #products-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
     height: 600px;
-    margin-left: 20%;
-    margin-right: 15%;
-    position: relative;
-    right: 2.2%;
+
+
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+
     overflow-y: scroll;
 }
 
@@ -285,44 +310,61 @@ p {
 }
 
 #newsletter-container {
-    display: inline-block;
-    position: fixed;
-    padding:10px;
-    left:37.5%;
-    bottom:3px;
-    height:100px;
+    display: flex;
+    flex-direction: column;
+
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    bottom: 0%;
+    height: 100px;
     width: 25%;
-    background-color:black;
-    border-style:solid;
+    background-color: black;
+    border-style: solid;
     border-width: 3px;
     border-color: black;
     text-align: center;
-  }
-#newsletter-text{
-    color: white;
-   
-}
-#newsletter-feedback{
     position: absolute;
-    left:42.5%;
-    bottom: 120px;
 }
-#send-email-button{
-    border-style:solid;
-    border-color:white;
+
+#newsletter-submit-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+}
+
+#newsletter-text {
+    color: white;
+
+}
+
+#newsletter-feedback {
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    bottom: 185px;
+}
+
+#send-email-button {
+    border-style: solid;
+    border-color: white;
     border-radius: 1px;
     border-width: 3px;
     background-color: white;
     cursor: pointer;
-    
+
     transition: 0.1s ease;
 
 
 
 }
-#send-email-button:hover{
-    background-color:black;
-    color:white;
+
+#send-email-button:hover {
+    background-color: black;
+    color: white;
 }
 
 
@@ -442,25 +484,26 @@ p {
 }
 
 
-.field{
+.field {
     display: block;
     float: left;
     border-radius: 12px;
     border-style: solid;
     border-width: 1px;
-    padding:7px;
+    padding: 7px;
     padding-right: 0px;
     padding-left: 0px;
     margin-top: 10px;
     margin-bottom: 10px;
-    width:100%;
+    width: 100%;
 
 
-    
+
 
 }
-.field:focus{
-    border-color:black;
+
+.field:focus {
+    border-color: black;
     border-width: 2px;
     outline: none;
     transition: 0.1s;
@@ -468,35 +511,39 @@ p {
 
 
 }
-#first-name,#last-name{
-    
-    width:49%;
-    
+
+#first-name,
+#last-name {
+
+    width: 49%;
+
 
 }
-#last-name{
+
+#last-name {
     float: right;
     padding-left: 0px;
     padding-right: 0px;
 }
 
 
-#send-customer-information-button{
+#send-customer-information-button {
     border-style: solid;
-    background-color:transparent;
+    background-color: transparent;
     border-radius: 12px;
     border-color: black;
     cursor: pointer;
-    padding:4px;
+    padding: 4px;
     transition: 0.1s ease;
 
 
 }
-#send-customer-information-button:hover{
-    
+
+#send-customer-information-button:hover {
+
     background-color: black;
     color: white;
-    
+
 
 }
 
@@ -507,21 +554,23 @@ p {
 #input-email {
     margin-top: 150px;
 }
-.selection:hover {
-    -webkit-transform:rotate(360deg);
+
+.selection-image:hover {
+    -webkit-transform: rotate(360deg);
 }
-.cart-container{
-    height:100%;
-    width:100%;
+
+.cart-container {
+    height: 100%;
+    width: 100%;
     display: block;
     overflow-y: scroll;
 }
-.cart-item-container{
+
+.cart-item-container {
     display: inline-block;
-    height:auto;
-    
+    height: auto;
+
 
 }
-.cart-item-image{
 
-}
+.cart-item-image {}

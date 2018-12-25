@@ -16,7 +16,7 @@
         <div id="top-border"></div>
         <img id="home-logo" src="img/gaminglogo.jpg" alt="logo" class="center">
         <div id="cart">
-            <p id="cart-header">WINKELWAGEN</p>
+            <p id="cart-header">CART</p>
             <div id="cart-content">
                 <p id="cart-amount"></p>
                 <p id="cart-subtotal"></p>
@@ -27,33 +27,33 @@
     <div id="home-page" class="page">
 
 
-        <div class="row center">
-            <div class="column">
-                <img id="selection-1" class="column selection" src="img/shopping-cart-logo-icon-70706.png" alt="webshop">
+        <div id="nav-bar" class="center">
+            <div id="selection-1-container" class="selection">
+                <img id="selection-1" class="selection-image" src="img/shopping-cart-logo-icon-70706.png" alt="webshop">
                 <h1 id="selection-1-text">webshop</h1>
             </div>
-            <div class="column">
-                <img id="selection-2" class="column selection" src="img/many-people-solid.png" alt="about us">
+            <div id="selection-2-container" class="selection">
+                <img id="selection-2" class="selection-image" src="img/many-people-solid.png" alt="about us">
                 <h1 id="selection-2-text">About us</h1>
             </div>
-            <div class="column">
-                <img id="selection-3" class="column selection" src="img/myprofile2.png" alt="my profile">
+            <div id="selection-3-container" class="selection">
+                <img id="selection-3" class="selection-image" src="img/myprofile2.png" alt="my profile">
                 <h1 id="selection-3-text">My Profile</h1>
             </div>
 
         </div>
-        <p id="newsletter-feedback"></p>
-        <div id="newsletter-container">
+        <p id="newsletter-feedback" class="center"></p>
+        <div id="newsletter-container" class="center">
             <p id="newsletter-text">Meld je aan voor de nieuwsbrief om op de hoogte te blijven van de laatste nieuwtjes</p>
-            <input id='email-input' type="text" placeholder="E-mail" spellcheck="false">
-            <button id="send-email-button">verzend</button>
+            <div id="newsletter-submit-container"><input id='email-input' type="text" placeholder="E-mail" spellcheck="false">
+            <button id="send-email-button">verzend</button></div>
         </div>
 
 
     </div>
 
     <div id="webshop-page" class="page">
-        <div id="products-container">
+        <div id="products-container" class="center">
             <div id="Product1" class="product">
                 <p id="image-1" class="product-image"></p>
                 <p id="name-1"></p>

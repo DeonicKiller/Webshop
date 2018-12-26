@@ -82,6 +82,7 @@ p {
 .selection-image {
     width: 200px;
     height: 200px;
+    transition-duration: 1.5s;
     -webkit-transition-duration: 1.5s;
 
 }
@@ -148,6 +149,7 @@ p {
     transition: 1s ease;
     z-index: 1;
     position: relative;
+    transition-duration: 1.5s;
     -webkit-transition-duration: 1.5s;
 
 }
@@ -185,11 +187,17 @@ p {
 
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 480px) {
+    .cart-item-image img{
+        height:auto;
+        width:100%;
+    }
+    
 
     #nav-bar {
 
         flex-direction: column;
+        margin-top: 30%;
 
 
     }
@@ -202,19 +210,13 @@ p {
 
 
     #banner {
-        font-size: 20px;
+        font-size: 25px;
     }
 
 
 
 
-    #first-name,
-    #last-name {
 
-        width: 100%;
-
-
-    }
 
     #newsletter-container {
         height:50%;
@@ -230,12 +232,20 @@ p {
 
 
     }
-    #email-input{
-        width:fit-content;
-        
 
+    #product-detail-container{
+        margin-top: 70%;
+    }
+    #upper{
+        
+        flex-direction: column !important;
     }
 
+
+    #products-container{
+        margin-top:30%;
+        width:auto
+    }
 }
 
 .center {
@@ -303,7 +313,7 @@ p {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-
+width: auto;
     height: 600px;
 
 
@@ -397,27 +407,22 @@ p {
 }
 
 #product-detail-container {
-    margin-left: 25%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     top: 50%;
     left: 50%;
-    width: 100%;
-    height: 50%;
     transform: translate(-50%, -50%);
-    position: fixed;
-    display: table;
+}
+#upper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-#product-detail-container::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-#big-image {
-    display: inline-block;
-}
-
-#right-side {
+/*#right-side {
     margin-left: 3%;
     top: 50px;
     float: left;
@@ -428,7 +433,7 @@ p {
     height: 300px;
     transition: 1s ease;
     position: relative;
-}
+
 
 #left-side {
     top: 50px;
@@ -446,11 +451,10 @@ p {
 #bottom {
     left: 0;
     display: table-footer-group;
-}
+}*/
 
 #product-description {
     margin-top: 3%;
-    width: 50%;
     height: 200px;
     text-align: left;
     overflow-y: scroll;
@@ -579,11 +583,10 @@ p {
     transform: translate(-50%, -50%);
     position:absolute;
 }
-#input-email {
 
-}
 
 .selection-image:hover {
+    transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
 }
 
@@ -601,7 +604,7 @@ p {
 
 
 }
-.cart-item-image img{
+.cart-item-image .product-image{
     height:180px;
     width:150px;
 }

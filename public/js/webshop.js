@@ -306,6 +306,7 @@ var totalPrice = 0;
 var subtotal = 0;
 var cartAmount = document.getElementById("cart-amount");
 var cartSubtotal = document.getElementById("cart-subtotal");
+var totalAmount = 0;
 
 
 
@@ -377,20 +378,36 @@ function addProductPageActions(product) {
     });
 
     function addToCart(number) {
-        newProduct = new Product();
-        var amountField = document.getElementById("amount-field").value;
+        
+        var amountField = parseInt(document.getElementById("amount-field").value,10);
+        
         var productPrice = product[number].price;
+        var itemString = "item";
 
+
+        if(amountField > 0){
         subtotal += (amountField * productPrice);
         cartSubtotal.innerHTML = "&euro; " + subtotal;
-        console.log(subtotal);
+        totalAmount += amountField;
+        if(totalAmount > 1){
+            itemString = "items";
+        }
 
+        cartAmount.innerHTML = totalAmount + itemString;
+
+
+        //console.log(subtotal);
+        newProduct = new Product();
         newProduct.setPrice(productPrice);
         newOrder.setTotalPrice(subtotal);
-
-        console.log(newOrder.getTotalPrice());
+        //console.log(newOrder.getTotalPrice());
 
         appendCartItem();
+    }
+    else{
+        alert("please select an amount");
+    }
+    
 
     }
     cartButton.addEventListener("click", function () {

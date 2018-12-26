@@ -540,7 +540,8 @@ p {
     
     
 
-    
+
+
 
 
 
@@ -595,12 +596,28 @@ p {
 .cart-item-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    height: auto;
+    justify-content: space-between;
+    align-items: center;
 
 
 }
 .cart-item-image img{
     height:180px;
     width:150px;
+}
+.remove-item-button{
+    display: inline-flex;
+    height: auto;
+    border-style: solid;
+    background-color: transparent;
+    border-radius: 12px;
+    border-color: black;
+    cursor: pointer;
+    padding: 4px;
+    transition: 0.1s ease;
+
+}
+.remove-item-button:hover{
+    background-color: black;
+    color: white;
 }

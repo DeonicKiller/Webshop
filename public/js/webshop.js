@@ -19,12 +19,11 @@ class Api {
         xHttp.onreadystatechange = function () {
             if (xHttp.readyState == XMLHttpRequest.DONE) {
                 if (xHttp.status == 200 || xHttp.status == 201) {
-                    var response = JSON.parse(xHttp.response);
-                    //showResponse(response);
+                    var response = JSON.parse(xHttp.response);     
+                        showProductsSucces(response);
+                        addProductPageActions(response);
+                        getCustomer(response);         
 
-                    showProductsSucces(response);
-                    addProductPageActions(response);
-                    getCustomer(response);
                 } else {
                     console.log('error: ' + xHttp.status);
                 }
@@ -158,6 +157,7 @@ function hideLogo() {
 
 function addHomePageActions() {
 
+
     if (homePage.style.display == "block") {
 hideLogo();    }
 
@@ -190,8 +190,8 @@ hideLogo();    }
         switchPage(homePage, webshopPage);
         fadeIn(webshopPage);
         if (productImageContainer.innerHTML == '') {
-            myApi.request = 'GET';
-            myApi.route = 'products';
+            myApi.request = "GET";
+            myApi.route = "products";
             myApi.send = null;
             myApi.prefix = "api/";
             myApi.execute();
@@ -225,6 +225,7 @@ hideLogo();    }
 
         homeLogo.style.display = "none";
 
+        
 
     });
 
@@ -243,6 +244,19 @@ hideLogo();    }
         customerGegevensTest.style.display = "block";
     });
 
+    sendEmailButton.addEventListener("click", function(){
+        myApi.request = "GET";
+        myApi.route = "customers";
+        myApi.send = null;
+        myApi.prefix = "api/";
+        myApi.execute();
+
+        setTimeout(signUp(),10000);
+        
+
+
+
+    });
 
 
 
@@ -251,17 +265,10 @@ hideLogo();    }
 function addWebshopPageActions() {
 
 
-
-
 }
 
-function LoadInProducts(id) {
-    myApi.request = 'GET';
-    myApi.route = 'products/' + id;
-    myApi.send = null;
-    myApi.prefix = "api/";
-    myApi.execute();
-};
+
+
 //Alle var's
 
 var image1 = document.getElementById("image-1");
@@ -280,6 +287,7 @@ var productDetailPlatformElement = document.getElementById("product-platform");
 var productDetailDescriptionElement = document.getElementById("product-description");
 var addCartButton = document.getElementById("cartadd-button");
 var cartButton = document.getElementById("cart");
+var sendEmailButton = document.getElementById("send-email-button");
 
 
 
@@ -322,7 +330,7 @@ function addProductPageActions(product) {
 
     image1.addEventListener("click", function () {
         showProductDetails(0);
-        LoadInProducts(0);
+        
 
         switchPage(webshopPage, productPage);
         fadeIn(productPage);
@@ -334,7 +342,7 @@ function addProductPageActions(product) {
     image2.addEventListener("click", function () {
 
         showProductDetails(1);
-        LoadInProducts(1);
+        
         switchPage(webshopPage, productPage);
         fadeIn(productPage);
 
@@ -342,7 +350,6 @@ function addProductPageActions(product) {
     });
     image3.addEventListener("click", function () {
         showProductDetails(2);
-        LoadInProducts(2);
         switchPage(webshopPage, productPage);
         fadeIn(productPage);
 
@@ -350,7 +357,6 @@ function addProductPageActions(product) {
     });
     image4.addEventListener("click", function () {
         showProductDetails(3);
-        LoadInProducts(3);
         switchPage(webshopPage, productPage);
         fadeIn(productPage);
 
@@ -358,7 +364,6 @@ function addProductPageActions(product) {
     });
     image5.addEventListener("click", function () {
         showProductDetails(4);
-        LoadInProducts(4);
         switchPage(webshopPage, productPage);
         fadeIn(productPage);
 
@@ -394,21 +399,31 @@ function addProductPageActions(product) {
         homePage.style.display = "none";
         cartPage.style.display = "block";
         homeLogo.style.display = "block";
+        removeItem();
+
     });
 
 
 }
-function signUp() {
+var button = document.getElementsByClassName('remove-item-button');
+function removeItem(){
+    
 
-    var sendEmailButton = document.getElementById("send-email-button");
-    sendEmailButton.addEventListener("click", function () {
+    for (var i = 0; i < button.length; i++) {
+      button[i].addEventListener('click', function(e) {
+        e.currentTarget.parentNode.remove();
+
+      }, false);
+    }
+}
+function signUp() {
 
         var emailInput = document.getElementById("email-input");
         var emailInputValue = document.getElementById("email-input").value;
         var emailFeedback = document.getElementById("newsletter-feedback");
         var emailToString = "" + emailInputValue + "";
         var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
-        testExecute();
+
 
         if (!emailToString.match(reEmail)) {
 
@@ -439,9 +454,8 @@ function signUp() {
                 emailFeedback.innerHTML = "";
                 emailInput.value = ""
             }, 1000);
-            emailList = [];
-            testExecute();
-
+            
+            
         } else if (checkEmailExists(emailInputValue)) {
             emailFeedback.innerHTML = "Je bent al aangemeld";
             setTimeout(function () {
@@ -465,22 +479,24 @@ function signUp() {
                 emailFeedback.innerHTML = "";
                 emailInput.value = ""
             }, 1000);
-            emailList = [];
-            testExecute();
+            
+            
         }
-    });
+    
 }
 
 var idOfDuplicate;
 
 function postCustomerInformation() {
+    testExecute();
+
     var emailInput = document.getElementById("input-email").value;
     var firstNameInput = document.getElementById("first-name").value;
     var lastNameInput = document.getElementById("last-name").value;
     var addressInput = document.getElementById("address").value;
     var cityInput = document.getElementById("city").value;
 
-    testExecute();
+
     if (firstNameInput == "") {
         alert("Er missen gegevens");
     } else if (checkEmailExists(emailInput)) {
@@ -499,7 +515,7 @@ function postCustomerInformation() {
 
         alert("Je bestelling is geplaatst");
         emailList = [];
-        testExecute();
+        
 
     } else {
         myApi.request = 'POST';
@@ -517,7 +533,7 @@ function postCustomerInformation() {
         alert("Je bestelling is geplaatst");
 
         emailList = [];
-        testExecute();
+        
 
     }
 }
@@ -529,8 +545,9 @@ function postCustomerInformation() {
 function customerPageActions() {
 
     sendButtonCustomerInformation.addEventListener("click", function () {
-        testExecute();
+        
         postCustomerInformation();
+        
 
     });
 
@@ -546,24 +563,20 @@ function testExecute() {
 
 }
 
+
 var emailList = [];
 
 function getCustomer(response) {
-    for (var i = 0; i < response.length; i++) {
 
-        /*if(response[i]["e-mail"] == emailInput){
-
-            console.log("already exists");
-            idOfDuplicate = response[i].id;
-            console.log(idOfDuplicate);
-            break;
+    sendEmailButton.addEventListener("click",function(){
+        for (var i = 0; i < response.length; i++) {
+    
+            emailList[i] = response[i]["e-mail"];
         }
-        else{
-            console.log("mail doesn't exist");
-        }*/
-        emailList[i] = response[i]["e-mail"];
-    }
-    console.log(emailList);
+        console.log(emailList);
+
+    });
+
 }
 
 function checkEmailExists(email) {
@@ -572,9 +585,7 @@ function checkEmailExists(email) {
         if (emailList[i] == email) {
             idOfDuplicate = i + 1;
             return true;
-        } else {
-            return false
-        }
+        } 
     }
 }
 
@@ -608,6 +619,10 @@ function appendCartItem() {
 
         var cartItemAmount = document.createElement("p");
         cartItemAmount.setAttribute("class", "cart-item-amount");
+
+        var removeItemButton = document.createElement("button");
+        removeItemButton.setAttribute("class","remove-item-button");
+        removeItemButton.innerHTML = "remove";
        
 
 
@@ -618,6 +633,7 @@ function appendCartItem() {
         cartItemContainer.appendChild(cartItemPrice);
         cartItemContainer.appendChild(cartItemPlatform);
         cartItemContainer.appendChild(cartItemAmount);
+        cartItemContainer.appendChild(removeItemButton);
 
         cartItemImage.innerHTML = '<img  class="product-image" src="img/GTAV_PS4.jpg" alt="webshop">';
         cartItemPrice.innerHTML = "59,98";
@@ -627,9 +643,12 @@ function appendCartItem() {
 
 
 }
-hideLogo();
-signUp();
-addHomePageActions();
+
 addWebshopPageActions();
+hideLogo();
+addHomePageActions();
 customerPageActions();
 hidePages();
+
+
+

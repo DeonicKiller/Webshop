@@ -159,8 +159,7 @@ function hideLogo() {
 function addHomePageActions() {
 
     if (homePage.style.display == "block") {
-        homeLogo.style.display = "none";
-    }
+hideLogo();    }
 
     selectionImg1.addEventListener("mouseover", function () {
         showOverlay(selectionImg1, overlayText1);
@@ -208,7 +207,7 @@ function addHomePageActions() {
 
     homeLogo.addEventListener("click", function () {
 
-        if (webshopPage.style.display == "block") {
+        /*if (webshopPage.style.display == "block") {
             switchPage(webshopPage, homePage);
         } else if (aboutusPage.style.display == "block") {
             switchPage(aboutusPage, homePage);
@@ -216,7 +215,10 @@ function addHomePageActions() {
             switchPage(productPage, homePage);
         } else if (customerGegevensTest.style.display == "block") {
             switchPage(customerGegevensTest, homePage);
-        }
+        }*/
+        hidePages();
+        homePage.style.display = "block";
+
         webshopPage.style.opacity = 0;
         aboutusPage.style.opacity = 0;
         productPage.style.opacity = 0;
@@ -388,7 +390,10 @@ function addProductPageActions(product) {
     }
     cartButton.addEventListener("click", function () {
 
-        switchPage(productPage, cartPage);
+        hidePages();
+        homePage.style.display = "none";
+        cartPage.style.display = "block";
+        homeLogo.style.display = "block";
     });
 
 

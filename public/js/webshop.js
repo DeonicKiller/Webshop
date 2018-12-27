@@ -440,7 +440,7 @@ function removeItem(){
 
     for (var i = 0; i < button.length; i++) {
       button[i].addEventListener('click', function(e) {
-        e.currentTarget.parentNode.remove();
+        e.currentTarget.parentNode.parentNode.remove();
 
       }, false);
     }
@@ -630,8 +630,16 @@ function appendCartItem() {
         var cartItemContainer = document.createElement("div");
         cartItemContainer.setAttribute("class", "cart-item-container");
 
+        var cartItemSubContainer1 = document.createElement("div");
+        cartItemSubContainer1.setAttribute("class", "cart-item-subcontainer1");
+
+        var cartItemSubContainer2 = document.createElement("div");
+        cartItemSubContainer2.setAttribute("class", "cart-item-subcontainer2");
 
 
+        var cartItemName = document.createElement("p");
+        cartItemName.setAttribute("class", "cart-item-name");
+        
         var cartItemImage = document.createElement("p");
         cartItemImage.setAttribute("class", "cart-item-image");
         
@@ -657,17 +665,24 @@ function appendCartItem() {
 
 
         cartContainer.appendChild(cartItemContainer);
-
         cartItemContainer.appendChild(cartItemImage);
-        cartItemContainer.appendChild(cartItemPrice);
-        cartItemContainer.appendChild(cartItemPlatform);
-        cartItemContainer.appendChild(cartItemAmount);
-        cartItemContainer.appendChild(removeItemButton);
+        cartItemContainer.appendChild(cartItemSubContainer1);
+        cartItemContainer.appendChild(cartItemSubContainer2);
+
+        cartItemSubContainer1.appendChild(cartItemName);
+        cartItemSubContainer1.appendChild(cartItemPlatform);
+        cartItemSubContainer1.appendChild(removeItemButton);
+
+
+        cartItemSubContainer2.appendChild(cartItemPrice);
+        cartItemSubContainer2.appendChild(cartItemAmount);
+        
 
         cartItemImage.innerHTML = '<img  class="product-image" src="img/GTAV_PS4.jpg" alt="webshop">';
         cartItemPrice.innerHTML = "59,98";
         cartItemPlatform.innerHTML = "PS4";
         cartItemAmount.innerHTML = "1";
+        cartItemName.innerHTML = "Grand Theft Auto V";
     }
 
 

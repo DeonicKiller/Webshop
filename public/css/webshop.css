@@ -195,7 +195,7 @@ p {
 
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
     .cart-item-image img {
         height: auto;
         width: 100%;

@@ -148,6 +148,17 @@ function fadeIn(element) {
 
 
 }
+function hideMobileCartAmount(){
+    const mobileView = window.matchMedia("(max-width: 480px)" );
+    const browserView = window.matchMedia("min-width:481px");
+
+
+    if(mobileView.matches){
+        cartAmountMobile.style.display = "block";
+    }
+
+
+}
 
 function hideLogo() {
     homeLogo.style.display = "none";
@@ -306,6 +317,7 @@ var totalPrice = 0;
 var subtotal = 0;
 var cartAmount = document.getElementById("cart-amount");
 var cartSubtotal = document.getElementById("cart-subtotal");
+var cartAmountMobile = document.getElementById("cart-amount-mobile");
 var totalAmount = 0;
 
 
@@ -380,20 +392,20 @@ function addProductPageActions(product) {
     function addToCart(number) {
         
         var amountField = parseInt(document.getElementById("amount-field").value,10);
-        
         var productPrice = product[number].price;
         var itemString = "item";
 
-
         if(amountField > 0){
-        subtotal += (amountField * productPrice);
-        cartSubtotal.innerHTML = "&euro; " + subtotal;
-        totalAmount += amountField;
+ 
         if(totalAmount > 1){
             itemString = "items";
         }
 
+        subtotal += (amountField * productPrice);
+        cartSubtotal.innerHTML = "&euro; " + subtotal;
+        totalAmount += amountField;
         cartAmount.innerHTML = totalAmount + itemString;
+        cartAmountMobile.innerHTML = totalAmount;
 
 
         //console.log(subtotal);
@@ -660,7 +672,7 @@ function appendCartItem() {
 
 
 }
-
+hideMobileCartAmount();
 addWebshopPageActions();
 hideLogo();
 addHomePageActions();

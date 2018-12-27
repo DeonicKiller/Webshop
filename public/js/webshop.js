@@ -310,15 +310,18 @@ var sendEmailButton = document.getElementById("send-email-button");
         allImages[i].style.width = "280px";
     }
 }*/
-
+var idSelectedProduct = 0;
+var indexOfProduct = 0;
 var newProduct;
 var newOrder;
+var cartItems = [];
 var totalPrice = 0;
 var subtotal = 0;
 var cartAmount = document.getElementById("cart-amount");
 var cartSubtotal = document.getElementById("cart-subtotal");
 var cartAmountMobile = document.getElementById("cart-amount-mobile");
 var totalAmount = 0;
+
 
 
 
@@ -343,6 +346,7 @@ function addProductPageActions(product) {
 
     image1.addEventListener("click", function () {
         showProductDetails(0);
+        idSelectedProduct = 0;
         
 
         switchPage(webshopPage, productPage);
@@ -355,7 +359,8 @@ function addProductPageActions(product) {
     image2.addEventListener("click", function () {
 
         showProductDetails(1);
-        
+        idSelectedProduct = 1;
+
         switchPage(webshopPage, productPage);
         fadeIn(productPage);
 
@@ -363,6 +368,8 @@ function addProductPageActions(product) {
     });
     image3.addEventListener("click", function () {
         showProductDetails(2);
+        idSelectedProduct = 2;
+
         switchPage(webshopPage, productPage);
         fadeIn(productPage);
 
@@ -370,6 +377,8 @@ function addProductPageActions(product) {
     });
     image4.addEventListener("click", function () {
         showProductDetails(3);
+        idSelectedProduct = 3;
+
         switchPage(webshopPage, productPage);
         fadeIn(productPage);
 
@@ -377,6 +386,8 @@ function addProductPageActions(product) {
     });
     image5.addEventListener("click", function () {
         showProductDetails(4);
+        idSelectedProduct = 4;
+
         switchPage(webshopPage, productPage);
         fadeIn(productPage);
 
@@ -386,19 +397,24 @@ function addProductPageActions(product) {
     });
     addCartButton.addEventListener("click", function () {
         newOrder = new Order();
-        addToCart(0);
+        addToCart(idSelectedProduct);
     });
 
     function addToCart(number) {
         
         var amountField = parseInt(document.getElementById("amount-field").value,10);
         var productPrice = product[number].price;
-        var itemString = "item";
+        var productName = product[number].name;
+        var productPlatform = product[number].platform;
+        var productImage = product[number].image;
+
+
+        var itemString = "items";
 
         if(amountField > 0){
  
-        if(totalAmount > 1){
-            itemString = "items";
+        if(totalAmount <= 1){
+            itemString = "item";
         }
 
         subtotal += (amountField * productPrice);
@@ -412,9 +428,23 @@ function addProductPageActions(product) {
         newProduct = new Product();
         newProduct.setPrice(productPrice);
         newOrder.setTotalPrice(subtotal);
-        //console.log(newOrder.getTotalPrice());
+        newProduct.setName(productName);
+        newProduct.setPlatform(productPlatform);
+        newProduct.setImage(productImage);
 
-        appendCartItem();
+
+        
+
+        cartItems.push(newProduct);
+        console.log(cartItems);
+
+        
+        //console.log(newOrder.getTotalPrice());
+        
+
+        appendCartItem(productName,productPlatform,productPrice,amountField,productImage);
+        
+        
     }
     else{
         alert("please select an amount");
@@ -435,14 +465,56 @@ function addProductPageActions(product) {
 
 }
 var button = document.getElementsByClassName('remove-item-button');
+
 function removeItem(){
     
 
-    for (var i = 0; i < button.length; i++) {
+    for (let i = 0; i < button.length; i++) {
       button[i].addEventListener('click', function(e) {
         e.currentTarget.parentNode.parentNode.remove();
+        
+        
+
 
       }, false);
+
+
+
+}
+clickedClassHandler("remove-item-button", function(index){
+
+    cartItems.splice(index,1);
+    console.log(cartItems);
+});
+}
+
+function clickedClassHandler(name,callback) {
+
+    // apply click handler to all elements with matching className
+    var allElements = document.body.getElementsByTagName("*");
+
+    for(var x = 0, len = allElements.length; x < len; x++) {
+        if(allElements[x].className == name) {
+            allElements[x].onclick = handleClick;
+        }
+    }
+
+    function handleClick() {
+        var elmParent = this.parentNode;
+        var parentChilds = elmParent.childNodes;
+        var index = 0;
+
+        for(var x = 0; x < parentChilds.length; x++) {
+            if(parentChilds[x] == this) {
+                break;
+            }
+
+            if(parentChilds[x].className == name) {
+                index++;
+            }
+        }
+
+        callback.call(this,index);
     }
 }
 function signUp() {
@@ -618,10 +690,10 @@ function checkEmailExists(email) {
     }
 }
 
-function appendCartItem() {
+function appendCartItem(name,platform,price,amount,image) {
     var amountField = document.getElementById("amount-field").value;
 
-    for (var i = 0; i < amountField; i++) {
+
         var cartPage = document.getElementById("cart-page");
 
         var cartContainer = document.getElementById("cart-container");
@@ -678,15 +750,15 @@ function appendCartItem() {
         cartItemSubContainer2.appendChild(cartItemAmount);
         
 
-        cartItemImage.innerHTML = '<img  class="product-image" src="img/GTAV_PS4.jpg" alt="webshop">';
-        cartItemPrice.innerHTML = "59,98";
-        cartItemPlatform.innerHTML = "PS4";
-        cartItemAmount.innerHTML = "1";
-        cartItemName.innerHTML = "Grand Theft Auto V";
+        cartItemImage.innerHTML = image;
+        cartItemPrice.innerHTML = "&euro;" +price;
+        cartItemPlatform.innerHTML = platform;
+        cartItemAmount.innerHTML = amount;
+        cartItemName.innerHTML = name;
     }
 
 
-}
+
 hideMobileCartAmount();
 addWebshopPageActions();
 hideLogo();

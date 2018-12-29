@@ -324,14 +324,17 @@ var totalAmount = 0;
 
 
 
-
+/** */
 function addProductPageActions(product) {
 
 
 
 
     productDetailDescriptionElement.innerHTML = "Amerika, 1899. Wetshandhavers hebben het gemunt op de laatste outlaw-bendes. Wie zich niet wil overgeven, wordt genadeloos afgemaakt. Arthur Morgan en de Van der Linde-bende slaan op de vlucht nadat in het plaatsje Blackwater een overval slecht afloopt. Met federale agenten en de beste premiejagers van het Westen op de hielen, trekken ze door het ruige hart van Amerika, een spoor van overvallen en vuurgevechten achter zich latend.<br><br> Als door interne strubbelingen de bende uiteen dreigt te vallen, wordt Arthur gedwongen een keuze te maken. Kiest hij voor zijn idealen of voor de bende waar hij alles aan te danken heeft?<br><br> Red Dead Redemption 2, van de makers van Grand Theft Auto V en Red Dead Redemption, is een episch verhaal over het einde van het Wilde Westen en het begin van een nieuw tijdperk.";
-
+    /**
+     * 
+     * @param {int} number 
+     */
     function showProductDetails(number) {
 
 
@@ -343,7 +346,9 @@ function addProductPageActions(product) {
 
     }
 
-
+    /**
+     * Execute on click
+     */
     image1.addEventListener("click", function () {
         showProductDetails(0);
         idSelectedProduct = 0;
@@ -356,6 +361,9 @@ function addProductPageActions(product) {
 
 
     });
+    /**
+     * Execute on click
+     */
     image2.addEventListener("click", function () {
 
         showProductDetails(1);
@@ -366,6 +374,9 @@ function addProductPageActions(product) {
 
 
     });
+    /**
+     * Execute on click
+     */
     image3.addEventListener("click", function () {
         showProductDetails(2);
         idSelectedProduct = 2;
@@ -375,6 +386,9 @@ function addProductPageActions(product) {
 
 
     });
+    /**
+     * Execute on click
+     */
     image4.addEventListener("click", function () {
         showProductDetails(3);
         idSelectedProduct = 3;
@@ -384,6 +398,9 @@ function addProductPageActions(product) {
 
 
     });
+    /**
+     * Execute on click
+     */
     image5.addEventListener("click", function () {
         showProductDetails(4);
         idSelectedProduct = 4;
@@ -395,6 +412,9 @@ function addProductPageActions(product) {
 
 
     });
+    /**
+     * Execute on click
+     */
     addCartButton.addEventListener("click", function () {
         newOrder = new Order();
         addToCart(idSelectedProduct);
@@ -452,6 +472,9 @@ function addProductPageActions(product) {
     
 
     }
+    /**
+     * Execute on click
+     */
     cartButton.addEventListener("click", function () {
 
         hidePages();
@@ -465,29 +488,42 @@ function addProductPageActions(product) {
 
 }
 var button = document.getElementsByClassName('remove-item-button');
-
+var parentDiv = document.getElementsByClassName('cart-item-container');
+/**
+ * Removes cart item from page and from cart item array
+ */
 function removeItem(){
-    
 
-    for (let i = 0; i < button.length; i++) {
-      button[i].addEventListener('click', function(e) {
-        e.currentTarget.parentNode.parentNode.remove();
+    clickedClassHandler("remove-item-button", function(index){
+        cartItems.splice(index, 1);
         
+        console.log(cartItems);
+    });
+    for (var i = 0; i < parentDiv.length; i++) {
+      button[i].addEventListener('click', function(e) {
+
+        e.currentTarget.parentNode.remove();
         
 
 
       }, false);
 
 
+    
+    }
+
+
+
 
 }
-clickedClassHandler("remove-item-button", function(index){
 
-    cartItems.splice(index,1);
-    console.log(cartItems);
-});
-}
 
+
+/**
+ * 
+ * @param {class name} name 
+ * @param {function} callback 
+ */
 function clickedClassHandler(name,callback) {
 
     // apply click handler to all elements with matching className
@@ -500,11 +536,11 @@ function clickedClassHandler(name,callback) {
     }
 
     function handleClick() {
-        var elmParent = this.parentNode;
+        var elmParent = this;
         var parentChilds = elmParent.childNodes;
         var index = 0;
 
-        for(var x = 0; x < parentChilds.length; x++) {
+        for(var x = 0; x < elmParent.length; x++) {
             if(parentChilds[x] == this) {
                 break;
             }
@@ -740,10 +776,11 @@ function appendCartItem(name,platform,price,amount,image) {
         cartItemContainer.appendChild(cartItemImage);
         cartItemContainer.appendChild(cartItemSubContainer1);
         cartItemContainer.appendChild(cartItemSubContainer2);
+        cartItemContainer.appendChild(removeItemButton);
+
 
         cartItemSubContainer1.appendChild(cartItemName);
         cartItemSubContainer1.appendChild(cartItemPlatform);
-        cartItemSubContainer1.appendChild(removeItemButton);
 
 
         cartItemSubContainer2.appendChild(cartItemPrice);

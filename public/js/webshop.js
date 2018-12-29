@@ -98,7 +98,7 @@ var selectionImg3 = document.getElementById("selection-3");
 var overlayText1 = document.getElementById("selection-1-text");
 var overlayText2 = document.getElementById("selection-2-text");
 var overlayText3 = document.getElementById("selection-3-text");
-var headerImage = document.getElementById("header_animation")
+var headerImage = document.getElementById("middle-banner")
 
 var homePage = document.getElementById("home-page");
 var webshopPage = document.getElementById("webshop-page");
@@ -135,7 +135,7 @@ function hidePages() {
     productPage.style.display = "none";
     customerGegevensTest.style.display = "none";
     cartPage.style.display = "none";
-    headerImage.style.display = "none";
+
 
 }
 
@@ -199,6 +199,7 @@ hideLogo();    }
 
     selectionImg1.addEventListener("click", function () {
         homeLogo.style.display = "block";
+        headerImage.style.display = "none";
         switchPage(homePage, webshopPage);
         fadeIn(webshopPage);
         if (productImageContainer.innerHTML == '') {
@@ -212,6 +213,7 @@ hideLogo();    }
     });
     selectionImg2.addEventListener("click", function () {
         homeLogo.style.display = "block";
+        headerImage.style.display = "none";
         switchPage(homePage, aboutusPage);
         fadeIn(aboutusPage);
 
@@ -494,13 +496,11 @@ function addProductPageActions(product) {
         cartPage.style.display = "block";
         homeLogo.style.display = "block";
         removeItem();
-       // removeCartItem();
 
     });
 
 
 }
-var isClicked = false;
 var button = document.getElementsByClassName('remove-item-button');
 var parentDiv = document.getElementsByClassName('cart-item-container');
 /**
@@ -512,7 +512,7 @@ function removeItem(){
         button[i].addEventListener("click", showID);
     }
 
-    for (var i = 0; i < parentDiv.length; i++) {
+    for (var i = 0; i < button.length; i++) {
       button[i].addEventListener('click', function(e) {
 
 

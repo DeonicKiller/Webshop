@@ -98,7 +98,7 @@ var selectionImg3 = document.getElementById("selection-3");
 var overlayText1 = document.getElementById("selection-1-text");
 var overlayText2 = document.getElementById("selection-2-text");
 var overlayText3 = document.getElementById("selection-3-text");
-
+var headerImage = document.getElementById("header_animation")
 
 var homePage = document.getElementById("home-page");
 var webshopPage = document.getElementById("webshop-page");
@@ -135,6 +135,7 @@ function hidePages() {
     productPage.style.display = "none";
     customerGegevensTest.style.display = "none";
     cartPage.style.display = "none";
+    headerImage.style.display = "none";
 
 }
 
@@ -229,7 +230,7 @@ hideLogo();    }
         }*/
         hidePages();
         homePage.style.display = "block";
-
+        headerImage.style.display = "block";
         webshopPage.style.opacity = 0;
         aboutusPage.style.opacity = 0;
         productPage.style.opacity = 0;
@@ -273,7 +274,7 @@ hideLogo();    }
 }
 
 function addWebshopPageActions() {
-
+    
 
 }
 

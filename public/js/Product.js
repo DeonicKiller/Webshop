@@ -1,4 +1,6 @@
 class Product{
+    
+    
 
     setName(name){
         this.name = name;
@@ -14,7 +16,7 @@ class Product{
     }
 
     getName(){
-        return this.name;
+        return name;
     }
     getPrice(){
         return this.price;

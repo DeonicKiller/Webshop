@@ -313,6 +313,7 @@ var idSelectedProduct = 0;
 var indexOfProduct = 0;
 var newProduct;
 var newOrder;
+var newOrderline;
 var cartItems = [];
 var totalPrice = 0;
 var subtotal = 0;
@@ -321,13 +322,13 @@ var cartSubtotal = document.getElementById("cart-subtotal");
 var cartAmountMobile = document.getElementById("cart-amount-mobile");
 var totalAmount = 0;
 
-function addCheckOutButton () {
+/*function addCheckOutButton () {
     checkOutButon.addEventListener("click", function () {
     checkOutButon.style.display = "block";
     cartPage.style.display = "none";
     customerGegevensTest.style.display = "block";
     });
-}
+}*/
 
 /** */
 function addProductPageActions(product) {
@@ -450,12 +451,17 @@ function addProductPageActions(product) {
 
 
         //console.log(subtotal);
+        newOrderline = new Orderline();
         newProduct = new Product();
         newProduct.setPrice(productPrice);
         newOrder.setTotalPrice(subtotal);
         newProduct.setName(productName);
         newProduct.setPlatform(productPlatform);
         newProduct.setImage(productImage);
+        newOrderline.setAmount(amountField);
+        newOrderline.setProductId(idSelectedProduct);
+        
+        console.log(newProduct.getName);
 
 
         
@@ -487,11 +493,13 @@ function addProductPageActions(product) {
         cartPage.style.display = "block";
         homeLogo.style.display = "block";
         removeItem();
+       // removeCartItem();
 
     });
 
 
 }
+var isClicked = false;
 var button = document.getElementsByClassName('remove-item-button');
 var parentDiv = document.getElementsByClassName('cart-item-container');
 /**
@@ -499,13 +507,13 @@ var parentDiv = document.getElementsByClassName('cart-item-container');
  */
 function removeItem(){
 
-    clickedClassHandler("remove-item-button", function(index){
-        cartItems.splice(index, 1);
-        
-        console.log(cartItems);
-    });
+    for (let i = 0; i < button.length; i++){
+        button[i].addEventListener("click", showID);
+    }
+
     for (var i = 0; i < parentDiv.length; i++) {
       button[i].addEventListener('click', function(e) {
+
 
         e.currentTarget.parentNode.remove();
         
@@ -518,46 +526,43 @@ function removeItem(){
     }
 
 
-
-
 }
 
+function showID(evt) {
+  for (let i = 0; i < button.length; i++){
+    if(button[i] == evt.target)  {
+        cartItems.splice(i,1);
+        console.log(cartItems);
+  }
+}
+}
+function removeCartItem(){
 
+   
+    var removeButton = document.getElementsByClassName("remove-item-button");
+    var isClicked = false;
 
-/**
- * 
- * @param {class name} name 
- * @param {function} callback 
- */
-function clickedClassHandler(name,callback) {
+    for(let i = 0; i < removeButton.length; i++){
 
-    // apply click handler to all elements with matching className
-    var allElements = document.body.getElementsByTagName("*");
+        button[i].addEventListener("click",function(){
+            
+            isClicked = true;
 
-    for(var x = 0, len = allElements.length; x < len; x++) {
-        if(allElements[x].className == name) {
-            allElements[x].onclick = handleClick;
+        });
+        if(isClicked){
+
+            cartItems.splice(i,1);
+            console.log(cartItems);
+            
         }
-    }
+        break;
 
-    function handleClick() {
-        var elmParent = this;
-        var parentChilds = elmParent.childNodes;
-        var index = 0;
 
-        for(var x = 0; x < elmParent.length; x++) {
-            if(parentChilds[x] == this) {
-                break;
-            }
 
-            if(parentChilds[x].className == name) {
-                index++;
-            }
-        }
-
-        callback.call(this,index);
+        
     }
 }
+
 function signUp() {
 
         var emailInput = document.getElementById("email-input");
@@ -807,7 +812,7 @@ hideLogo();
 addHomePageActions();
 customerPageActions();
 hidePages();
-addCheckOutButton ();
+//addCheckOutButton ();
 
 
 

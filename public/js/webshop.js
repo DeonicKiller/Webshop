@@ -252,7 +252,6 @@ hideLogo();    }
     customerBanner.addEventListener("click", function () {
         homeLogo.style.display = "block";
         homePage.style.display = "none";
-        customerGegevensTest.style.display = "block";
     });
 
     sendEmailButton.addEventListener("click", function(){
@@ -289,7 +288,7 @@ var image4 = document.getElementById("image-4");
 var image5 = document.getElementById("image-5");
 var allImages = document.getElementsByClassName("product-image");
 var sendButtonCustomerInformation = document.getElementById("send-customer-information-button");
-
+var checkOutButon = document.getElementById("check_button")
 
 var bigImageElement = document.getElementById("big-image");
 var productDetailNameElement = document.getElementById("product-name");
@@ -322,7 +321,13 @@ var cartSubtotal = document.getElementById("cart-subtotal");
 var cartAmountMobile = document.getElementById("cart-amount-mobile");
 var totalAmount = 0;
 
-
+function addCheckOutButton () {
+    checkOutButon.addEventListener("click", function () {
+    checkOutButon.style.display = "block";
+    cartPage.style.display = "none";
+    customerGegevensTest.style.display = "block";
+    });
+}
 
 
 function addProductPageActions(product) {
@@ -765,6 +770,7 @@ hideLogo();
 addHomePageActions();
 customerPageActions();
 hidePages();
+addCheckOutButton ();
 
 
 

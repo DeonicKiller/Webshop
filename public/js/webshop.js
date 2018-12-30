@@ -312,12 +312,14 @@ var sendEmailButton = document.getElementById("send-email-button");
         allImages[i].style.width = "280px";
     }
 }*/
+var itemString = "";
 var idSelectedProduct = 0;
 var indexOfProduct = 0;
 var newProduct;
 var newOrder;
 var newOrderline;
 var cartItems = [];
+var orderlines = [];
 var totalPrice = 0;
 var subtotal = 0;
 var cartAmount = document.getElementById("cart-amount");
@@ -432,57 +434,63 @@ function addProductPageActions(product) {
     function addToCart(number) {
         
         var amountField = parseInt(document.getElementById("amount-field").value,10);
+        var productId = product[number].id;
         var productPrice = product[number].price;
         var productName = product[number].name;
         var productPlatform = product[number].platform;
         var productImage = product[number].image;
+        itemString = "items";
 
 
-        var itemString = "items";
+        
 
         if(amountField > 0){
  
-        if(totalAmount <= 1){
-            itemString = "item";
-        }
+
 
         subtotal += (amountField * productPrice);
         cartSubtotal.innerHTML = "&euro; " + subtotal;
         totalAmount += amountField;
+        
+        if(totalAmount <= 1){
+            itemString = "item";
+        }
+
         cartAmount.innerHTML = totalAmount + itemString;
         cartAmountMobile.innerHTML = totalAmount;
+
+
 
 
         //console.log(subtotal);
         newOrderline = new Orderline();
         newProduct = new Product();
+
+        newProduct.setId(productId);
         newProduct.setPrice(productPrice);
-        newOrder.setTotalPrice(subtotal);
+        //newOrder.setTotalPrice(subtotal);
         newProduct.setName(productName);
         newProduct.setPlatform(productPlatform);
         newProduct.setImage(productImage);
         newOrderline.setAmount(amountField);
         newOrderline.setProductId(idSelectedProduct);
         
-        console.log(newProduct.getName);
-
-
-        
 
         cartItems.push(newProduct);
+        orderlines.push(newOrderline);
         console.log(cartItems);
-
+        console.log(orderlines);
         
         //console.log(newOrder.getTotalPrice());
         
 
-        appendCartItem(productName,productPlatform,productPrice,amountField,productImage);
+        appendCartItem(newProduct.getName(),newProduct.getPlatform(),(newOrderline.getAmount() * newProduct.getPrice()),newOrderline.getAmount(),newProduct.getImage());
         
         
-    }
-    else{
+        }
+        else{
         alert("please select an amount");
-    }
+        }
     
 
     }
@@ -530,38 +538,43 @@ function removeItem(){
 }
 
 function showID(evt) {
+var newSubtotal = 0;
+var newAmount = 0;
   for (let i = 0; i < button.length; i++){
     if(button[i] == evt.target)  {
-        cartItems.splice(i,1);
-        console.log(cartItems);
-  }
-}
-}
-function removeCartItem(){
+        totalAmount = totalAmount - orderlines[i].getAmount();
+        subtotal = subtotal - (orderlines[i].getAmount() * cartItems[i].getPrice());
 
-   
-    var removeButton = document.getElementsByClassName("remove-item-button");
-    var isClicked = false;
+        newSubtotal = subtotal;
+        newAmount = totalAmount;
 
-    for(let i = 0; i < removeButton.length; i++){
-
-        button[i].addEventListener("click",function(){
-            
-            isClicked = true;
-
-        });
-        if(isClicked){
-
-            cartItems.splice(i,1);
-            console.log(cartItems);
-            
+        if(newAmount <= 1){
+            itemString = "item"
         }
-        break;
+
+        cartAmount.innerHTML = newAmount + " " + itemString;
+        cartSubtotal.innerHTML = "&euro;" + newSubtotal;
+        cartAmountMobile.innerHTML = newAmount;
+
+
+        cartItems.splice(i,1);
+        orderlines.splice(i,1);
 
 
 
+        console.log(cartItems);
+        console.log(orderlines);
+
+        if(subtotal && totalAmount == 0){
+            cartAmount.innerHTML = "";
+            cartAmountMobile.innerHTML = "";
+            cartSubtotal.innerHTML = "";
+      
+        }
         
-    }
+  }
+
+}
 }
 
 function signUp() {

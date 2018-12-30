@@ -1,7 +1,14 @@
 class Product{
     
-    
+    setId(id){
+        this.id = id;
 
+    }
+
+    getId(){
+        return this.id;
+    }
+    
     setName(name){
         this.name = name;
     }
@@ -16,7 +23,7 @@ class Product{
     }
 
     getName(){
-        return name;
+        return this.name;
     }
     getPrice(){
         return this.price;

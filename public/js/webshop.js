@@ -22,7 +22,6 @@ class Api {
                     var response = JSON.parse(xHttp.response);     
                         showProductsSucces(response);
                         addProductPageActions(response);
-                        getCustomer(response);         
 
                 } else {
                     console.log('error: ' + xHttp.status);
@@ -37,9 +36,32 @@ class Api {
         xHttp.setRequestHeader('Content-Type', this.content);
         xHttp.send(JSON.stringify(this.send));
     }
+
+    executeCustomer(){
+        var xHttp = new XMLHttpRequest();
+        xHttp.onreadystatechange = function () {
+            if (xHttp.readyState == XMLHttpRequest.DONE) {
+                if (xHttp.status == 200 || xHttp.status == 201) {
+                    var response = JSON.parse(xHttp.response);     
+
+                        getCustomer(response);         
+
+                } else {
+                    console.log('error: ' + xHttp.status);
+                }
+            }
+        };
+
+        xHttp.onerror = function () {
+            console.log(xHttp.statusText);
+        };
+        xHttp.open(this.request, this.prefix + this.route, true);
+        xHttp.setRequestHeader('Content-Type', this.content);
+        xHttp.send(JSON.stringify(this.send));
+
+    }
 }
 var myApi = new Api();
-
 
 
 
@@ -258,13 +280,8 @@ hideLogo();    }
     });
 
     sendEmailButton.addEventListener("click", function(){
-        myApi.request = "GET";
-        myApi.route = "customers";
-        myApi.send = null;
-        myApi.prefix = "api/";
-        myApi.execute();
-
-        setTimeout(signUp(),10000);
+testExecute();
+        signUp();
         
 
 
@@ -306,12 +323,6 @@ var sendEmailButton = document.getElementById("send-email-button");
 
 
 
-/*function changeImageSize(){
-    for(var i = 0; allImages.length; i++){
-        allImages[i].style.height = "330px";
-        allImages[i].style.width = "280px";
-    }
-}*/
 var itemString = "";
 var idSelectedProduct = 0;
 var indexOfProduct = 0;
@@ -473,7 +484,7 @@ function addProductPageActions(product) {
         newProduct.setPlatform(productPlatform);
         newProduct.setImage(productImage);
         newOrderline.setAmount(amountField);
-        newOrderline.setProductId(idSelectedProduct);
+        newOrderline.setProductId(productId);
         
 
         cartItems.push(newProduct);
@@ -503,8 +514,10 @@ function addProductPageActions(product) {
         homePage.style.display = "none";
         cartPage.style.display = "block";
         homeLogo.style.display = "block";
-        removeItem();
+        goToSelectedImage();
 
+        removeItem();
+        
     });
 
 
@@ -565,7 +578,7 @@ var newAmount = 0;
         console.log(cartItems);
         console.log(orderlines);
 
-        if(subtotal && totalAmount == 0){
+        if(newSubtotal && newAmount == 0){
             cartAmount.innerHTML = "";
             cartAmountMobile.innerHTML = "";
             cartSubtotal.innerHTML = "";
@@ -576,9 +589,49 @@ var newAmount = 0;
 
 }
 }
+var cartImageDiv = document.getElementsByClassName("cart-item-image");
+var cartImage = cartImageDiv;
 
+function goToSelectedImage(){
+
+    for(let i = 0; i < cartImageDiv.length; i++){
+        
+        cartImage = cartImageDiv[i].getElementsByTagName("img");
+    }
+
+
+
+    for (let i = 0; i < cartImage.length; i++){
+
+        cartImage[i].addEventListener("click",getProductfromCart)
+
+    }
+
+    
+
+
+}
+function getProductfromCart(evt){
+    
+if(cartImage[i] == evt.target){
+    idSelectedProduct = (orderlines[i].getProductId() - 1);
+    bigImageElement.innerHTML = cartItems[i].getImage();
+    productDetailNameElement.innerHTML = cartItems[i].getName();
+    productDetailPriceElement.innerHTML = "&euro; " + cartItems[i].getPrice();
+    productDetailPlatformElement.innerHTML = cartItems[i].getPlatform();
+    
+    
+    console.log(cartItems[i].getId());
+    cartPage.style.display = "none";
+    productPage.style.display = "block";
+
+
+
+}
+
+
+}
 function signUp() {
-
         var emailInput = document.getElementById("email-input");
         var emailInputValue = document.getElementById("email-input").value;
         var emailFeedback = document.getElementById("newsletter-feedback");
@@ -588,7 +641,6 @@ function signUp() {
 
         if (!emailToString.match(reEmail)) {
 
-
             emailFeedback.innerHTML = "Email niet geldig. Probeer opnieuw";
             setTimeout(function () {
                 emailFeedback.innerHTML = "";
@@ -597,7 +649,6 @@ function signUp() {
             console.log(emailToString);
 
         } else if (emailList == null) {
-
 
             myApi.request = 'POST';
             myApi.route = 'customers';
@@ -609,12 +660,16 @@ function signUp() {
                 ["e-mail"]: emailInputValue,
             };
             myApi.prefix = "api/";
-            myApi.execute();
+            myApi.executeCustomer();
             emailFeedback.innerHTML = "Je bent succesvol aangemeld";
             setTimeout(function () {
                 emailFeedback.innerHTML = "";
                 emailInput.value = ""
             }, 1000);
+
+            console.log(emailList);
+
+
             
             
         } else if (checkEmailExists(emailInputValue)) {
@@ -623,6 +678,7 @@ function signUp() {
                 emailFeedback.innerHTML = "";
                 emailInput.value = ""
             }, 1000);
+            console.log(emailList);
         } else {
             myApi.request = 'POST';
             myApi.route = 'customers';
@@ -634,12 +690,14 @@ function signUp() {
                 ["e-mail"]: emailInputValue,
             };
             myApi.prefix = "api/";
-            myApi.execute();
+            myApi.executeCustomer();
             emailFeedback.innerHTML = "Je bent succesvol aangemeld";
             setTimeout(function () {
                 emailFeedback.innerHTML = "";
                 emailInput.value = ""
             }, 1000);
+            console.log(emailList);
+
             
             
         }
@@ -672,7 +730,7 @@ function postCustomerInformation() {
             ["e-mail"]: emailInput,
         }
         myApi.prefix = "api/";
-        myApi.execute();
+        myApi.executeCustomer();
 
         alert("Je bestelling is geplaatst");
         emailList = [];
@@ -689,7 +747,7 @@ function postCustomerInformation() {
             ["e-mail"]: emailInput,
         };
         myApi.prefix = "api/";
-        myApi.execute();
+        myApi.executeCustomer();
 
         alert("Je bestelling is geplaatst");
 
@@ -720,7 +778,7 @@ function testExecute() {
     myApi.route = "customers";
     myApi.send = null;
     myApi.prefix = "api/";
-    myApi.execute();
+    myApi.executeCustomer();
 
 }
 
@@ -729,18 +787,22 @@ var emailList = [];
 
 function getCustomer(response) {
 
-    sendEmailButton.addEventListener("click",function(){
+
+
+
         for (var i = 0; i < response.length; i++) {
     
             emailList[i] = response[i]["e-mail"];
         }
-        console.log(emailList);
 
-    });
+
+    console.log(emailList);
 
 }
 
 function checkEmailExists(email) {
+
+    testExecute();
     for (var i = 0; i < emailList.length; i++) {
 
         if (emailList[i] == email) {
@@ -818,11 +880,19 @@ function appendCartItem(name,platform,price,amount,image) {
         cartItemName.innerHTML = name;
     }
 
-
-
+    function hideHeaderImage(){
+        if(homePage.style.display != "block"){
+            headerImage.style.display = "none";
+        }
+        else{
+            headerImage.style.display = "block";
+        }
+    }
+testExecute();
 hideMobileCartAmount();
 addWebshopPageActions();
 hideLogo();
+hideHeaderImage();
 addHomePageActions();
 customerPageActions();
 hidePages();

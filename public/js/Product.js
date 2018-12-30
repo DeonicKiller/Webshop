@@ -4,10 +4,6 @@ class Product{
         this.id = id;
 
     }
-
-    getId(){
-        return this.id;
-    }
     
     setName(name){
         this.name = name;
@@ -20,6 +16,9 @@ class Product{
     }
     setImage(image){
         this.image = image;
+    }
+    getId(){
+        return this.id;
     }
 
     getName(){

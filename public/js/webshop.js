@@ -564,26 +564,32 @@ var newAmount = 0;
         if(newAmount <= 1){
             itemString = "item"
         }
+        else if(newAmount == 0){
+            itemString = "";
+        }
 
-        cartAmount.innerHTML = newAmount + " " + itemString;
-        cartSubtotal.innerHTML = "&euro;" + newSubtotal;
-        cartAmountMobile.innerHTML = newAmount;
 
 
         cartItems.splice(i,1);
         orderlines.splice(i,1);
+        if(newAmount == 0){
+            cartAmount.innerHTML = " ";
+            cartAmountMobile.innerHTML = " ";
+            cartSubtotal.innerHTML = " ";
+      
+        }
+        else{
 
+        cartAmount.innerHTML = newAmount + " " + itemString;
+        cartSubtotal.innerHTML = "&euro;" + newSubtotal;
+        cartAmountMobile.innerHTML = newAmount;
+        }
 
 
         console.log(cartItems);
         console.log(orderlines);
 
-        if(newSubtotal && newAmount == 0){
-            cartAmount.innerHTML = "";
-            cartAmountMobile.innerHTML = "";
-            cartSubtotal.innerHTML = "";
-      
-        }
+
         
   }
 
@@ -668,6 +674,7 @@ function signUp() {
             }, 1000);
 
             console.log(emailList);
+            testExecute();
 
 
             
@@ -697,6 +704,8 @@ function signUp() {
                 emailInput.value = ""
             }, 1000);
             console.log(emailList);
+            testExecute();
+
 
             
             

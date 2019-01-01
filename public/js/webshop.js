@@ -294,6 +294,7 @@ testExecute();
     cartButton.addEventListener("click", function () {
 
         hidePages();
+        fadeIn(cartPage);
         homePage.style.display = "none";
         cartPage.style.display = "block";
         homeLogo.style.display = "block";
@@ -623,7 +624,7 @@ function goToSelectedImage(){
                     
                     
                     console.log(cartItems[i].getId());
-                 
+                    fadeIn(productPage);
                     cartPage.style.display = "none";
                     productPage.style.display = "block";
                 }

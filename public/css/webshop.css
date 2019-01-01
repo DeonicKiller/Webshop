@@ -20,14 +20,6 @@ p {
     justify-content: space-evenly;
     
 }
-/*@keyframes switchimage{
-    0%      {background-image: url()}
-    25%     {}
-    50%     {}
-    75%     {}
-    100%    {}
-
-}*/
 
 #middle-banner {
 
@@ -222,6 +214,12 @@ p {
         display: none;
     }
 }
+@media screen and (max-height: 560px) {
+    #product-detail-container{
+        margin-top:70% !important;
+    }
+}
+
 
 @media screen and (max-width: 500px) {
     .cart-item-image img {
@@ -237,6 +235,8 @@ p {
 
 
     }
+
+
 
     .column {
         width: 100%;
@@ -254,37 +254,70 @@ p {
 
 
 
-    #newsletter-container {
-        height: 50%;
-        display: flex;
-        width: auto;
-
-
-
-
-
-
-
-
-
+    #newsletter-container {  
+        width: 100% !important;
     }
 
     #product-detail-container {
-        margin-top: 70%;
+        width:100%;
+        margin-top: 60% !important;
+        justify-content: center;
     }
 
     #upper {
-
+        width:100%;
         flex-direction: column !important;
+        
     }
+    #product-name{
+        text-align: center;
+    }
+    #product-price{
+        text-align: center !important;
 
+    }
+    #product-platform{
 
+        text-align: center !important;
+
+    
+    }
+    #left-side{
+        display: flex;
+        justify-content: center;
+    }
+    #big-image{
+        display: inline-flex;
+
+    }
+   
+    #right-side{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 0 !important;
+    }
+    #bottom{
+        display:flex;
+        justify-content: center;
+
+    }
+    #product-description{
+        width:95%;
+    }
+    
+    #cart-add-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
     #products-container {
         margin-top: 35% !important;
         width: auto;
         height: auto;
         overflow-y: auto;
     }
+
     #cart-content{
         display: none;
     }
@@ -465,21 +498,27 @@ p {
 }
 
 #product-detail-container {
+    margin-top: 2%;
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 #upper {
+    
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
+#right-side{
+    
+    margin-left: 20px;
+}
+
 
 #product-description {
     margin-top: 3%;
@@ -487,6 +526,8 @@ p {
     text-align: left;
     overflow-y: scroll;
     word-wrap: break-word;
+
+
 }
 
 #product-name {

@@ -14,7 +14,7 @@ class Api {
         this.prefix = prefix;
     }
 
-    execute() {
+    executeProduct() {
         var xHttp = new XMLHttpRequest();
         xHttp.onreadystatechange = function () {
             if (xHttp.readyState == XMLHttpRequest.DONE) {
@@ -161,7 +161,8 @@ function hidePages() {
 }
 
 function fadeIn(element) {
-
+    element.style.transition = "1s ease";
+    element.style.opacity = 0;
     setTimeout(function () {
         if (element.style.display == "block") {
             element.style.opacity = 1;
@@ -228,7 +229,7 @@ hideLogo();    }
             myApi.route = "products";
             myApi.send = null;
             myApi.prefix = "api/";
-            myApi.execute();
+            myApi.executeProduct();
         }
 
     });
@@ -252,6 +253,7 @@ hideLogo();    }
             switchPage(customerGegevensTest, homePage);
         }*/
         hidePages();
+        fadeIn(homePage);
         homePage.style.display = "block";
         headerImage.style.display = "block";
         webshopPage.style.opacity = 0;
@@ -459,7 +461,7 @@ function addProductPageActions(product) {
         
         var amountField = parseInt(document.getElementById("amount-field").value,10);
         var productId = product[number].id;
-        var productPrice = product[number].price;
+        var productPrice = product[number].price;;
         var productName = product[number].name;
         var productPlatform = product[number].platform;
         var productImage = product[number].image;

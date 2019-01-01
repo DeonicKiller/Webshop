@@ -45,7 +45,7 @@ class Api {
                     var response = JSON.parse(xHttp.response);     
 
                         getCustomerEmail(response);
-                        getCustomer(response);
+                        //getCustomer(response);
 
                 } else {
                     console.log('error: ' + xHttp.status);

@@ -286,6 +286,20 @@ testExecute();
 
 
     });
+        /**
+     * Execute on click
+     */
+    cartButton.addEventListener("click", function () {
+
+        hidePages();
+        homePage.style.display = "none";
+        cartPage.style.display = "block";
+        homeLogo.style.display = "block";
+        goToSelectedImage();
+
+        removeItem();
+        
+    });
 
 
 
@@ -504,20 +518,7 @@ function addProductPageActions(product) {
     
 
     }
-    /**
-     * Execute on click
-     */
-    cartButton.addEventListener("click", function () {
 
-        hidePages();
-        homePage.style.display = "none";
-        cartPage.style.display = "block";
-        homeLogo.style.display = "block";
-        goToSelectedImage();
-
-        removeItem();
-        
-    });
 
 
 }

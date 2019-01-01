@@ -297,11 +297,11 @@ testExecute();
         homePage.style.display = "none";
         cartPage.style.display = "block";
         homeLogo.style.display = "block";
-        goToSelectedImage();
 
         removeItem();
         
     });
+
 
 
 
@@ -455,6 +455,8 @@ function addProductPageActions(product) {
     addCartButton.addEventListener("click", function () {
         newOrder = new Order();
         addToCart(idSelectedProduct);
+        goToSelectedImage();
+
     });
 
     function addToCart(number) {
@@ -506,6 +508,7 @@ function addProductPageActions(product) {
         orderlines.push(newOrderline);
         console.log(cartItems);
         console.log(orderlines);
+        console.log(newProduct.id)
         
         //console.log(newOrder.getTotalPrice());
         
@@ -597,32 +600,57 @@ var newAmount = 0;
 
 }
 }
-var cartImageDiv = document.getElementsByClassName("cart-item-image");
-var cartImage = cartImageDiv;
+var cartImageDiv = document.getElementsByClassName('cart-item-image');
 
 function goToSelectedImage(){
 
-    for(let i = 0; i < cartImageDiv.length; i++){
-        
-        cartImage = cartImageDiv[i].getElementsByTagName("img");
-    }
+    var cartImageDiv = document.getElementsByClassName('cart-item-image');
+    var cartImage = document.querySelectorAll('.cart-item-image .product-image');
 
 
+    for (let i = 0; i < cartImageDiv.length; i++){
 
-    for (let i = 0; i < cartImage.length; i++){
 
-        cartImage[i].addEventListener("click",getProductfromCart)
+        cartImageDiv[i].addEventListener("click", function(evt){
+            for(let i = 0; i < cartImageDiv.length; i++){
 
+                if(cartImage[i] == evt.target){
+                    idSelectedProduct = (cartItems[i].getId() - 1);
+                    bigImageElement.innerHTML = cartItems[i].getImage();
+                    productDetailNameElement.innerHTML = cartItems[i].getName();
+                    productDetailPriceElement.innerHTML = "&euro; " + cartItems[i].getPrice();
+                    productDetailPlatformElement.innerHTML = cartItems[i].getPlatform();
+                    
+                    
+                    console.log(cartItems[i].getId());
+                 
+                    cartPage.style.display = "none";
+                    productPage.style.display = "block";
+                }
+            }
+
+        });
     }
 
     
 
 
 }
+
+
+
+function getImages(){
+
+
+}
 function getProductfromCart(evt){
     
-if(cartImage[i] == evt.target){
-    idSelectedProduct = (orderlines[i].getProductId() - 1);
+
+
+for(let i = 0; i < cartImageDiv.length; i++){
+
+if(cartImageDiv[i] == evt.target){
+    idSelectedProduct = (cartItems[orderlines.getProductId() - 1].getId() - 1);
     bigImageElement.innerHTML = cartItems[i].getImage();
     productDetailNameElement.innerHTML = cartItems[i].getName();
     productDetailPriceElement.innerHTML = "&euro; " + cartItems[i].getPrice();
@@ -630,12 +658,11 @@ if(cartImage[i] == evt.target){
     
     
     console.log(cartItems[i].getId());
+ 
     cartPage.style.display = "none";
     productPage.style.display = "block";
-
-
-
 }
+    }
 
 
 }
@@ -934,6 +961,7 @@ function appendCartItem(name,platform,price,amount,image) {
             headerImage.style.display = "block";
         }
     }
+    
 testExecute();
 hideMobileCartAmount();
 addWebshopPageActions();

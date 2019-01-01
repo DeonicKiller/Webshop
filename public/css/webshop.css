@@ -692,6 +692,10 @@ p {
     height: 180px;
     width: 150px;
 }
+.cart-item-image{
+    z-index: 2;
+
+}
 
 .remove-item-button {
     display: inline-flex;

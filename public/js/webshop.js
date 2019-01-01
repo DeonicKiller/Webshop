@@ -44,7 +44,8 @@ class Api {
                 if (xHttp.status == 200 || xHttp.status == 201) {
                     var response = JSON.parse(xHttp.response);     
 
-                        getCustomer(response);         
+                        getCustomerEmail(response);
+                        getCustomer(response);
 
                 } else {
                     console.log('error: ' + xHttp.status);
@@ -157,8 +158,6 @@ function hidePages() {
     productPage.style.display = "none";
     customerGegevensTest.style.display = "none";
     cartPage.style.display = "none";
-
-
 }
 
 function fadeIn(element) {
@@ -338,13 +337,13 @@ var cartSubtotal = document.getElementById("cart-subtotal");
 var cartAmountMobile = document.getElementById("cart-amount-mobile");
 var totalAmount = 0;
 
-/*function addCheckOutButton () {
+function addCheckOutButton () {
     checkOutButon.addEventListener("click", function () {
     checkOutButon.style.display = "block";
     cartPage.style.display = "none";
     customerGegevensTest.style.display = "block";
     });
-}*/
+}
 
 /** */
 function addProductPageActions(product) {
@@ -675,6 +674,8 @@ function signUp() {
 
             console.log(emailList);
             testExecute();
+            customerList = [];
+
 
 
             
@@ -705,6 +706,8 @@ function signUp() {
             }, 1000);
             console.log(emailList);
             testExecute();
+            customerList = [];
+
 
 
             
@@ -716,7 +719,6 @@ function signUp() {
 var idOfDuplicate;
 
 function postCustomerInformation() {
-    testExecute();
 
     var emailInput = document.getElementById("input-email").value;
     var firstNameInput = document.getElementById("first-name").value;
@@ -742,8 +744,8 @@ function postCustomerInformation() {
         myApi.executeCustomer();
 
         alert("Je bestelling is geplaatst");
-        emailList = [];
-        
+        testExecute();
+    
 
     } else {
         myApi.request = 'POST';
@@ -759,9 +761,9 @@ function postCustomerInformation() {
         myApi.executeCustomer();
 
         alert("Je bestelling is geplaatst");
+        testExecute();
 
-        emailList = [];
-        
+
 
     }
 }
@@ -773,7 +775,7 @@ function postCustomerInformation() {
 function customerPageActions() {
 
     sendButtonCustomerInformation.addEventListener("click", function () {
-        
+        testExecute();
         postCustomerInformation();
         
 
@@ -794,11 +796,11 @@ function testExecute() {
 
 var emailList = [];
 
-function getCustomer(response) {
+function getCustomerEmail(response) {
 
 
 
-
+if(emailList != null){
         for (var i = 0; i < response.length; i++) {
     
             emailList[i] = response[i]["e-mail"];
@@ -808,7 +810,27 @@ function getCustomer(response) {
     console.log(emailList);
 
 }
+}
 
+var customerList = [];
+
+function getCustomer(customer){
+for(var i = 0; i < customer.length; i++){
+    var customerCheck = new Customer();
+
+    
+
+    customerCheck.setFirstName(customer[i].first_name);
+    customerCheck.setLastName(customer[i].last_name);
+    customerCheck.setAddress(customer[i].address);
+    customerCheck.setCity(customer[i].city);
+    customerCheck.setEmail(customer[i]["e-mail"]);
+
+    customerList.push(customerCheck);
+}
+console.log(customerList);
+
+}
 function checkEmailExists(email) {
 
     testExecute();
@@ -819,6 +841,18 @@ function checkEmailExists(email) {
             return true;
         } 
     }
+}
+function checkCustomerExists(firstName, lastName, address, city, email){
+
+    testExecute();
+    for (var i = 0; i < emailList.length; i++) {
+
+        if (customerList[i].firstName == firstName) {
+            idOfDuplicate = i + 1;
+            return true;
+        } 
+    }
+
 }
 
 function appendCartItem(name,platform,price,amount,image) {
@@ -905,7 +939,7 @@ hideHeaderImage();
 addHomePageActions();
 customerPageActions();
 hidePages();
-//addCheckOutButton ();
+addCheckOutButton();
 
 
 

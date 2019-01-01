@@ -928,7 +928,7 @@ function appendCartItem(name,platform,price,amount,image) {
 
     function hideHeaderImage(){
         if(homePage.style.display != "block"){
-            headerImage.style.display = "none";
+            headerImage.style.display = "block";
         }
         else{
             headerImage.style.display = "block";

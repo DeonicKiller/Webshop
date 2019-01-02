@@ -13,17 +13,17 @@
 
 <body>
     <div id="header">
-            
+
         <div id="top-border"></div>
-        
+
         <img id="home-logo" src="img/gaminglogo.jpg" alt="logo" class="center">
         <img id="middle-banner" src="img/GTA-V-Header.jpg" alt="middle banner">
         <div id="cart">
             <div id="cart-header-wrapper">
-                
-            <p id="cart-header">CART</p>
-            <p id="cart-amount-mobile"></p>
-        </div>
+
+                <p id="cart-header">CART</p>
+                <p id="cart-amount-mobile"></p>
+            </div>
             <div id="cart-content">
                 <p id="cart-amount"></p>
                 <p id="cart-subtotal"></p>
@@ -53,7 +53,7 @@
         <div id="newsletter-container" class="center">
             <p id="newsletter-text">Meld je aan voor de nieuwsbrief om op de hoogte te blijven van de laatste nieuwtjes</p>
             <div id="newsletter-submit-container"><input id='email-input' type="text" placeholder="E-mail" spellcheck="false">
-            <button id="send-email-button">verzend</button></div>
+                <button id="send-email-button">verzend</button></div>
         </div>
 
 
@@ -100,21 +100,23 @@
 
         <div id="product-detail-container" class="center">
             <div id="upper">
-            <div id="left-side">
-                <p id="big-image"></p>
-            </div>
-            <div id="right-side">
-                <h1 id="product-name"></h1>
-                <p id="product-price"></p>
-                <p id="product-platform"></p>
-                <div id="cart-add-container">
-                    <input id="amount-field" type="text" placeholder="" spellcheck="false">
-                    <div id="cartadd-button">
-                        Add to cart
+                <div id="left-side">
+                    <p id="big-image"></p>
+                </div>
+                <div id="right-side">
+                    <h1 id="product-name"></h1>
+                    <p id="product-price"></p>
+                    <p id="product-platform"></p>
+                    <div id="cart-add-container">
+                        <input id="amount-field" type="text" placeholder="" spellcheck="false">
+                        <div id="cartadd-button">
+                            Add to cart
+                        </div>
+                        <br>
+                        <p id="cart-feedback"></p>
                     </div>
                 </div>
             </div>
-        </div>
             <div id="bottom">
                 <p id="product-description"></p>
             </div>
@@ -161,27 +163,29 @@
     </div>
     <div id="customer-page">
         <div id="customer-container" class="center">
-            <input id="input-email" class="field" placeholder="Email" autocapitalize="off" spellcheck="false"  >
-            
+            <p id="order-feedback"></p>
+            <input id="input-email" class="field" placeholder="Email" autocapitalize="off" spellcheck="false">
+
             <div id="fl-customer">
-                <input id="first-name" class="field"  placeholder="First name" autocapitalize="off" spellcheck="false"  >
-                <input id="last-name" class="field" placeholder="Last name" autocapitalize="off" spellcheck="false" >
+                <input id="first-name" class="field" placeholder="First name" autocapitalize="off" spellcheck="false">
+                <input id="last-name" class="field" placeholder="Last name" autocapitalize="off" spellcheck="false">
             </div>
-            
-            <input id="address" placeholder="Address" class="field" autocapitalize="off" spellcheck="false"  >
-            
-            <input id="city" placeholder="City" class="field" autocapitalize="off" spellcheck="false" >
-       
+
+            <input id="address" placeholder="Address" class="field" autocapitalize="off" spellcheck="false">
+
+            <input id="city" placeholder="City" class="field" autocapitalize="off" spellcheck="false">
+
             <button id="send-customer-information-button" class="center">SEND</button>
+            
         </div>
     </div>
-    
-    <div id="cart-page" >  
+
+    <div id="cart-page">
         <div id="cart-container" class="center">
-                <button id="check_button">CHECKOUT</button>
+            <button id="check_button">CHECKOUT</button>
         </div>
     </div>
-    
+
 
 
 

@@ -275,10 +275,6 @@ hideLogo();    }
         homeLogo.style.opacity = 1;
     });
 
-    customerBanner.addEventListener("click", function () {
-        homeLogo.style.display = "block";
-        homePage.style.display = "none";
-    });
 
     sendEmailButton.addEventListener("click", function(){
 testExecute();
@@ -955,11 +951,13 @@ function appendCartItem(name,platform,price,amount,image) {
     }
 
     function hideHeaderImage(){
-        if(homePage.style.display != "block"){
+        homePage.style.display = "block";
+
+        if(homePage.style.display == "block"){
             headerImage.style.display = "block";
         }
-        else{
-            headerImage.style.display = "block";
+        else if(homePage.style.display != "block"){
+            headerImage.style.display = "none";
         }
     }
     
@@ -967,7 +965,7 @@ testExecute();
 hideMobileCartAmount();
 addWebshopPageActions();
 hideLogo();
-hideHeaderImage();
+//hideHeaderImage();
 addHomePageActions();
 customerPageActions();
 hidePages();

@@ -112,7 +112,7 @@ function showProductsFailed(products) {
 };
 
 
-// Voor de Layout
+
 var homeLogo = document.getElementById("home-logo");
 var customerBanner = document.getElementById("banner");
 var selectionImg1 = document.getElementById("selection-1");
@@ -131,27 +131,61 @@ var productPage = document.getElementById("product-page");
 var productImageContainer = document.getElementById("image-1");
 var customerGegevensTest = document.getElementById("customer-page");
 
+//Alle var's
 
+var image1 = document.getElementById("image-1");
+var image2 = document.getElementById("image-2");
+var image3 = document.getElementById("image-3");
+var image4 = document.getElementById("image-4");
+var image5 = document.getElementById("image-5");
+var allImages = document.getElementsByClassName("product-image");
+var sendButtonCustomerInformation = document.getElementById("send-customer-information-button");
+var checkOutButon = document.getElementById("check_button")
+
+var bigImageElement = document.getElementById("big-image");
+var productDetailNameElement = document.getElementById("product-name");
+var productDetailPriceElement = document.getElementById("product-price");
+var productDetailPlatformElement = document.getElementById("product-platform");
+var productDetailDescriptionElement = document.getElementById("product-description");
+var addCartButton = document.getElementById("cartadd-button");
+var cartButton = document.getElementById("cart");
+var sendEmailButton = document.getElementById("send-email-button");
+
+/**
+ * function to show text on nav bar images on mouse over
+ * @param {element} image image that fades out to 0.3 opacity
+ * @param {element} text text that fades in
+ */
 function showOverlay(image, text) {
 
     image.style.opacity = 0.3;
     text.style.opacity = 1;
 }
-
+/**
+ * function that hides text on nav bar images on mouse out
+ * @param {element} image image that fades in to 1 opacity
+ * @param {element} text text that fades out 
+ */
 function hideOverlay(image, text) {
 
     image.style.opacity = 1;
     text.style.opacity = 0;
 }
 
-
+/**
+ * function that switches pages
+ * @param {element} hidePage page that gets hidden
+ * @param {element} showPage page that gets shown
+ */
 function switchPage(hidePage, showPage) {
 
     hidePage.style.display = "none";
     showPage.style.display = "block";
 
 }
-
+/**
+ * function that hides all pages
+ */
 function hidePages() {
     webshopPage.style.display = "none";
     aboutusPage.style.display = "none";
@@ -159,7 +193,10 @@ function hidePages() {
     customerGegevensTest.style.display = "none";
     cartPage.style.display = "none";
 }
-
+/**
+ * function that fades in element 
+ * @param {element} element element that gets faded in
+ */
 function fadeIn(element) {
     element.style.transition = "1s ease";
     element.style.opacity = 0;
@@ -171,7 +208,10 @@ function fadeIn(element) {
 
 
 }
-
+/**
+ * function that hides particular elements when the windows width is 
+ * 480px or lower
+ */
 function hideMobileCartAmount() {
     const mobileView = window.matchMedia("(max-width: 480px)");
     const browserView = window.matchMedia("min-width:481px");
@@ -179,17 +219,22 @@ function hideMobileCartAmount() {
 
     if (mobileView.matches) {
         cartAmountMobile.style.display = "block";
+        headerImage.style.display = "none";
     }
 
 
 }
-
+/**
+ * function that hides logo
+ */
 function hideLogo() {
     homeLogo.style.display = "none";
 
 
 }
-
+/**
+ * function that initiates all functions pertaining to the home page
+ */
 function addHomePageActions() {
 
 
@@ -313,25 +358,7 @@ function addWebshopPageActions() {
 
 
 
-//Alle var's
 
-var image1 = document.getElementById("image-1");
-var image2 = document.getElementById("image-2");
-var image3 = document.getElementById("image-3");
-var image4 = document.getElementById("image-4");
-var image5 = document.getElementById("image-5");
-var allImages = document.getElementsByClassName("product-image");
-var sendButtonCustomerInformation = document.getElementById("send-customer-information-button");
-var checkOutButon = document.getElementById("check_button")
-
-var bigImageElement = document.getElementById("big-image");
-var productDetailNameElement = document.getElementById("product-name");
-var productDetailPriceElement = document.getElementById("product-price");
-var productDetailPlatformElement = document.getElementById("product-platform");
-var productDetailDescriptionElement = document.getElementById("product-description");
-var addCartButton = document.getElementById("cartadd-button");
-var cartButton = document.getElementById("cart");
-var sendEmailButton = document.getElementById("send-email-button");
 
 
 
@@ -360,7 +387,10 @@ function addCheckOutButton() {
     });
 }
 
-/** */
+/**
+ * function that initiates all functions pertaining to products
+ * @param {api response} product response that is received from api
+ */
 function addProductPageActions(product) {
 
 
@@ -368,8 +398,8 @@ function addProductPageActions(product) {
 
     productDetailDescriptionElement.innerHTML = "Amerika, 1899. Wetshandhavers hebben het gemunt op de laatste outlaw-bendes. Wie zich niet wil overgeven, wordt genadeloos afgemaakt. Arthur Morgan en de Van der Linde-bende slaan op de vlucht nadat in het plaatsje Blackwater een overval slecht afloopt. Met federale agenten en de beste premiejagers van het Westen op de hielen, trekken ze door het ruige hart van Amerika, een spoor van overvallen en vuurgevechten achter zich latend.<br><br> Als door interne strubbelingen de bende uiteen dreigt te vallen, wordt Arthur gedwongen een keuze te maken. Kiest hij voor zijn idealen of voor de bende waar hij alles aan te danken heeft?<br><br> Red Dead Redemption 2, van de makers van Grand Theft Auto V en Red Dead Redemption, is een episch verhaal over het einde van het Wilde Westen en het begin van een nieuw tijdperk.";
     /**
-     * 
-     * @param {int} number 
+     * function that shows individual products when clicked
+     * @param {int} number index of clicked product
      */
     function showProductDetails(number) {
 
@@ -457,7 +487,10 @@ function addProductPageActions(product) {
         goToSelectedImage();
 
     });
-
+    /**
+     * function that adds selected product to cart
+     * @param {int} number index of visible product
+     */
     function addToCart(number) {
         var cartFeedback = document.getElementById("cart-feedback");
         var amountField = parseInt(document.getElementById("amount-field").value, 10);
@@ -556,7 +589,11 @@ function removeItem() {
 
 
 }
-
+/**
+ * function that gets clicked element and checks if it matches
+ * the cart remove button
+ * @param {element} evt clicked element
+ */
 function showID(evt) {
     var newSubtotal = 0;
     var newAmount = 0;
@@ -601,7 +638,9 @@ function showID(evt) {
     }
 }
 var cartImageDiv = document.getElementsByClassName('cart-item-image');
-
+/**
+ * function to go back to particular product from cart page
+ */
 function goToSelectedImage() {
 
     var cartImageDiv = document.getElementsByClassName('cart-item-image');
@@ -639,10 +678,7 @@ function goToSelectedImage() {
 
 
 
-function getImages() {
 
-
-}
 
 function getProductfromCart(evt) {
 
@@ -667,7 +703,9 @@ function getProductfromCart(evt) {
 
 
 }
-
+/**
+ * function that gets email from input and sends it to API
+ */
 function signUp() {
     var emailInput = document.getElementById("email-input");
     var emailInputValue = document.getElementById("email-input").value;
@@ -749,7 +787,9 @@ function signUp() {
 }
 
 var idOfDuplicate;
-
+/**
+ * function that sends customer information to api
+ */
 function postCustomerInformation() {
     var orderFeedback = document.getElementById("order-feedback");
     var emailInput = document.getElementById("input-email").value;
@@ -832,7 +872,9 @@ function postCustomerInformation() {
 
 
 
-
+/**
+ * function that initiates all functions pertaining to the customer
+ */
 function customerPageActions() {
 
     sendButtonCustomerInformation.addEventListener("click", function () {
@@ -844,7 +886,9 @@ function customerPageActions() {
 
 
 }
-
+/**
+ * function that establishes connection with customer api
+ */
 function testExecute() {
     myApi.request = "GET";
     myApi.route = "customers";
@@ -856,7 +900,10 @@ function testExecute() {
 
 
 var emailList = [];
-
+/**
+ * function that gets all customers from api and saves it in array
+ * @param {response} response 
+ */
 function getCustomerEmail(response) {
 
 
@@ -892,7 +939,10 @@ function getCustomer(customer) {
     console.log(customerList);
 
 }
-
+/**
+ * function that compares list of emails to filled in email
+ * @param {string} email 
+ */
 function checkEmailExists(email) {
 
     testExecute();
@@ -917,7 +967,14 @@ function checkCustomerExists(firstName, lastName, address, city, email) {
     }
 
 }
-
+/**
+ * function that creates cart item in cart page
+ * @param {string} name name of cart item product
+ * @param {string} platform platform of cart item product
+ * @param {string} price price of cart item product
+ * @param {int} amount amount of cart item product
+ * @param {string} image image of cart item product
+ */
 function appendCartItem(name, platform, price, amount, image) {
     var amountField = document.getElementById("amount-field").value;
 
@@ -995,7 +1052,7 @@ function hideHeaderImage() {
         headerImage.style.display = "none";
     }
 }
-
+//initialize on load
 testExecute();
 hideMobileCartAmount();
 addWebshopPageActions();

@@ -212,9 +212,13 @@ p {
 
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1280px) {
     #middle-banner {
         display: none;
+
+    }
+    #products-container{
+        width:62% !important;
     }
 }
 
@@ -243,6 +247,9 @@ p {
 
     }
 
+    .selection-image{
+        flex-shrink: 4;
+    }
     #products-container {
         width: 100% !important;
         overflow-y: unset !important;
@@ -269,12 +276,12 @@ p {
 
     #newsletter-container {
         width: 93% !important;
-        margin-top: 70%;
+        margin-top: 75%;
 
     }
 
     #newsletter-feedback {
-        top: 123% !important;
+        top: 129% !important;
     }
 
     #product-detail-container {
@@ -446,7 +453,7 @@ p {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    width: auto;
+    width: 50%;
     height: 600px;
     margin-top: 5%;
     top: 55%;

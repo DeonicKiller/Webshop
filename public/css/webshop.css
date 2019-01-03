@@ -25,12 +25,12 @@ p {
 #middle-banner {
 
 
-    display: none;
+    display: block;
     justify-self: baseline;
     width: auto;
     height: 150px;
-
-    margin-top: 10px;
+    margin-left: 650px;
+    margin-top: 20px;
 
 }
 

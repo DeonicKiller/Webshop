@@ -219,8 +219,9 @@ p {
         display: none;
 
     }
-    #products-container{
-        width:62% !important;
+
+    #products-container {
+        width: 62% !important;
     }
 }
 
@@ -232,9 +233,9 @@ p {
 
 
 @media screen and (max-width: 500px) {
-    .cart-item-image img {
-        height: 40px;
-        width: auto;
+    .cart-item-image .product-image {
+
+        width: 50%;
     }
 
     #middle-banner {
@@ -245,13 +246,19 @@ p {
 
         flex-direction: column;
         margin-top: 30%;
-
+    }
+    .selection-image:hover {
+        transform: none !important;
+        -webkit-transform: none !important;
 
     }
-
     .selection-image{
-        flex-shrink: 4;
+        width:180px;
+        height:180px;
     }
+
+
+
     #products-container {
         width: 100% !important;
         overflow-y: unset !important;
@@ -387,13 +394,24 @@ p {
 
     #cart-container {
         width: 100%;
+        justify-content: space-between;
 
     }
 
-    .cart-item-container {
-        flex-shrink: 2;
+    .cart-item-name {
+
+        text-align: center;
 
     }
+
+    .cart-item-platform {
+        text-align: center;
+    }
+
+
+
+
+
 }
 
 .center {
@@ -711,7 +729,8 @@ p {
     transform: translate(-50%, -50%);
     position: absolute;
 }
-#order-feedback{
+
+#order-feedback {
     align-self: center;
 }
 
@@ -720,12 +739,14 @@ p {
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
 }
-#cart-page{
-    display: flex ;
+
+#cart-page {
+    display: flex;
     flex-direction: column;
 
 }
-#bottom-cart{
+
+#bottom-cart {
     margin-top: 30px;
     display: inline-flex;
     flex-direction: column;
@@ -734,7 +755,8 @@ p {
     transform: translate(-50%, -50%);
     position: relative;
 }
-#checkout-button{
+
+#checkout-button {
     align-self: center;
     height: auto;
     border-style: solid;
@@ -745,14 +767,17 @@ p {
     padding: 4px;
     transition: 0.1s ease;
 }
-#checkout-button:hover{
+
+#checkout-button:hover {
     background-color: black;
     color: white;
 
 }
-#final-price{
+
+#final-price {
     align-self: center;
 }
+
 #cart-container {
     display: flex;
     flex-direction: column;
@@ -760,7 +785,8 @@ p {
     border-bottom-width: 1px;
     border-bottom-color: lightgray;
 }
-#cart-empty-text{
+
+#cart-empty-text {
     align-self: center;
 
 
@@ -777,13 +803,20 @@ p {
 }
 
 .cart-item-subcontainer1 {
+    display: flex;
     width: 185px;
+    flex-direction: column;
+
 
 }
 
+.cart-item-subcontainer2 {
+    display: flex;
+    flex-direction: column;
+}
 
 .cart-item-image .product-image {
-    height: 180px;
+    height: auto;
     width: 150px;
 }
 

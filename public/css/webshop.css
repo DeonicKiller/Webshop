@@ -10,7 +10,9 @@ div,
 button,
 p {
     font-family: 'IBM Plex Sans', sans-serif;
+    -webkit-tap-highlight-color: rgb(0, 0, 0);
 }
+
 
 #home-page {
     display: block;

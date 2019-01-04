@@ -258,6 +258,12 @@ p {
         width:180px;
         height:180px;
     }
+    #description-container {
+        width: 95% !important;
+    }
+    #aboutus-header{
+        text-align: center;
+    }
 
 
 
@@ -461,8 +467,10 @@ p {
 
 #description-container {
     width: 50%;
-    height: 50%;
-    left: 25%;
+    height:50%;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     overflow-y: scroll;
     position: absolute;
 }

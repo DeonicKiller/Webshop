@@ -874,6 +874,9 @@ function postCustomerInformation() {
     var addressField = document.getElementById("address");
     var cityField = document.getElementById("city");
 
+    var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
+
+
 
     if (firstNameInput == "" || emailInput == ""|| lastNameInput ==  "" || addressInput == "" || cityInput == "") {
         orderFeedback.innerHTML = "A field is empty"
@@ -881,7 +884,16 @@ function postCustomerInformation() {
             orderFeedback.innerHTML = "";
             
         }, 1000);
-    } else if (checkEmailExists(emailInput)) {
+    }
+    else if(!emailInput.match(reEmail)){
+        orderFeedback.innerHTML = "Email niet geldig, probeer opnieuw."
+        setTimeout(function () {
+            orderFeedback.innerHTML = "";
+            emailField.value = "";
+            
+        }, 1000);
+    }
+    else if (checkEmailExists(emailInput)) {
 
         myApi.request = 'PUT';
         myApi.route = 'customers/' + idOfDuplicate;
@@ -980,7 +992,7 @@ function postCustomerInformation() {
         setTimeout(function () {
             orderFeedback.innerHTML = "";
             emailField.value = "";
-            firstNameField.valuet = "";
+            firstNameField.value = "";
             lastNameField.value = "";
             addressField.value = "";
             cityField.value = "";
@@ -1268,16 +1280,6 @@ function addElementsToCart(){
 
     }
 }
-
-
-    
-   
-    
-
-    
-    
-    
-
 
 
 function hideHeaderImage() {

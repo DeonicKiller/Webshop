@@ -61,6 +61,51 @@ class Api {
         xHttp.send(JSON.stringify(this.send));
 
     }
+    executeOrder() {
+        var xHttp = new XMLHttpRequest();
+        xHttp.onreadystatechange = function () {
+            if (xHttp.readyState == XMLHttpRequest.DONE) {
+                if (xHttp.status == 200 || xHttp.status == 201) {
+                    var response = JSON.parse(xHttp.response);
+                    getOrders(response);
+
+
+                } else {
+                    console.log('error: ' + xHttp.status);
+                }
+            }
+        };
+
+        xHttp.onerror = function () {
+            console.log(xHttp.statusText);
+        };
+        xHttp.open(this.request, this.prefix + this.route, true);
+        xHttp.setRequestHeader('Content-Type', this.content);
+        xHttp.send(JSON.stringify(this.send));
+
+    }
+    executeOrderlines() {
+        var xHttp = new XMLHttpRequest();
+        xHttp.onreadystatechange = function () {
+            if (xHttp.readyState == XMLHttpRequest.DONE) {
+                if (xHttp.status == 200 || xHttp.status == 201) {
+                    var response = JSON.parse(xHttp.response);
+
+
+                } else {
+                    console.log('error: ' + xHttp.status);
+                }
+            }
+        };
+
+        xHttp.onerror = function () {
+            console.log(xHttp.statusText);
+        };
+        xHttp.open(this.request, this.prefix + this.route, true);
+        xHttp.setRequestHeader('Content-Type', this.content);
+        xHttp.send(JSON.stringify(this.send));
+
+    }
 }
 var myApi = new Api();
 
@@ -479,13 +524,13 @@ function addProductPageActions(product) {
         newOrder = new Order();
         addToCart(idSelectedProduct);
         goToSelectedImage();
-        if(totalAmount == 1){
-            addElementsToCart();
-            addCheckoutPageActions();
-        }
+        addElementsToCart();
+        addCheckoutPageActions();
+        
         var finalPrice = document.getElementById("final-price");
         finalPrice.innerHTML = "SUBTOTAL " + "&euro;" + subtotal;
 
+        console.log(newOrder.getTotalPrice());
 
     });
     /**
@@ -547,9 +592,8 @@ function addProductPageActions(product) {
             orderlines.push(newOrderline);
             console.log(cartItems);
             console.log(orderlines);
-            console.log(newProduct.id)
+            
 
-            //console.log(newOrder.getTotalPrice());
 
 
             appendCartItem(newProduct.getName(), newProduct.getPlatform(), (newOrderline.getAmount() * newProduct.getPrice()), newOrderline.getAmount(), newProduct.getImage());
@@ -642,6 +686,7 @@ function showID(evt) {
                 finalPrice.innerHTML = "";
                 finalPrice.remove();
                 checkoutButton.remove();
+                exists = false
 
 
 
@@ -840,8 +885,46 @@ function postCustomerInformation() {
             cityField.value = "";
             
         }, 1000);
-        testExecute();
+        
 
+        myApi.request = 'POST';
+        myApi.route = 'orders';
+        myApi.send = {
+            customer_id: idOfDuplicate,
+        }
+        myApi.prefix = 'api/';
+        myApi.executeOrder();
+
+        establishOrderConnection();
+        for(let i = 0; i < orderlines.length; i++){
+        myApi.request = "POST";
+        myApi.route = 'orderlines';
+        myApi.send = {
+            order_id: mostRecentOrderIndex,
+            product_id: orderlines[i].getProductId(),
+            amount: orderlines[i].getAmount(),
+
+        }
+        myApi.prefix = 'api/';
+        myApi.executeOrder();
+    }
+        
+        establishOrderConnection();
+        testExecute();
+        
+        orderlines = [];
+        cartItems = [];
+        subtotal = 0;
+        totalAmount = 0;
+        cartAmount.innerHTML = " ";
+        cartAmountMobile.innerHTML = " ";
+        cartSubtotal.innerHTML = " ";
+        fadeIn(cartEmptyText);
+        cartEmptyText.style.display = "block";
+        finalPrice.innerHTML = "";
+        finalPrice.remove();
+        checkoutButton.remove();
+        exists = false;
 
     } else {
         myApi.request = 'POST';
@@ -867,6 +950,45 @@ function postCustomerInformation() {
             
         }, 1000);
         testExecute();
+
+        myApi.request = 'POST';
+        myApi.route = 'orders';
+        myApi.send = {
+            customer_id: (emailList.length + 1),
+        }
+        myApi.prefix = 'api/';
+        myApi.executeOrder();
+
+        establishOrderConnection();
+        for(let i = 0; i < orderlines.length; i++){
+        myApi.request = "POST";
+        myApi.route = 'orderlines';
+        myApi.send = {
+            order_id: mostRecentOrderIndex,
+            product_id: orderlines[i].getProductId(),
+            amount: orderlines[i].getAmount(),
+
+        }
+        myApi.prefix = 'api/';
+        myApi.executeOrder();
+    }
+        
+        establishOrderConnection();
+        testExecute();
+
+        orderlines = [];
+        cartItems = [];
+        subtotal = 0;
+        totalAmount = 0;
+        cartAmount.innerHTML = " ";
+        cartAmountMobile.innerHTML = " ";
+        cartSubtotal.innerHTML = " ";
+        fadeIn(cartEmptyText);
+        cartEmptyText.style.display = "block";
+        finalPrice.innerHTML = "";
+        finalPrice.remove();
+        checkoutButton.remove();
+        exists = false;
 
 
 
@@ -901,7 +1023,28 @@ function testExecute() {
     myApi.executeCustomer();
 
 }
+function establishOrderConnection(){
+    myApi.request = "GET";
+    myApi.route = "orders";
+    myApi.send = null;
+    myApi.prefix = "api/";
+    myApi.executeOrder();
 
+}
+var mostRecentOrderIndex = 0;
+function getOrders(response){
+    
+    mostRecentOrderIndex = response.length + 1;
+    console.log(mostRecentOrderIndex);
+}
+function establisOrderlinesConnection(){
+    myApi.request = "GET";
+    myApi.route = "orderlines";
+    myApi.send = null;
+    myApi.prefix = "api/";
+    myApi.executeOrderlines();
+    
+}
 
 var emailList = [];
 /**
@@ -1046,7 +1189,12 @@ function appendCartItem(name, platform, price, amount, image) {
     cartItemAmount.innerHTML = amount;
     cartItemName.innerHTML = name;
 }
+var exists = false;
+/**
+ * appends subtotal and checkout button once an item has been added to cart
+ */
 function addElementsToCart(){
+    
 
     var cartPage = document.getElementById("cart-page");
 
@@ -1058,14 +1206,28 @@ function addElementsToCart(){
 
     var finalPrice = document.createElement("p");
     finalPrice.setAttribute("id","final-price");
-
+    
+    if(exists == false){
     cartPage.appendChild(bottomCart);
     bottomCart.appendChild(finalPrice);
+
     bottomCart.appendChild(checkoutButton);
 
     checkoutButton.innerHTML = "CHECKOUT";
+    exists = true;
 
+    }
 }
+
+    
+   
+    
+
+    
+    
+    
+
+
 
 function hideHeaderImage() {
  const mobileView = window.matchMedia("(max-width: 480px)");
@@ -1076,6 +1238,7 @@ function hideHeaderImage() {
 
 }
 //initialize on load
+establishOrderConnection();
 testExecute();
 hideMobileCartAmount();
 addWebshopPageActions();

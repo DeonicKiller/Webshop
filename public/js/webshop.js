@@ -374,7 +374,7 @@ function addHomePageActions() {
 
 
     sendEmailButton.addEventListener("click", function () {
-        testExecute();
+        establishCustomerConnection();
         signUp();
 
 
@@ -806,7 +806,7 @@ function signUp() {
         }, 1000);
 
         console.log(emailList);
-        testExecute();
+        establishCustomerConnection();
         customerList = [];
 
 
@@ -838,7 +838,7 @@ function signUp() {
             emailInput.value = ""
         }, 1000);
         console.log(emailList);
-        testExecute();
+        establishCustomerConnection();
         customerList = [];
 
 
@@ -858,6 +858,8 @@ function postCustomerInformation() {
     var finalPrice = document.getElementById("final-price");
     var checkoutButton = document.getElementById("checkout-button");
     const mobileView = window.matchMedia("(max-width: 480px)");
+    var cartItemContainer = document.querySelectorAll(".cart-item-container");
+    var bottomCart = document.getElementById("bottom-cart");
 
     var orderFeedback = document.getElementById("order-feedback");
     var emailInput = document.getElementById("input-email").value;
@@ -942,6 +944,12 @@ function postCustomerInformation() {
         finalPrice.innerHTML = "";
         finalPrice.remove();
         checkoutButton.remove();
+        bottomCart.remove();
+        for(let i = 0; i < cartItemContainer.length; i++){
+            cartItemContainer[i].remove();
+        }
+        
+        
         exists = false;
 
         homeLogo.style.display = "none";
@@ -952,7 +960,7 @@ function postCustomerInformation() {
 
 
         establishOrderConnection();
-        testExecute();
+        establishCustomerConnection();
 
 
     } else {
@@ -978,7 +986,7 @@ function postCustomerInformation() {
             cityField.value = "";
             
         }, 1000);
-        testExecute();
+        establishCustomerConnection();
 
         myApi.request = 'POST';
         myApi.route = 'orders';
@@ -1001,8 +1009,6 @@ function postCustomerInformation() {
         myApi.prefix = 'api/';
         myApi.executeOrder();
     }
-        
-
 
         orderlines = [];
         cartItems = [];
@@ -1016,6 +1022,11 @@ function postCustomerInformation() {
         finalPrice.innerHTML = "";
         finalPrice.remove();
         checkoutButton.remove();
+        bottomCart.remove();
+
+        for(let i = 0; i < cartItemContainer.length; i++){
+            cartItemContainer[i].remove();
+        }
         exists = false;
 
         homeLogo.style.display = "none";
@@ -1025,7 +1036,7 @@ function postCustomerInformation() {
         orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
 
         establishOrderConnection();
-        testExecute();
+        stablisCustomerConnection();
 
 
 
@@ -1043,7 +1054,7 @@ function postCustomerInformation() {
 function customerPageActions() {
 
     sendButtonCustomerInformation.addEventListener("click", function () {
-        testExecute();
+        establishCustomerConnection();
         postCustomerInformation();
 
 
@@ -1054,7 +1065,7 @@ function customerPageActions() {
 /**
  * function that establishes connection with customer api
  */
-function testExecute() {
+function establishCustomerConnection() {
     myApi.request = "GET";
     myApi.route = "customers";
     myApi.send = null;
@@ -1131,7 +1142,7 @@ function getCustomer(customer) {
  */
 function checkEmailExists(email) {
 
-    testExecute();
+    establishCustomerConnection();
     for (var i = 0; i < emailList.length; i++) {
 
         if (emailList[i] == email) {
@@ -1143,7 +1154,7 @@ function checkEmailExists(email) {
 
 function checkCustomerExists(firstName, lastName, address, city, email) {
 
-    testExecute();
+    establishCustomerConnection();
     for (var i = 0; i < emailList.length; i++) {
 
         if (customerList[i].firstName == firstName) {
@@ -1279,7 +1290,7 @@ function hideHeaderImage() {
 }
 //initialize on load
 establishOrderConnection();
-testExecute();
+establishCustomerConnection();
 hideMobileCartAmount();
 addWebshopPageActions();
 hideLogo();

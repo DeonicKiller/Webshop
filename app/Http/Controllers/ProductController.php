@@ -50,6 +50,9 @@ class ProductController extends Controller
             'name' => 'required|max:255',
             'price' => 'required|max:255',
             'image' => 'required|max:255',
+            'description' => 'required',
+
+
 
         ];
 
@@ -70,8 +73,9 @@ class ProductController extends Controller
             'name' => 'max:255',
             'price' => 'max:255',
             'image' => 'max:255',
-        ];
+            'description' => 'required',
 
+        ];
         $this->validate($request, $rules);
 
         $product = Product::findOrFail($productId);

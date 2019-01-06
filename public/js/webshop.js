@@ -175,6 +175,7 @@ var cartPage = document.getElementById("cart-page");
 var productPage = document.getElementById("product-page");
 var productImageContainer = document.getElementById("image-1");
 var customerPage = document.getElementById("customer-page");
+var overviewPage = document.getElementById("overview-page");
 
 
 var image1 = document.getElementById("image-1");
@@ -195,6 +196,8 @@ var addCartButton = document.getElementById("cartadd-button");
 var cartButton = document.getElementById("cart");
 var sendEmailButton = document.getElementById("send-email-button");
 var cartEmptyText = document.getElementById("cart-empty-text");
+var finalizeOrderButton = document.getElementById("finalize-button");
+var orderNumberText = document.getElementById("order-number");
 
 /**
  * function to show text on nav bar images on mouse over
@@ -237,6 +240,7 @@ function hidePages() {
     productPage.style.display = "none";
     customerPage.style.display = "none";
     cartPage.style.display = "none";
+    overviewPage.style.display = 'none';
 }
 /**
  * function that fades in element 
@@ -286,7 +290,6 @@ function addHomePageActions() {
     if (homePage.style.display == "block") {
         hideLogo();
     }
-
     selectionImg1.addEventListener("mouseover", function () {
         showOverlay(selectionImg1, overlayText1);
 
@@ -435,7 +438,7 @@ function addProductPageActions(product) {
 
 
 
-    productDetailDescriptionElement.innerHTML = "Amerika, 1899. Wetshandhavers hebben het gemunt op de laatste outlaw-bendes. Wie zich niet wil overgeven, wordt genadeloos afgemaakt. Arthur Morgan en de Van der Linde-bende slaan op de vlucht nadat in het plaatsje Blackwater een overval slecht afloopt. Met federale agenten en de beste premiejagers van het Westen op de hielen, trekken ze door het ruige hart van Amerika, een spoor van overvallen en vuurgevechten achter zich latend.<br><br> Als door interne strubbelingen de bende uiteen dreigt te vallen, wordt Arthur gedwongen een keuze te maken. Kiest hij voor zijn idealen of voor de bende waar hij alles aan te danken heeft?<br><br> Red Dead Redemption 2, van de makers van Grand Theft Auto V en Red Dead Redemption, is een episch verhaal over het einde van het Wilde Westen en het begin van een nieuw tijdperk.";
+    //productDetailDescriptionElement.innerHTML = "Amerika, 1899. Wetshandhavers hebben het gemunt op de laatste outlaw-bendes. Wie zich niet wil overgeven, wordt genadeloos afgemaakt. Arthur Morgan en de Van der Linde-bende slaan op de vlucht nadat in het plaatsje Blackwater een overval slecht afloopt. Met federale agenten en de beste premiejagers van het Westen op de hielen, trekken ze door het ruige hart van Amerika, een spoor van overvallen en vuurgevechten achter zich latend.<br><br> Als door interne strubbelingen de bende uiteen dreigt te vallen, wordt Arthur gedwongen een keuze te maken. Kiest hij voor zijn idealen of voor de bende waar hij alles aan te danken heeft?<br><br> Red Dead Redemption 2, van de makers van Grand Theft Auto V en Red Dead Redemption, is een episch verhaal over het einde van het Wilde Westen en het begin van een nieuw tijdperk.";
     /**
      * function that shows individual products when clicked
      * @param {int} number index of clicked product
@@ -447,6 +450,7 @@ function addProductPageActions(product) {
         productDetailNameElement.innerHTML = product[number].name;
         productDetailPriceElement.innerHTML = "&euro; " + product[number].price;
         productDetailPlatformElement.innerHTML = product[number].platform;
+        productDetailDescriptionElement.innerHTML = product[number].description;
 
 
     }
@@ -619,6 +623,16 @@ function addCheckoutPageActions(){
         hidePages();
         fadeIn(customerPage);
         customerPage.style.display = "block";
+    });
+}
+function addOverviewPageActions(){
+    var finalizeOrderButton = document.getElementById("finalize-button");
+
+    finalizeOrderButton.addEventListener("click", function(){
+        headerImage.style.display = 'block';
+        fadeIn(homePage);
+        switchPage(overviewPage,homePage);
+
     });
 }
 var button = document.getElementsByClassName('remove-item-button');
@@ -840,6 +854,11 @@ var idOfDuplicate;
  * function that sends customer information to api
  */
 function postCustomerInformation() {
+
+    var finalPrice = document.getElementById("final-price");
+    var checkoutButton = document.getElementById("checkout-button");
+    const mobileView = window.matchMedia("(max-width: 480px)");
+
     var orderFeedback = document.getElementById("order-feedback");
     var emailInput = document.getElementById("input-email").value;
     var firstNameInput = document.getElementById("first-name").value;
@@ -909,9 +928,8 @@ function postCustomerInformation() {
         myApi.executeOrder();
     }
         
-        establishOrderConnection();
-        testExecute();
-        
+
+
         orderlines = [];
         cartItems = [];
         subtotal = 0;
@@ -925,6 +943,17 @@ function postCustomerInformation() {
         finalPrice.remove();
         checkoutButton.remove();
         exists = false;
+
+        homeLogo.style.display = "none";
+        fadeIn(overviewPage);
+        switchPage(customerPage,overviewPage);
+
+        orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
+
+
+        establishOrderConnection();
+        testExecute();
+
 
     } else {
         myApi.request = 'POST';
@@ -973,8 +1002,7 @@ function postCustomerInformation() {
         myApi.executeOrder();
     }
         
-        establishOrderConnection();
-        testExecute();
+
 
         orderlines = [];
         cartItems = [];
@@ -989,6 +1017,17 @@ function postCustomerInformation() {
         finalPrice.remove();
         checkoutButton.remove();
         exists = false;
+
+        homeLogo.style.display = "none";
+
+        fadeIn(overviewPage);
+        switchPage(customerPage,overviewPage);
+        orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
+
+        establishOrderConnection();
+        testExecute();
+
+
 
 
 
@@ -1219,6 +1258,7 @@ function addElementsToCart(){
     }
 }
 
+
     
    
     
@@ -1244,6 +1284,7 @@ hideMobileCartAmount();
 addWebshopPageActions();
 hideLogo();
 hideHeaderImage();
+addOverviewPageActions();
 addHomePageActions();
 customerPageActions();
 hidePages();

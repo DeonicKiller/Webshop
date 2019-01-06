@@ -46,7 +46,6 @@ class OrderController extends Controller
     public function createOrder(Request $request)
     {
         $rules = [
-            'invoice_id' => 'max:255',
             'customer_id' => 'max:255',
         ];
 
@@ -63,7 +62,6 @@ class OrderController extends Controller
     public function updateOrder(Request $request, $orderId)
     {
         $rules = [
-            'invoice_id' => 'max:255',
             'customer_id' => 'max:255',
         ];
 

@@ -16,5 +16,6 @@ class Product extends Model
     'price',
     'platform',
     'image',
+    'description',
  ];
 }

@@ -12,7 +12,6 @@ class Order extends Model
  * @var array
  */
  protected $fillable = [
-    'invoice_id',
     'customer_id',
  ];
 }

@@ -536,7 +536,9 @@ function addProductPageActions(product) {
         newOrder = new Order();
         addToCart(idSelectedProduct);
         goToSelectedImage();
+        if(totalAmount >= 1){
         addElementsToCart();
+        }
         addCheckoutPageActions();
 
         var finalPrice = document.getElementById("final-price");

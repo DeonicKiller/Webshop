@@ -24,6 +24,7 @@ class Api {
                     addProductPageActions(response);
 
                 } else {
+                    showProductsFailed();
                     console.log('error: ' + xHttp.status);
                 }
             }
@@ -153,6 +154,8 @@ function showProductsSucces(products) {
 
 //Failed
 function showProductsFailed(products) {
+
+    alert("er is iets fout gegaan met het laden van de producten. Herlaad de pagina")
 
 };
 
@@ -969,6 +972,8 @@ function postCustomerInformation() {
         switchPage(customerPage,overviewPage);
 
         orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
+
+        
 
 
         establishOrderConnection();

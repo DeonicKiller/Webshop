@@ -127,7 +127,10 @@ function showResponse(response) {
     }
 }
 
-//Succes
+/**
+ * shows all products on page
+ * @param {array} products product array received from api
+ */
 function showProductsSucces(products) {
 
 
@@ -152,7 +155,9 @@ function showProductsSucces(products) {
 }
 
 
-//Failed
+/**
+ * shows message when loading in products fails
+ */
 function showProductsFailed() {
 
     alert("er is iets fout gegaan met het laden van de producten. Herlaad de pagina");
@@ -618,7 +623,9 @@ function addProductPageActions(product) {
 
     }
 }
-
+/**
+ * definition of all functions pertaining checkout page
+ */
 function addCheckoutPageActions() {
     var checkoutButton = document.getElementById("checkout-button");
 
@@ -629,7 +636,9 @@ function addCheckoutPageActions() {
         customerPage.style.display = "block";
     });
 }
-
+/**
+ * definition of all functions pertaining checkout page
+ */
 function addOverviewPageActions() {
     var finalizeOrderButton = document.getElementById("finalize-button");
 
@@ -1090,7 +1099,9 @@ function establishCustomerConnection() {
     myApi.executeCustomer();
 
 }
-
+/**
+ * executes API connection with Orders tables
+ */
 function establishOrderConnection() {
     myApi.request = "GET";
     myApi.route = "orders";
@@ -1100,13 +1111,18 @@ function establishOrderConnection() {
 
 }
 var mostRecentOrderIndex = 0;
-
+/**
+ * gets all orders
+ * @param {array} response response received from API 
+ */
 function getOrders(response) {
 
     mostRecentOrderIndex = response.length + 1;
     console.log(mostRecentOrderIndex);
 }
-
+/**
+ * executes API connection with Orderlines tables
+ */
 function establisOrderlinesConnection() {
     myApi.request = "GET";
     myApi.route = "orderlines";
@@ -1289,7 +1305,9 @@ function addElementsToCart() {
     }
 }
 
-
+/**
+ * hides banner image on mobile devices
+ */
 function hideHeaderImage() {
     const mobileView = window.matchMedia("(max-width: 480px)");
 

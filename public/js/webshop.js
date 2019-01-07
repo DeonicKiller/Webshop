@@ -149,15 +149,15 @@ function showProductsSucces(products) {
             productImage1.innerHTML = productAfbeelding;
         });
     }
-};
+}
 
 
 //Failed
-function showProductsFailed(products) {
+function showProductsFailed() {
 
-    alert("er is iets fout gegaan met het laden van de producten. Herlaad de pagina")
+    alert("er is iets fout gegaan met het laden van de producten. Herlaad de pagina");
 
-};
+}
 
 
 
@@ -169,7 +169,7 @@ var selectionImg3 = document.getElementById("selection-3");
 var overlayText1 = document.getElementById("selection-1-text");
 var overlayText2 = document.getElementById("selection-2-text");
 var overlayText3 = document.getElementById("selection-3-text");
-var headerImage = document.getElementById("middle-banner")
+var headerImage = document.getElementById("middle-banner");
 
 var homePage = document.getElementById("home-page");
 var webshopPage = document.getElementById("webshop-page");
@@ -350,7 +350,7 @@ function addHomePageActions() {
         } else if (customerGegevensTest.style.display == "block") {
             switchPage(customerGegevensTest, homePage);
         }*/
-    hideHeaderImage();
+        hideHeaderImage();
         hidePages();
         fadeIn(homePage);
         homePage.style.display = "block";
@@ -388,7 +388,7 @@ function addHomePageActions() {
      * Execute on click
      */
     cartButton.addEventListener("click", function () {
-        
+
         hidePages();
         headerImage.style.display = "none";
         fadeIn(cartPage);
@@ -533,7 +533,7 @@ function addProductPageActions(product) {
         goToSelectedImage();
         addElementsToCart();
         addCheckoutPageActions();
-        
+
         var finalPrice = document.getElementById("final-price");
         finalPrice.innerHTML = "SUBTOTAL " + "&euro;" + subtotal;
 
@@ -548,7 +548,7 @@ function addProductPageActions(product) {
         var cartFeedback = document.getElementById("cart-feedback");
         var amountField = parseInt(document.getElementById("amount-field").value, 10);
         var productId = product[number].id;
-        var productPrice = product[number].price;;
+        var productPrice = product[number].price;
         var productName = product[number].name;
         var productPlatform = product[number].platform;
         var productImage = product[number].image;
@@ -570,7 +570,7 @@ function addProductPageActions(product) {
             if (totalAmount <= 1) {
                 itemString = " ITEM";
             }
-            if(totalAmount >= 1){
+            if (totalAmount >= 1) {
                 cartEmptyText.style.display = "none";
             }
 
@@ -599,7 +599,7 @@ function addProductPageActions(product) {
             orderlines.push(newOrderline);
             console.log(cartItems);
             console.log(orderlines);
-            
+
 
 
 
@@ -613,28 +613,30 @@ function addProductPageActions(product) {
             }, 1000);
         }
 
-        
+
 
 
     }
 }
-function addCheckoutPageActions(){
+
+function addCheckoutPageActions() {
     var checkoutButton = document.getElementById("checkout-button");
 
-    checkoutButton.addEventListener("click",function(){
+    checkoutButton.addEventListener("click", function () {
 
         hidePages();
         fadeIn(customerPage);
         customerPage.style.display = "block";
     });
 }
-function addOverviewPageActions(){
+
+function addOverviewPageActions() {
     var finalizeOrderButton = document.getElementById("finalize-button");
 
-    finalizeOrderButton.addEventListener("click", function(){
+    finalizeOrderButton.addEventListener("click", function () {
         headerImage.style.display = 'block';
         fadeIn(homePage);
-        switchPage(overviewPage,homePage);
+        switchPage(overviewPage, homePage);
 
     });
 }
@@ -684,7 +686,7 @@ function showID(evt) {
             newAmount = totalAmount;
 
             if (newAmount <= 1) {
-                itemString = " ITEM"
+                itemString = " ITEM";
             } else if (newAmount == 0) {
                 itemString = "";
 
@@ -703,7 +705,7 @@ function showID(evt) {
                 finalPrice.innerHTML = "";
                 finalPrice.remove();
                 checkoutButton.remove();
-                exists = false
+                exists = false;
 
 
 
@@ -805,7 +807,7 @@ function signUp() {
         emailFeedback.innerHTML = "Je bent succesvol aangemeld";
         setTimeout(function () {
             emailFeedback.innerHTML = "";
-            emailInput.value = ""
+            emailInput.value = "";
         }, 1000);
 
         console.log(emailList);
@@ -820,7 +822,7 @@ function signUp() {
         emailFeedback.innerHTML = "Je bent al aangemeld";
         setTimeout(function () {
             emailFeedback.innerHTML = "";
-            emailInput.value = ""
+            emailInput.value = "";
         }, 1000);
         console.log(emailList);
     } else {
@@ -838,7 +840,7 @@ function signUp() {
         emailFeedback.innerHTML = "Je bent succesvol aangemeld";
         setTimeout(function () {
             emailFeedback.innerHTML = "";
-            emailInput.value = ""
+            emailInput.value = "";
         }, 1000);
         console.log(emailList);
         establishCustomerConnection();
@@ -881,22 +883,20 @@ function postCustomerInformation() {
 
 
 
-    if (firstNameInput == "" || emailInput == ""|| lastNameInput ==  "" || addressInput == "" || cityInput == "") {
-        orderFeedback.innerHTML = "A field is empty"
+    if (firstNameInput == "" || emailInput == "" || lastNameInput == "" || addressInput == "" || cityInput == "") {
+        orderFeedback.innerHTML = "A field is empty";
         setTimeout(function () {
             orderFeedback.innerHTML = "";
-            
+
         }, 1000);
-    }
-    else if(!emailInput.match(reEmail)){
-        orderFeedback.innerHTML = "Email niet geldig, probeer opnieuw."
+    } else if (!emailInput.match(reEmail)) {
+        orderFeedback.innerHTML = "Email niet geldig, probeer opnieuw.";
         setTimeout(function () {
             orderFeedback.innerHTML = "";
             emailField.value = "";
-            
+
         }, 1000);
-    }
-    else if (checkEmailExists(emailInput)) {
+    } else if (checkEmailExists(emailInput)) {
 
         myApi.request = 'PUT';
         myApi.route = 'customers/' + idOfDuplicate;
@@ -906,12 +906,12 @@ function postCustomerInformation() {
             address: addressInput,
             city: cityInput,
             ["e-mail"]: emailInput,
-        }
+        };
         myApi.prefix = "api/";
         myApi.executeCustomer();
 
-       
-        orderFeedback.innerHTML = "Je bestelling is geplaatst"
+
+        orderFeedback.innerHTML = "Je bestelling is geplaatst";
         setTimeout(function () {
             orderFeedback.innerHTML = "";
             emailField.value = "";
@@ -919,32 +919,32 @@ function postCustomerInformation() {
             lastNameField.value = "";
             addressField.value = "";
             cityField.value = "";
-            
+
         }, 1000);
-        
+
 
         myApi.request = 'POST';
         myApi.route = 'orders';
         myApi.send = {
             customer_id: idOfDuplicate,
-        }
+        };
         myApi.prefix = 'api/';
         myApi.executeOrder();
 
         establishOrderConnection();
-        for(let i = 0; i < orderlines.length; i++){
-        myApi.request = "POST";
-        myApi.route = 'orderlines';
-        myApi.send = {
-            order_id: mostRecentOrderIndex,
-            product_id: orderlines[i].getProductId(),
-            amount: orderlines[i].getAmount(),
+        for (let i = 0; i < orderlines.length; i++) {
+            myApi.request = "POST";
+            myApi.route = 'orderlines';
+            myApi.send = {
+                order_id: mostRecentOrderIndex,
+                product_id: orderlines[i].getProductId(),
+                amount: orderlines[i].getAmount(),
 
+            };
+            myApi.prefix = 'api/';
+            myApi.executeOrder();
         }
-        myApi.prefix = 'api/';
-        myApi.executeOrder();
-    }
-        
+
 
 
         orderlines = [];
@@ -960,20 +960,20 @@ function postCustomerInformation() {
         finalPrice.remove();
         checkoutButton.remove();
         bottomCart.remove();
-        for(let i = 0; i < cartItemContainer.length; i++){
+        for (let i = 0; i < cartItemContainer.length; i++) {
             cartItemContainer[i].remove();
         }
-        
-        
+
+
         exists = false;
 
         homeLogo.style.display = "none";
         fadeIn(overviewPage);
-        switchPage(customerPage,overviewPage);
+        switchPage(customerPage, overviewPage);
 
         orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
 
-        
+
 
 
         establishOrderConnection();
@@ -1001,7 +1001,7 @@ function postCustomerInformation() {
             lastNameField.value = "";
             addressField.value = "";
             cityField.value = "";
-            
+
         }, 1000);
         establishCustomerConnection();
 
@@ -1009,23 +1009,23 @@ function postCustomerInformation() {
         myApi.route = 'orders';
         myApi.send = {
             customer_id: (emailList.length + 1),
-        }
+        };
         myApi.prefix = 'api/';
         myApi.executeOrder();
 
         establishOrderConnection();
-        for(let i = 0; i < orderlines.length; i++){
-        myApi.request = "POST";
-        myApi.route = 'orderlines';
-        myApi.send = {
-            order_id: mostRecentOrderIndex,
-            product_id: orderlines[i].getProductId(),
-            amount: orderlines[i].getAmount(),
+        for (let i = 0; i < orderlines.length; i++) {
+            myApi.request = "POST";
+            myApi.route = 'orderlines';
+            myApi.send = {
+                order_id: mostRecentOrderIndex,
+                product_id: orderlines[i].getProductId(),
+                amount: orderlines[i].getAmount(),
 
+            };
+            myApi.prefix = 'api/';
+            myApi.executeOrder();
         }
-        myApi.prefix = 'api/';
-        myApi.executeOrder();
-    }
 
         orderlines = [];
         cartItems = [];
@@ -1041,19 +1041,19 @@ function postCustomerInformation() {
         checkoutButton.remove();
         bottomCart.remove();
 
-        for(let i = 0; i < cartItemContainer.length; i++){
+        for (let i = 0; i < cartItemContainer.length; i++) {
             cartItemContainer[i].remove();
-        }
+        };
         exists = false;
 
         homeLogo.style.display = "none";
 
         fadeIn(overviewPage);
-        switchPage(customerPage,overviewPage);
+        switchPage(customerPage, overviewPage);
         orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
 
         establishOrderConnection();
-        stablisCustomerConnection();
+        establisCustomerConnection();
 
 
 
@@ -1090,7 +1090,8 @@ function establishCustomerConnection() {
     myApi.executeCustomer();
 
 }
-function establishOrderConnection(){
+
+function establishOrderConnection() {
     myApi.request = "GET";
     myApi.route = "orders";
     myApi.send = null;
@@ -1099,18 +1100,20 @@ function establishOrderConnection(){
 
 }
 var mostRecentOrderIndex = 0;
-function getOrders(response){
-    
+
+function getOrders(response) {
+
     mostRecentOrderIndex = response.length + 1;
     console.log(mostRecentOrderIndex);
 }
-function establisOrderlinesConnection(){
+
+function establisOrderlinesConnection() {
     myApi.request = "GET";
     myApi.route = "orderlines";
     myApi.send = null;
     myApi.prefix = "api/";
     myApi.executeOrderlines();
-    
+
 }
 
 var emailList = [];
@@ -1260,39 +1263,39 @@ var exists = false;
 /**
  * appends subtotal and checkout button once an item has been added to cart
  */
-function addElementsToCart(){
-    
+function addElementsToCart() {
+
 
     var cartPage = document.getElementById("cart-page");
 
     var bottomCart = document.createElement("div");
-    bottomCart.setAttribute('id','bottom-cart');
+    bottomCart.setAttribute('id', 'bottom-cart');
 
     var checkoutButton = document.createElement("button");
-    checkoutButton.setAttribute("id","checkout-button");
+    checkoutButton.setAttribute("id", "checkout-button");
 
     var finalPrice = document.createElement("p");
-    finalPrice.setAttribute("id","final-price");
-    
-    if(exists == false){
-    cartPage.appendChild(bottomCart);
-    bottomCart.appendChild(finalPrice);
+    finalPrice.setAttribute("id", "final-price");
 
-    bottomCart.appendChild(checkoutButton);
+    if (exists == false) {
+        cartPage.appendChild(bottomCart);
+        bottomCart.appendChild(finalPrice);
 
-    checkoutButton.innerHTML = "CHECKOUT";
-    exists = true;
+        bottomCart.appendChild(checkoutButton);
+
+        checkoutButton.innerHTML = "CHECKOUT";
+        exists = true;
 
     }
 }
 
 
 function hideHeaderImage() {
- const mobileView = window.matchMedia("(max-width: 480px)");
+    const mobileView = window.matchMedia("(max-width: 480px)");
 
- if(mobileView.matches){
-     headerImage.style.display = "none";
- }
+    if (mobileView.matches) {
+        headerImage.style.display = "none";
+    }
 
 }
 //initialize on load

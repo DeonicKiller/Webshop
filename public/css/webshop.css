@@ -10,7 +10,7 @@ div,
 button,
 p {
     font-family: 'IBM Plex Sans', sans-serif;
-    -webkit-tap-highlight-color: rgba(0, 0, 0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 
@@ -77,7 +77,6 @@ p {
     color: white;
     background-color: #009EDC;
     border-style: solid;
-    border-top-color: none;
     border-color: #009EDC;
     border-width: 2px;
     text-align: center;
@@ -252,20 +251,24 @@ p {
         flex-direction: column;
         margin-top: 30%;
     }
+
     .selection-image:hover {
         transform: none !important;
         -webkit-transform: none !important;
 
     }
-    .selection-image{
-        width:180px;
-        height:180px;
+
+    .selection-image {
+        width: 180px;
+        height: 180px;
     }
+
     #description-container {
         width: 95% !important;
-        margin-top:40px;
+        margin-top: 40px;
     }
-    #aboutus-header{
+
+    #aboutus-header {
         text-align: center;
     }
 
@@ -395,7 +398,6 @@ p {
         color: white;
         background-color: #009EDC;
         border-style: solid;
-        border-top-color: none;
         border-color: #009EDC;
         border-width: 2px;
         text-align: center;
@@ -420,10 +422,11 @@ p {
         text-align: center;
     }
 
-    #overview-container{
-        margin-top:50% !important;
+    #overview-container {
+        margin-top: 50% !important;
     }
-    #overview-text{
+
+    #overview-text {
         text-align: center;
     }
 
@@ -475,7 +478,7 @@ p {
 
 #description-container {
     width: 50%;
-    height:50%;
+    height: 50%;
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -857,20 +860,22 @@ p {
     color: white;
 }
 
-#overview-container{
-    display:flex;
+#overview-container {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     align-items: center;
     margin-top: 15%;
 }
-#checkmark-success{
 
-    width:auto;
-    height:256px;
+#checkmark-success {
+
+    width: auto;
+    height: 256px;
 }
-#finalize-button{
+
+#finalize-button {
     border-style: solid;
     background-color: transparent;
     border-radius: 12px;
@@ -880,7 +885,8 @@ p {
     transition: 0.1s ease;
 
 }
-#finalize-button:hover{
+
+#finalize-button:hover {
     background-color: black;
     color: white;
 }

@@ -20,8 +20,14 @@ class Api {
             if (xHttp.readyState == XMLHttpRequest.DONE) {
                 if (xHttp.status == 200 || xHttp.status == 201) {
                     var response = JSON.parse(xHttp.response);
-                    showProductsSucces(response);
+                    //appendProducts(response);
+                    //showProductsSucces(response);
                     addProductPageActions(response);
+                    getImages(response);
+
+
+                   
+
 
                 } else {
                     showProductsFailed();
@@ -127,6 +133,13 @@ function showResponse(response) {
     }
 }
 
+
+
+
+
+
+
+
 /**
  * shows all products on page
  * @param {array} products product array received from api
@@ -153,6 +166,8 @@ function showProductsSucces(products) {
         });
     }
 }
+
+
 
 
 /**
@@ -327,13 +342,14 @@ function addHomePageActions() {
         headerImage.style.display = "none";
         switchPage(homePage, webshopPage);
         fadeIn(webshopPage);
-        if (productImageContainer.innerHTML == '') {
+            if(productFilled == false){
             myApi.request = "GET";
             myApi.route = "products";
             myApi.send = null;
             myApi.prefix = "api/";
             myApi.executeProduct();
-        }
+            }
+       // }
 
     });
     selectionImg2.addEventListener("click", function () {
@@ -421,7 +437,81 @@ function addWebshopPageActions() {
 
 
 
+function getImages(product){
+    //productDetailDescriptionElement.innerHTML = "Amerika, 1899. Wetshandhavers hebben het gemunt op de laatste outlaw-bendes. Wie zich niet wil overgeven, wordt genadeloos afgemaakt. Arthur Morgan en de Van der Linde-bende slaan op de vlucht nadat in het plaatsje Blackwater een overval slecht afloopt. Met federale agenten en de beste premiejagers van het Westen op de hielen, trekken ze door het ruige hart van Amerika, een spoor van overvallen en vuurgevechten achter zich latend.<br><br> Als door interne strubbelingen de bende uiteen dreigt te vallen, wordt Arthur gedwongen een keuze te maken. Kiest hij voor zijn idealen of voor de bende waar hij alles aan te danken heeft?<br><br> Red Dead Redemption 2, van de makers van Grand Theft Auto V en Red Dead Redemption, is een episch verhaal over het einde van het Wilde Westen en het begin van een nieuw tijdperk.";
+/**
+ * function that shows individual products when clicked
+ * @param {int} number index of clicked product
+ */
+function showProductDetails(number) {
 
+
+    bigImageElement.innerHTML = product[number].image;
+    productDetailNameElement.innerHTML = product[number].name;
+    productDetailPriceElement.innerHTML = "&euro; " + product[number].price;
+    productDetailPlatformElement.innerHTML = product[number].platform;
+    productDetailDescriptionElement.innerHTML = product[number].description;
+
+
+}
+    
+    for(var i = 0; i < product.length; i++){
+        
+
+    var productContainer = document.createElement("div");
+    productContainer.setAttribute("class","product");
+
+    var productContainerName = document.createElement("p")
+    productContainerName.setAttribute("class","product-name");
+
+    var productContainerPrice= document.createElement("p")
+    productContainerPrice.setAttribute("class","product-price");
+
+    var productContainerImage= document.createElement("p");
+    productContainerImage.setAttribute("class","product-image");
+
+    var productContainerPlatform = document.createElement("p")
+    productContainerPlatform.setAttribute("class","product-platform");
+
+
+
+    productParentContainer.appendChild(productContainer);
+    productContainer.appendChild(productContainerImage);
+    productContainer.appendChild(productContainerName);
+    productContainer.appendChild(productContainerPrice);
+    productContainer.appendChild(productContainerPlatform);
+
+    productContainerImage.innerHTML = product[i].image;
+    productContainerName.innerHTML = product[i].name;
+    productContainerPrice.innerHTML = product[i].price;
+    productContainerPlatform.innerHTML = product[i].platform;
+
+    
+    
+
+}
+productFilled = true;
+
+
+
+    var productContainers = document.getElementsByClassName("product");
+    function selectItems(){
+    for(let i = 0; product.length; i++){
+
+
+        productContainers[i].addEventListener("click",function(){
+         showProductDetails(i);
+         idSelectedProduct = i;
+
+         switchPage(webshopPage, productPage);
+         fadeIn(productPage);
+
+
+     });
+    }
+}
+selectItems();
+}
 var itemString = "";
 var idSelectedProduct = 0;
 var indexOfProduct = 0;
@@ -436,117 +526,21 @@ var cartAmount = document.getElementById("cart-amount");
 var cartSubtotal = document.getElementById("cart-subtotal");
 var cartAmountMobile = document.getElementById("cart-amount-mobile");
 var totalAmount = 0;
+var productParentContainer = document.getElementById("products-container");
+var productFilled = false;
 
+function cartAddActions(){
+
+}
 /**
  * function that initiates all functions pertaining to products
  * @param {api response} product response that is received from api
  */
 function addProductPageActions(product) {
-
-
-
-
-    //productDetailDescriptionElement.innerHTML = "Amerika, 1899. Wetshandhavers hebben het gemunt op de laatste outlaw-bendes. Wie zich niet wil overgeven, wordt genadeloos afgemaakt. Arthur Morgan en de Van der Linde-bende slaan op de vlucht nadat in het plaatsje Blackwater een overval slecht afloopt. Met federale agenten en de beste premiejagers van het Westen op de hielen, trekken ze door het ruige hart van Amerika, een spoor van overvallen en vuurgevechten achter zich latend.<br><br> Als door interne strubbelingen de bende uiteen dreigt te vallen, wordt Arthur gedwongen een keuze te maken. Kiest hij voor zijn idealen of voor de bende waar hij alles aan te danken heeft?<br><br> Red Dead Redemption 2, van de makers van Grand Theft Auto V en Red Dead Redemption, is een episch verhaal over het einde van het Wilde Westen en het begin van een nieuw tijdperk.";
-    /**
-     * function that shows individual products when clicked
-     * @param {int} number index of clicked product
-     */
-    function showProductDetails(number) {
-
-
-        bigImageElement.innerHTML = product[number].image;
-        productDetailNameElement.innerHTML = product[number].name;
-        productDetailPriceElement.innerHTML = "&euro; " + product[number].price;
-        productDetailPlatformElement.innerHTML = product[number].platform;
-        productDetailDescriptionElement.innerHTML = product[number].description;
-
-
-    }
-
     /**
      * Execute on click
      */
-    image1.addEventListener("click", function () {
-        showProductDetails(0);
-        idSelectedProduct = 0;
 
-
-        switchPage(webshopPage, productPage);
-        fadeIn(productPage);
-
-
-
-
-    });
-    /**
-     * Execute on click
-     */
-    image2.addEventListener("click", function () {
-
-        showProductDetails(1);
-        idSelectedProduct = 1;
-
-        switchPage(webshopPage, productPage);
-        fadeIn(productPage);
-
-
-    });
-    /**
-     * Execute on click
-     */
-    image3.addEventListener("click", function () {
-        showProductDetails(2);
-        idSelectedProduct = 2;
-
-        switchPage(webshopPage, productPage);
-        fadeIn(productPage);
-
-
-    });
-    /**
-     * Execute on click
-     */
-    image4.addEventListener("click", function () {
-        showProductDetails(3);
-        idSelectedProduct = 3;
-
-        switchPage(webshopPage, productPage);
-        fadeIn(productPage);
-
-
-    });
-    /**
-     * Execute on click
-     */
-    image5.addEventListener("click", function () {
-        showProductDetails(4);
-        idSelectedProduct = 4;
-
-        switchPage(webshopPage, productPage);
-        fadeIn(productPage);
-
-
-
-
-    });
-    /**
-     * Execute on click
-     */
-    addCartButton.addEventListener("click", function () {
-        newOrder = new Order();
-        addToCart(idSelectedProduct);
-        goToSelectedImage();
-        if(totalAmount >= 1){
-        addElementsToCart();
-        }
-        addCheckoutPageActions();
-
-        var finalPrice = document.getElementById("final-price");
-        finalPrice.innerHTML = "SUBTOTAL " + "&euro;" + subtotal;
-
-        console.log(newOrder.getTotalPrice());
-
-    });
     /**
      * function that adds selected product to cart
      * @param {int} number index of visible product
@@ -624,7 +618,28 @@ function addProductPageActions(product) {
 
 
     }
+    
+
+
+    addCartButton.addEventListener("click", function () {
+        newOrder = new Order();
+        addToCart(idSelectedProduct);
+        goToSelectedImage();
+        
+        if(totalAmount >= 1){
+        addElementsToCart();
+        }
+        addCheckoutPageActions();
+    
+        var finalPrice = document.getElementById("final-price");
+        finalPrice.innerHTML = "SUBTOTAL " + "&euro;" + subtotal;
+    
+        console.log(newOrder.getTotalPrice());
+    
+    });
+    
 }
+
 /**
  * definition of all functions pertaining checkout page
  */
@@ -660,6 +675,7 @@ function removeItem() {
 
     for (let i = 0; i < button.length; i++) {
         button[i].addEventListener("click", showID);
+        goToSelectedImage();
     }
 
     for (var i = 0; i < button.length; i++) {
@@ -667,6 +683,7 @@ function removeItem() {
 
 
             e.currentTarget.parentNode.remove();
+            goToSelectedImage();
 
 
 

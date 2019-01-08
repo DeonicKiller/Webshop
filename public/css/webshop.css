@@ -359,6 +359,9 @@ p {
         justify-content: center;
 
     }
+    #cart-feedback{
+        text-align: center;
+    }
 
     #product-description {
         width: 95%;

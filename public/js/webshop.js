@@ -563,7 +563,7 @@ function addProductPageActions(product) {
 
 
             subtotal += (amountField * productPrice);
-            cartSubtotal.innerHTML = "&euro; " + subtotal;
+            cartSubtotal.innerHTML = "&euro; " + parseFloat(subtotal).toFixed(2);
             //totalPriceText.innerHTML = "SUBTOTAL " + "&euro;" + subtotal;
             totalAmount += amountField;
 
@@ -621,7 +621,7 @@ function addProductPageActions(product) {
         addCheckoutPageActions();
     
         var finalPrice = document.getElementById("final-price");
-        finalPrice.innerHTML = "SUBTOTAL " + "&euro;" + subtotal;
+        finalPrice.innerHTML = "SUBTOTAL " + "&euro;" + parseFloat(subtotal).toFixed(2);
     
         console.log(newOrder.getTotalPrice());
     
@@ -718,9 +718,9 @@ function showID(evt) {
             } else {
 
                 cartAmount.innerHTML = newAmount + " " + itemString;
-                cartSubtotal.innerHTML = "&euro;" + newSubtotal;
+                cartSubtotal.innerHTML = "&euro;" + parseFloat(newSubtotal).toFixed(2);
                 cartAmountMobile.innerHTML = newAmount;
-                finalPrice.innerHTML = "SUBTOTAL " + "&euro;" + newSubtotal;
+                finalPrice.innerHTML = "SUBTOTAL " + "&euro;" + parseFloat(newSubtotal).toFixed(2);
             }
 
 

@@ -363,10 +363,12 @@ p {
     #bottom {
         display: flex;
         justify-content: center;
+        margin-top: 10px;
 
     }
     #cart-feedback{
         text-align: center;
+        margin:0;
     }
 
     #product-description {

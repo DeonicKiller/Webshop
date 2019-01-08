@@ -323,16 +323,21 @@ p {
 
     #product-name {
         text-align: center;
+        margin:0;
     }
 
     #product-price {
         text-align: center !important;
+        margin:0;
+        margin-top:5px;
 
     }
 
     #product-platform {
 
         text-align: center !important;
+        margin:0;
+        margin-bottom:5px;
 
 
     }
@@ -344,6 +349,7 @@ p {
 
     #big-image {
         display: inline-flex;
+        margin:0;
 
     }
 

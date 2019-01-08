@@ -551,7 +551,7 @@ function addProductPageActions(product) {
         var cartFeedback = document.getElementById("cart-feedback");
         var amountField = parseInt(document.getElementById("amount-field").value, 10);
         var productId = product[number].id;
-        var productPrice = product[number].price;
+        var productPrice = parseFloat(product[number].price).toFixed(2);
         var productName = product[number].name;
         var productPlatform = product[number].platform;
         var productImage = product[number].image;
@@ -1267,7 +1267,7 @@ function appendCartItem(name, platform, price, amount, image) {
 
 
     cartItemImage.innerHTML = image;
-    cartItemPrice.innerHTML = "&euro;" + price;
+    cartItemPrice.innerHTML = "&euro;" + parseFloat(price).toFixed(2);
     cartItemPlatform.innerHTML = platform;
     cartItemAmount.innerHTML = amount;
     cartItemName.innerHTML = name;

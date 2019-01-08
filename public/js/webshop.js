@@ -454,10 +454,10 @@ function showProductDetails(number) {
 
 
 }
-    
+
     for(var i = 0; i < product.length; i++){
         
-
+    // creates product containers
     var productContainer = document.createElement("div");
     productContainer.setAttribute("class","product");
 
@@ -474,26 +474,28 @@ function showProductDetails(number) {
     productContainerPlatform.setAttribute("class","product-platform");
 
 
-
+   //appends created containers into parent div
     productParentContainer.appendChild(productContainer);
     productContainer.appendChild(productContainerImage);
     productContainer.appendChild(productContainerName);
     productContainer.appendChild(productContainerPrice);
     productContainer.appendChild(productContainerPlatform);
 
+    //populates every element with corresponding attribute from api
     productContainerImage.innerHTML = product[i].image;
     productContainerName.innerHTML = product[i].name;
-    productContainerPrice.innerHTML = product[i].price;
+    productContainerPrice.innerHTML = "&euro;" + product[i].price;
     productContainerPlatform.innerHTML = product[i].platform;
 
     
     
 
 }
+//defining variable as true to prevent showing duplicate products when clicking on webshop page
 productFilled = true;
 
 
-
+    
     var productContainers = document.getElementsByClassName("product");
     function selectItems(){
     for(let i = 0; product.length; i++){
@@ -556,9 +558,6 @@ function addProductPageActions(product) {
 
         itemString = " ITEMS";
 
-
-
-
         if (amountField > 0) {
 
 
@@ -577,10 +576,6 @@ function addProductPageActions(product) {
 
             cartAmount.innerHTML = totalAmount + itemString;
             cartAmountMobile.innerHTML = totalAmount;
-
-
-
-
 
             //console.log(subtotal);
             newOrderline = new Orderline();
@@ -614,13 +609,7 @@ function addProductPageActions(product) {
             }, 1000);
         }
 
-
-
-
     }
-    
-
-
     addCartButton.addEventListener("click", function () {
         newOrder = new Order();
         addToCart(idSelectedProduct);
@@ -688,12 +677,7 @@ function removeItem() {
 
 
         }, false);
-
-
-
     }
-
-
 }
 /**
  * function that gets clicked element and checks if it matches
@@ -719,9 +703,6 @@ function showID(evt) {
                 itemString = "";
 
             }
-
-
-
             cartItems.splice(i, 1);
             orderlines.splice(i, 1);
             if (newAmount == 0) {
@@ -734,9 +715,6 @@ function showID(evt) {
                 finalPrice.remove();
                 checkoutButton.remove();
                 exists = false;
-
-
-
             } else {
 
                 cartAmount.innerHTML = newAmount + " " + itemString;

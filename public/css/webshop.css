@@ -147,6 +147,7 @@ p {
 .product {
     display: inline-block;
     margin: 5px;
+    cursor: pointer;
 }
 
 #home-logo {
@@ -544,6 +545,19 @@ p {
     text-align: center;
 
 }
+#email-input{
+    margin-right: 2px;
+    border-style: none;
+    border-bottom-style: solid;
+    border-bottom-color:white;
+    border-bottom-width:1px;
+    background-color: black;
+    color:white;
+
+}
+#email-input:focus{
+outline:0;
+}
 
 #newsletter-feedback {
     position: absolute;
@@ -557,11 +571,10 @@ p {
 #send-email-button {
     border-style: solid;
     border-color: white;
-    border-radius: 1px;
-    border-width: 3px;
+    border-radius: 3px;
+    border-width: 2px;
     background-color: white;
     cursor: pointer;
-
     transition: 0.1s ease;
 
 

@@ -790,7 +790,8 @@ function signUp() {
     var emailToString = "" + emailInputValue + "";
     var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
 
-
+    var emailToString = ""+emailInputValue+"";
+    var emailToLower =  emailToString.toLowerCase();
     if (!emailToString.match(reEmail)) {
 
         emailFeedback.innerHTML = "Email niet geldig. Probeer opnieuw";
@@ -809,7 +810,7 @@ function signUp() {
             last_name: "",
             address: "",
             city: "",
-            ["e-mail"]: emailInputValue,
+            ["e-mail"]: emailToLower,
         };
         myApi.prefix = "api/";
         myApi.executeCustomer();
@@ -842,7 +843,7 @@ function signUp() {
             last_name: "",
             address: "",
             city: "",
-            ["e-mail"]: emailInputValue,
+            ["e-mail"]: emailToLower,
         };
         myApi.prefix = "api/";
         myApi.executeCustomer();
@@ -887,6 +888,9 @@ function postCustomerInformation() {
     var lastNameField = document.getElementById("last-name");
     var addressField = document.getElementById("address");
     var cityField = document.getElementById("city");
+
+    var emailToString = ""+emailInput+"";
+    var emailToLower = emailToString.toLowerCase();
 
     var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
 
@@ -1181,7 +1185,7 @@ function checkEmailExists(email) {
     establishCustomerConnection();
     for (var i = 0; i < emailList.length; i++) {
 
-        if (emailList[i] == email) {
+        if (emailList[i] == email.toLowerCase()) {
             idOfDuplicate = i + 1;
             return true;
         }

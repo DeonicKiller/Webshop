@@ -17,6 +17,10 @@ class Product{
     setImage(image){
         this.image = image;
     }
+    setDescription(description){
+        this.description = description;
+
+    }
     getId(){
         return this.id;
     }
@@ -32,6 +36,9 @@ class Product{
     }
     getImage(){
         return this.image;
+    }
+    getDescription(){
+        return this.description;
     }
 
     

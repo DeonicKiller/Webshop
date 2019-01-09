@@ -555,6 +555,7 @@ function addProductPageActions(product) {
         var productName = product[number].name;
         var productPlatform = product[number].platform;
         var productImage = product[number].image;
+        var productDescription = product[number].description;
 
         itemString = " ITEMS";
 
@@ -587,6 +588,7 @@ function addProductPageActions(product) {
             newProduct.setName(productName);
             newProduct.setPlatform(productPlatform);
             newProduct.setImage(productImage);
+            newProduct.setDescription(productDescription);
             newOrderline.setAmount(amountField);
             newOrderline.setProductId(productId);
 
@@ -755,6 +757,7 @@ function goToSelectedImage() {
                     productDetailNameElement.innerHTML = cartItems[i].getName();
                     productDetailPriceElement.innerHTML = "&euro; " + cartItems[i].getPrice();
                     productDetailPlatformElement.innerHTML = cartItems[i].getPlatform();
+                    productDetailDescriptionElement.innerHTML = cartItems[i].getDescription();
 
 
                     console.log(cartItems[i].getId());

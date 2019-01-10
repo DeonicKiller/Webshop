@@ -1093,6 +1093,7 @@ function customerPageActions() {
 
     sendButtonCustomerInformation.addEventListener("click", function () {
         establishCustomerConnection();
+        establishOrderConnection();
         postCustomerInformation();
 
 

@@ -918,7 +918,7 @@ function postCustomerInformation() {
             last_name: lastNameInput,
             address: addressInput,
             city: cityInput,
-            ["e-mail"]: emailInput,
+            ["e-mail"]: emailToLower,
         };
         myApi.prefix = "api/";
         myApi.executeCustomer();
@@ -1001,7 +1001,7 @@ function postCustomerInformation() {
             last_name: lastNameInput,
             address: addressInput,
             city: cityInput,
-            ["e-mail"]: emailInput,
+            ["e-mail"]: emailToLower,
         };
         myApi.prefix = "api/";
         myApi.executeCustomer();

@@ -656,6 +656,7 @@ function addOverviewPageActions() {
         headerImage.style.display = 'block';
         fadeIn(homePage);
         switchPage(overviewPage, homePage);
+        establishOrderConnection();
 
     });
 }

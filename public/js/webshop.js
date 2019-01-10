@@ -310,8 +310,14 @@ function hideLogo() {
  * function that initiates all functions pertaining to the home page
  */
 function addHomePageActions() {
+    
+    customerBanner.addEventListener("click", function(){
+        fadeIn(webshopPage);
+        switchPage(productPage, webshopPage);
+    });
 
 
+    
     if (homePage.style.display == "block") {
         hideLogo();
     }
@@ -373,6 +379,7 @@ function addHomePageActions() {
         } else if (customerGegevensTest.style.display == "block") {
             switchPage(customerGegevensTest, homePage);
         }*/
+        customerBanner.innerHTML = "Game Topia";
         hideHeaderImage();
         hidePages();
         fadeIn(homePage);
@@ -509,6 +516,8 @@ productFilled = true;
 
          switchPage(webshopPage, productPage);
          fadeIn(productPage);
+
+        customerBanner.innerHTML = "Terug";
 
 
      });

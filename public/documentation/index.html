@@ -24,6 +24,41 @@
     <li>Testscripts</li>
 </ul>
 
+<h1>Test Scriptie</h1>
+<p>!|script|browser test                                                                   |
+    <br>
+    |open   |https://ori.clow.nl/~t18042/webshop/                                          |
+    <br>
+    |check  |page title        |webshop                                                    |
+    <br>
+    |ensure |is visible on page|Game Topia                                                 |
+    <br>
+    |click  |id=selection-1                                                                |
+    <br>
+    |click  |css=.product      |                                                           |
+    <br>
+    |enter  |1                 |as              |id=amount-field                           |
+    <br>
+    |click  |id=cartadd-button                                                             |
+    <br>
+    |click  |id=cart-header                                                                |
+    <br>
+    |click  |id=checkout-button                                                            |
+    <br>
+    |enter  |12345@hotmail.com |as              |id=input-email                            |
+    <br>
+    |enter  |Test              |as              |id=first-name                             |
+    <br>
+    |enter  |Test              |as              |id=last-name                              |
+    <br>
+    |enter  |Test              |as              |id=address                                |
+    <br>
+    |enter  |Test              |as              |id=city                                   |
+    <br>
+    |click  |id=send-customer-information-button                                           |
+    <br>
+    |check  |value of          |id=overview-text|Your order has been succesfully processed.|</p>
+
 
 
 

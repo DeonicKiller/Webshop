@@ -433,7 +433,7 @@ function addWebshopPageActions() {
 
         fadeIn(webshopPage);
         switchPage(productPage,webshopPage);
-        
+
 
     });
 
@@ -909,7 +909,7 @@ function postCustomerInformation() {
     var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
 
 
-
+    
     if (firstNameInput == "" || emailInput == "" || lastNameInput == "" || addressInput == "" || cityInput == "") {
         orderFeedback.innerHTML = "A field is empty";
         setTimeout(function () {
@@ -949,7 +949,7 @@ function postCustomerInformation() {
 
         }, 1000);
 
-
+        orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
         myApi.request = 'POST';
         myApi.route = 'orders';
         myApi.send = {
@@ -999,7 +999,6 @@ function postCustomerInformation() {
         fadeIn(overviewPage);
         switchPage(customerPage, overviewPage);
 
-        orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
 
         establishCustomerConnection();
 
@@ -1028,6 +1027,7 @@ function postCustomerInformation() {
 
         }, 1000);
         establishCustomerConnection();
+        orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
 
         myApi.request = 'POST';
         myApi.route = 'orders';
@@ -1075,7 +1075,6 @@ function postCustomerInformation() {
 
         fadeIn(overviewPage);
         switchPage(customerPage, overviewPage);
-        orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
 
         establishCustomerConnection();
 

@@ -78,6 +78,13 @@ html *{
     text-align: center;
     margin: 0;
     cursor: pointer;
+    transition: 1s ease;
+
+    
+}
+#cart-header:hover{
+    color:black;
+
 }
 
 #cart-content {
@@ -288,6 +295,19 @@ html *{
 
     #banner {
         font-size: 25px;
+    }
+    #left-side{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        
+    }
+    #backto-webshop{
+        margin-bottom: 20px;
+        width:30%;
+        
+
     }
 
 
@@ -664,7 +684,23 @@ outline:0;
     flex-direction: row;
     justify-content: flex-start;
 }
+#backto-webshop{
+    color: white;
+    background-color: black;
+    padding: 6px;
+    margin-left: 3px;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.1s ease;
 
+}
+#backto-webshop:hover{
+    background-color:white;
+    color: black;
+}
 #right-side {
 
     margin-left: 20px;

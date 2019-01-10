@@ -203,6 +203,7 @@ var customerPage = document.getElementById("customer-page");
 var overviewPage = document.getElementById("overview-page");
 
 
+
 var image1 = document.getElementById("image-1");
 var image2 = document.getElementById("image-2");
 var image3 = document.getElementById("image-3");
@@ -223,7 +224,7 @@ var sendEmailButton = document.getElementById("send-email-button");
 var cartEmptyText = document.getElementById("cart-empty-text");
 var finalizeOrderButton = document.getElementById("finalize-button");
 var orderNumberText = document.getElementById("order-number");
-
+var backToWebshopButton = document.getElementById("backto-webshop");
 /**
  * function to show text on nav bar images on mouse over
  * @param {element} image image that fades out to 0.3 opacity
@@ -310,14 +311,7 @@ function hideLogo() {
  * function that initiates all functions pertaining to the home page
  */
 function addHomePageActions() {
-    
-    customerBanner.addEventListener("click", function(){
-        fadeIn(webshopPage);
-        switchPage(productPage, webshopPage);
-    });
-
-
-    
+ 
     if (homePage.style.display == "block") {
         hideLogo();
     }
@@ -379,7 +373,7 @@ function addHomePageActions() {
         } else if (customerGegevensTest.style.display == "block") {
             switchPage(customerGegevensTest, homePage);
         }*/
-        customerBanner.innerHTML = "Game Topia";
+        
         hideHeaderImage();
         hidePages();
         fadeIn(homePage);
@@ -435,6 +429,14 @@ function addHomePageActions() {
 }
 
 function addWebshopPageActions() {
+    backToWebshopButton.addEventListener("click", function(){
+
+        fadeIn(webshopPage);
+        switchPage(productPage,webshopPage);
+        
+
+    });
+
 
 
 }
@@ -517,7 +519,7 @@ productFilled = true;
          switchPage(webshopPage, productPage);
          fadeIn(productPage);
 
-        customerBanner.innerHTML = "Terug";
+      
 
 
      });

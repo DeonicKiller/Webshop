@@ -655,6 +655,7 @@ function addCheckoutPageActions() {
         hidePages();
         fadeIn(customerPage);
         customerPage.style.display = "block";
+        establishOrderConnection();
     });
 }
 /**
@@ -925,6 +926,7 @@ function postCustomerInformation() {
         }, 1000);
     } else if (checkEmailExists(emailInput)) {
 
+
         myApi.request = 'PUT';
         myApi.route = 'customers/' + idOfDuplicate;
         myApi.send = {
@@ -949,7 +951,7 @@ function postCustomerInformation() {
 
         }, 1000);
 
-        orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
+        
         myApi.request = 'POST';
         myApi.route = 'orders';
         myApi.send = {
@@ -958,7 +960,6 @@ function postCustomerInformation() {
         myApi.prefix = 'api/';
         myApi.executeOrder();
 
-        establishOrderConnection();
         
         for (let i = 0; i < orderlines.length; i++) {
             myApi.request = "POST";
@@ -999,11 +1000,11 @@ function postCustomerInformation() {
         fadeIn(overviewPage);
         switchPage(customerPage, overviewPage);
 
-
         establishCustomerConnection();
 
 
     } else {
+
         myApi.request = 'POST';
         myApi.route = 'customers';
         myApi.send = {
@@ -1027,7 +1028,6 @@ function postCustomerInformation() {
 
         }, 1000);
         establishCustomerConnection();
-        orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
 
         myApi.request = 'POST';
         myApi.route = 'orders';
@@ -1037,7 +1037,6 @@ function postCustomerInformation() {
         myApi.prefix = 'api/';
         myApi.executeOrder();
 
-        establishOrderConnection();
 
         for (let i = 0; i < orderlines.length; i++) {
             myApi.request = "POST";
@@ -1095,7 +1094,11 @@ function customerPageActions() {
     sendButtonCustomerInformation.addEventListener("click", function () {
         establishCustomerConnection();
         establishOrderConnection();
-        postCustomerInformation();
+        orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
+
+
+        setTimeout(postCustomerInformation(),3000);
+        
 
 
     });

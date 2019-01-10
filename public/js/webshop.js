@@ -986,6 +986,9 @@ function postCustomerInformation() {
 
         orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
 
+        mostRecentOrderIndex = 0;
+
+
 
 
 
@@ -1067,6 +1070,8 @@ function postCustomerInformation() {
 
         establishOrderConnection();
         establisCustomerConnection();
+
+        mostRecentOrderIndex = 0;
 
 
 

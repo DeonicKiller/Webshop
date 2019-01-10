@@ -74,7 +74,9 @@ class Api {
             if (xHttp.readyState == XMLHttpRequest.DONE) {
                 if (xHttp.status == 200 || xHttp.status == 201) {
                     var response = JSON.parse(xHttp.response);
+                    
                     getOrders(response);
+                    
 
 
                 } else {
@@ -944,6 +946,7 @@ function postCustomerInformation() {
         myApi.prefix = 'api/';
         myApi.executeOrder();
 
+        establishOrderConnection();
         
         for (let i = 0; i < orderlines.length; i++) {
             myApi.request = "POST";
@@ -955,7 +958,7 @@ function postCustomerInformation() {
 
             };
             myApi.prefix = 'api/';
-            myApi.executeOrder();
+            myApi.executeOrderlines();
         }
 
 
@@ -986,14 +989,7 @@ function postCustomerInformation() {
 
         orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
 
-        
-
-
-
-
-
         establishCustomerConnection();
-        mostRecentOrderIndex = 0;
 
 
     } else {
@@ -1029,6 +1025,8 @@ function postCustomerInformation() {
         myApi.prefix = 'api/';
         myApi.executeOrder();
 
+        establishOrderConnection();
+
         for (let i = 0; i < orderlines.length; i++) {
             myApi.request = "POST";
             myApi.route = 'orderlines';
@@ -1039,7 +1037,7 @@ function postCustomerInformation() {
 
             };
             myApi.prefix = 'api/';
-            myApi.executeOrder();
+            myApi.executeOrderlines();
         }
 
         orderlines = [];
@@ -1068,9 +1066,6 @@ function postCustomerInformation() {
         orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
 
         establishCustomerConnection();
-
-        mostRecentOrderIndex = 0;
-
 
 
 
@@ -1124,8 +1119,14 @@ var mostRecentOrderIndex = 0;
  */
 function getOrders(response) {
 
-    mostRecentOrderIndex = response.length + 1;
+    if(response.length == 0){
+        mostRecentOrderIndex = 1;
+    }
+    else{
+        mostRecentOrderIndex = (response.length + 1)
+    }
     console.log(mostRecentOrderIndex);
+    console.log(response);
 }
 /**
  * executes API connection with Orderlines tables

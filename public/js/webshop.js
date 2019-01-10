@@ -944,7 +944,7 @@ function postCustomerInformation() {
         myApi.prefix = 'api/';
         myApi.executeOrder();
 
-        establishOrderConnection();
+        
         for (let i = 0; i < orderlines.length; i++) {
             myApi.request = "POST";
             myApi.route = 'orderlines';
@@ -986,14 +986,14 @@ function postCustomerInformation() {
 
         orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
 
-        mostRecentOrderIndex = 0;
+        
 
 
 
 
 
-        establishOrderConnection();
         establishCustomerConnection();
+        mostRecentOrderIndex = 0;
 
 
     } else {
@@ -1029,7 +1029,6 @@ function postCustomerInformation() {
         myApi.prefix = 'api/';
         myApi.executeOrder();
 
-        establishOrderConnection();
         for (let i = 0; i < orderlines.length; i++) {
             myApi.request = "POST";
             myApi.route = 'orderlines';
@@ -1068,7 +1067,6 @@ function postCustomerInformation() {
         switchPage(customerPage, overviewPage);
         orderNumberText.innerHTML = "Your order number is " + mostRecentOrderIndex;
 
-        establishOrderConnection();
         establishCustomerConnection();
 
         mostRecentOrderIndex = 0;

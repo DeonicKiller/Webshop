@@ -484,6 +484,9 @@ function showProductDetails(number) {
     var productContainerPlatform = document.createElement("p")
     productContainerPlatform.setAttribute("class","product-platform");
 
+    var messagesInputContainer = document.createElement("input");
+    messagesInputContainer.setAttribute("type", "input");
+
 
    //appends created containers into parent div
     productParentContainer.appendChild(productContainer);
